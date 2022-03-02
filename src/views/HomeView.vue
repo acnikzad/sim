@@ -10,7 +10,10 @@
       <form>
         <input type="text" v-model="income"/>
       </form>
-      <h1>The Month is <span id="attempt"></span></h1>
+      <h1>The Month is <span id="month"></span></h1>
+      <h1>The Year is <span id="year"></span></h1>
+      <p>Your income is {{income}} per year</p>
+      <h1>Your savings account is $<span id="savings"></span></h1>
 
   </div>
 </template>
@@ -19,14 +22,15 @@
 
 var moment = require('moment');
 var no
-var hr = 0;
-var min = 0;
-var sec = 0;
-var stoptime = true;
-var income = "";
+var income = 35000;
+
+var save_rate = .05;
+var save_account = 0;
+
 var count = -1;
 var rate = .4;
 var product = 0;
+var year = 1987;
 var x = 0;
 var month = "";
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -53,15 +57,21 @@ export default {
       //   console.log('goodbye');
       // }
 
-      var intId = setInterval(counter, 500);
+      var intId = setInterval(counter, 1000);
       function counter() {
-        document.getElementById("attempt").innerHTML = month;
+        document.getElementById("month").innerHTML = month;
+        document.getElementById("year").innerHTML = year;
         console.log(++count);
+        console.log(year);
         month = (months[count])
         if (count == 11) {
           count = -1
+          year = year + 1
         }
-        // document.getElementById("attempt").innerHTML = month;
+
+        save_account = save_account + (income/12)*save_rate
+        console.log(save_account);
+        document.getElementById("savings").innerHTML = save_account;
       };
 
 
