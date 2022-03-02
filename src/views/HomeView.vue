@@ -2,74 +2,92 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <button> START </button>
+      <div>
+        <p>{{month}}</p>
+        <div id="clock"></div>
+      </div>
+      <button v-on:click="startHere()"> START </button>
+      <form>
+        <input type="text" v-model="income"/>
+      </form>
+      <h1>The Month is <span id="attempt"></span></h1>
+
   </div>
 </template>
 
 <script>
 
+var moment = require('moment');
+var no
+var hr = 0;
+var min = 0;
+var sec = 0;
+var stoptime = true;
+var income = "";
+var count = -1;
+var rate = .4;
+var product = 0;
+var x = 0;
+var month = "";
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+
 export default {
   name: 'ExampleModal',
   data: function() {
     return {
-      months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "November", "December"],
-      month: "",
-      year: ""
+      // months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      // month: "Feb",
+      // year: "",
+      // x:0,
 
-    };
-  },
+        };
+      },
   created: function() {
-    this.interval = setInterval(() => this.realTimeLocation(), 500);
-      console.log("run");
+    // this.interval = setInterval(() => this.startHere(), 1000);
+    //   console.log("run", this);
+      // var timeoutID = setTimeout(bye, 3000);
+      // console.log('hello');
+      // clearTimeout(timeoutID);
+      // function bye() {
+      //   console.log('goodbye');
+      // }
+
+      var intId = setInterval(counter, 500);
+      function counter() {
+        document.getElementById("attempt").innerHTML = month;
+        console.log(++count);
+        month = (months[count])
+        if (count == 11) {
+          count = -1
+        }
+        // document.getElementById("attempt").innerHTML = month;
+      };
+
+
     },
 
-
-  methods: {
-    // alertCreate() {
-    //   console.log('creating alert...');
-    //   $('#exampleModalCenter').modal('show');
-    //   this.center = {lat:this.latitude, lng: this.longitude},
-    //   this.zoom = 16;
-    //   this.markers.push({position: {lat:this.latitude, lng:this.longitude}});
-    //   console.log(this.markers);
-    // },
-    // alertIndex() {
-    //   console.log('indexing alert...');
-    //   this.center = {lat:this.latitude, lng: this.longitude},
-    //   this.zoom = 16;
-    //   this.markers.push({position: {lat:this.latitude, lng:this.longitude}});
-    //   console.log(this.markers);
-    // },
-    // alertNeighbors() {
-    //   console.log('alerting neighbors....');
-    //   console.log(this.user);
-    //   console.log(this.user["dogs"][0]["name"]);
-    //   console.log(this.user["dogs"][0]["breed"]);
-    //   console.log(this.user["dogs"][0]["color"]);
-    //   var params = {
-    //     dog_id: this.user["dogs"][0]["id"],
-    //     user_id: this.user["id"],
-    //     latitude: this.latitude,
-    //     longitude: this.longitude,
-    //     dog_name: this.user["dogs"][0]["name"],
-    //     color: this.user["dogs"][0]["color"],
-    //     breed: this.user["dogs"][0]["breed"],
-    //     address: this.address,
-    //     owner_name: this.user["first_name"],
-    //     contact_number: this.user["phone_number"],
-    //   };
-    //   $('#exampleModalCenter').modal('hide');
-    //   axios
-    //     .post("/api/alerts", params)
-    //     .catch(error => {
-    //       this.errors = error.response.data.errors;
-    //     });
-    // },
-    realTimeLocation() {
-
-      console.log("x");
-    }
-  },
-
-  };
+    methods: {
+      startHere() {
+        console.log("x");
+        while (x <= 11) {
+          if (x <= 11) {
+            month = (months[x]);
+            console.log(month);
+            (x++)
+          }
+        }
+        // moment().add(1000000, 'milliseconds'); // a million milliseconds
+      }, 
+      // setTimeout(bye, 3000);
+      // console.log('hello');
+      // function bye() {
+      //   console.log('goodbye');
+      // }
+    },
+  }
 </script>
+
+<!-- date management -->
+<!-- moment.js -->
+<!-- start with a counter associate to month -->
