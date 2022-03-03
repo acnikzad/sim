@@ -2,18 +2,14 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-      <div>
-        <p>{{month}}</p>
-        <div id="clock"></div>
-      </div>
-      <button v-on:click="startHere()"> START </button>
-
       <form>
         <input id="userIncome" type="text" placeholder="Enter Annual Income" v-model="income"/>
         <br>
         <input id="userIncome" type="text" placeholder="Enter Percentage Saved" v-model="save_rate"/>
         <br>
-        <button type="button" v-on:click="returnIncome()">Submit</button>
+        <input id="userIncome" type="text" placeholder="Enter Monthly Bills:" v-model="monthly_bills"/>
+        <br>
+        <button type="button" v-on:click="returnStart()">Submit</button>
       </form>
       <h1>The Month is <span id="month"></span></h1>
       <h1>The Year is <span id="year"></span></h1>
@@ -45,6 +41,8 @@ var save_amount = (monthly_income*save_rate);
 var save_account = 0;
 var save_rate = "";
 
+var income_tax = 0.08;
+
 var count = -1;
 var rate = .4;
 var product = 0;
@@ -61,6 +59,8 @@ export default {
     return {
  
       income:null,
+      income_tax:null,
+      income_tax: .08,
       // save_rate:null,
       // monthly_income:null,
       // save_amount:null,
@@ -70,18 +70,18 @@ export default {
 
   created: function() {
 
-      var intId = setInterval(counter, 50);
+      var intId = setInterval(counter, 750);
 
       function counter() {
-        console.log("this is the monthly_income", monthly_income);
-        console.log("this is the save_amount", save_amount);
-        console.log("this is the income", income);
+        // console.log("this is the monthly_income", monthly_income);
+        // console.log("this is the save_amount", save_amount);
+        // console.log("this is the income", income);
         document.getElementById("month").innerHTML = month;
         document.getElementById("year").innerHTML = year;
         document.getElementById("age").innerHTML = age;
         document.getElementById("savings").innerHTML = save_account;
         console.log(++count);
-        console.log("*****", save_account, "*****");
+        // console.log("*****", save_account, "*****");
         save_account = save_account + save_amount;
         month = (months[count])
         // save_account = save_account + save_amount
@@ -108,11 +108,31 @@ export default {
         console.log("x");
       },
 
-      returnIncome() {
-        // var income =document.getElementById("userIncome").innerHTML;
-        console.warn("This is income:", this.income, this.save_rate)
-        console.log("**", this.income, "**"),
-        monthly_income = this.income/12,
+      // oneYear() {
+      //   console.log("x");
+      // },
+
+      returnStart() {
+        console.warn("This is income:", this.income, this.save_rate, this.monthly_bills)
+        console.log("** this is income:", this.income, "**"),
+        monthly_income = this.income/12;
+        console.log("** this is monthly income pretax:", monthly_income, "**"),
+        monthly_income = monthly_income - (monthly_income*income_tax);
+        console.log("**this is income after tax:", monthly_income, "**"),
+        monthly_income = monthly_income - this.monthly_bills,
+        console.log("**this is income after bills:", monthly_income, "**"),
+        // if (this.income < 22000) {
+        //   income_tax = .02
+        // } else if (this.income > 22001 && this.income < 48000) {
+        //   income_tax = .06
+        // } else if (this.income > 48001 && this.income < 61000) {
+        //   income_tax = .08
+        // } else if (this.income > 61001 && this.income < 312000) {
+        //   income_tax = .093
+        // } else {
+        //   income_tax = .113
+        // }
+
         save_amount = (monthly_income*this.save_rate),
         save_account = save_account + save_amount
         // formatter.format(monthly_income);
@@ -120,6 +140,10 @@ export default {
         console.log(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_account));
         console.log(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_amount));
       },
+
+      returnBills() {
+        console.log("This are bills:", this.bills)
+      }
     },
   }
 </script>
