@@ -73,17 +73,15 @@ export default {
       var intId = setInterval(counter, 750);
 
       function counter() {
-        // console.log("this is the monthly_income", monthly_income);
-        // console.log("this is the save_amount", save_amount);
-        // console.log("this is the income", income);
         document.getElementById("month").innerHTML = month;
         document.getElementById("year").innerHTML = year;
         document.getElementById("age").innerHTML = age;
         document.getElementById("savings").innerHTML = save_account;
         console.log(++count);
+        oneMonth()
         // console.log("*****", save_account, "*****");
-        save_account = save_account + save_amount;
-        month = (months[count])
+        // save_account = save_account + save_amount;
+        // month = (months[count])
         // save_account = save_account + save_amount
         // save_account = (save_account + (monthly_income*save_rate));
         if (count == 0){
@@ -100,10 +98,16 @@ export default {
       };
 
       function oneYear() {
-        console.log("this is it");
+        console.log("this is one year");
         year = year + 1
         age = age + 1
       };
+
+      function oneMonth() {
+        console.log("this is one month");
+        save_account = save_account + save_amount;
+        month = (months[count])
+      }
 
       // function save_account() {
       //   parseInt(save_rate);
@@ -145,10 +149,6 @@ export default {
         console.log(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_account));
         console.log(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_amount));
       },
-
-      returnBills() {
-        console.log("This are bills:", this.bills)
-      }
     },
   }
 </script>
