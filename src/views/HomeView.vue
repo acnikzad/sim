@@ -87,13 +87,22 @@ export default {
         // save_account = save_account + save_amount
         // save_account = (save_account + (monthly_income*save_rate));
         if (count == 0){
-          year = year + 1
-          age = age + 1
+        // when January hits
+          console.log("testing");
+          oneYear();
         } else if (count == 11) {
+        // resetting month count to month 1
           count = -1
         } else if (age == 65) {
+        // retirement 
           clearInterval(intId)
         };
+      };
+
+      function oneYear() {
+        console.log("this is it");
+        year = year + 1
+        age = age + 1
       };
 
       // function save_account() {
@@ -107,10 +116,6 @@ export default {
       startHere() {
         console.log("x");
       },
-
-      // oneYear() {
-      //   console.log("x");
-      // },
 
       returnStart() {
         console.warn("This is income:", this.income, this.save_rate, this.monthly_bills)
