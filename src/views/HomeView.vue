@@ -20,7 +20,7 @@
       <h1>The Month is <span id="month"></span></h1>
       <h1>The Year is <span id="year"></span></h1>
       <h1>You are <span id="age"></span> years old</h1>
-      <h2>Your income is ${{income}} per year</h2>
+      <h2>Your income is {{income}} per year</h2>
 
       <h2>You are saving {{save_rate}} of your income or {{save_amount}} per month</h2>
       <h2>Checking Account: <span id="checking"></span></h2>
@@ -56,9 +56,12 @@ var stocks_amount = (monthly_income*stocks_rate);
 var stocks_account = 0;
 var stocks_rate = "";
 var stock_market_rate = .1
-var check_account = null;
+
+var check_account = 1000;
+var check_amount = 0;
 
 var income_tax = 0.08;
+var inflation = 0;
 
 var speed = 350;
 var count = -1;
@@ -76,7 +79,7 @@ export default {
   data() {
     return {
  
-      income:null,
+      income: new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(income),
       income_tax:null,
       income_tax: .08,
       check_account: 500,
@@ -124,16 +127,36 @@ export default {
         console.log("this is one year");
         year = year + 1
         age = age + 1
-        stocks_account = stocks_account + (stocks_account*stock_market_rate)
+
+        stock_market_rate = Math.floor(Math.random() * 15) + 1;
+        stock_market_rate = (stock_market_rate/100)
         console.log("/////////////stock_market_rate is:", stock_market_rate)
+
+        inflation = Math.floor(Math.random() * 4) + 1;
+        inflation = (inflation/100)
+        console.log("/////////////inflation is:", inflation)
+
+        stocks_account = stocks_account + (stocks_account*stock_market_rate)
       };
 
       function oneMonth() {
         console.log("this is one month");
         month = (months[count])
+
         save_account = save_account + save_amount;
         stocks_account = stocks_account + stocks_amount;
-        check_account = check_account + (monthly_income - save_amount);
+        check_amount = monthly_income - save_amount - stocks_amount;
+
+// col
+        console.log("++++++++this is before col", check_amount);
+        col_bills = Math.floor(Math.random() * 14) + 1;
+        col_bills = col_bills/10
+        console.log("++++++++this is col", col_bills);
+        check_amount = check_amount - ((check_amount*col_bills))
+        console.log("++++++++this is after col", check_amount);
+
+        check_account = check_account + check_amount
+
 
       }
 
@@ -179,13 +202,11 @@ export default {
         // } else {
         //   income_tax = .113
         // }
-        save_amount = (monthly_income*this.save_rate),
-        // save_account = save_account + save_amount,
-        stocks_amount = (monthly_income*this.stocks_rate),
-        // formatter.format(monthly_income);
-        console.log(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(monthly_income));
-        console.log(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_account));
-        console.log(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_amount));
+
+        stocks_rate = Math.floor(Math.random() * 11) + 1;
+        console.log(stocks_rate);
+        save_amount = (monthly_income*this.save_rate);
+        stocks_amount = (monthly_income*this.stocks_rate);
       },
     },
   }
