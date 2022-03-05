@@ -23,9 +23,9 @@
       <h2>Your income is ${{income}} per year</h2>
 
       <h2>You are saving {{save_rate}} of your income or {{save_amount}} per month</h2>
-      <h2>Checking Account: $<span id="checking"></span></h2>
-      <h2>Savings Account: $<span id="savings"></span></h2>
-      <h2>Stocks Account: $<span id="stocks"></span></h2>
+      <h2>Checking Account: <span id="checking"></span></h2>
+      <h2>Savings Account: <span id="savings"></span></h2>
+      <h2>Stocks Account: <span id="stocks"></span></h2>
 
   </div>
 </template>
@@ -97,9 +97,9 @@ export default {
         document.getElementById("month").innerHTML = month;
         document.getElementById("year").innerHTML = year;
         document.getElementById("age").innerHTML = age;
-        document.getElementById("savings").innerHTML = save_account;
-        document.getElementById("checking").innerHTML = check_account;
-        document.getElementById("stocks").innerHTML = stocks_account;
+        document.getElementById("savings").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_account);
+        document.getElementById("checking").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(check_account);
+        document.getElementById("stocks").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(stocks_account);
         console.log(++count);
         oneMonth()
         // console.log("*****", save_account, "*****");
