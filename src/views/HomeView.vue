@@ -3,33 +3,27 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-
-    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-  Open modal
-</button> -->
-
     <h1 class="animate__animated animate__bounce">An animated element</h1>
       <h1>The Month is <span id="month"></span></h1>
       <h1>The Year is <span id="year"></span></h1>
       <h1>You are <span id="age"></span> years old</h1>
       <h2>Your income is {{income}} per year</h2>
-
       <h2>You are saving {{save_rate}} of your income or {{save_amount}} per month</h2>
       <h2>Checking Account: <span id="checking"></span></h2>
       <h2>Savings Account: <span id="savings"></span></h2>
       <h2>Stocks Account: <span id="stocks"></span></h2>
-
   </div>
-      <!-- The Modal -->
+<!-- The Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">ALERT</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Welcome</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+
           <form>
             <input id="userIncome" type="text" placeholder="Enter Annual Income" v-model="income"/>
             <br>
@@ -42,7 +36,7 @@
           </form>
 
           <div class="modal-footer">
-            <button type="button" class="" data-dismiss="modal" v-on:click="returnStart()">Submit</button>
+            <button type="button" class="" data-dismiss="modal" v-on:click="returnStart(), startTimer()">Submit</button>
           </div>
         </div>
       </div>
@@ -67,6 +61,9 @@ var formatter = new Intl.NumberFormat('en-US', {
 var income = 0;
 var monthly_income = (income/12);
 var col_bills = 0;
+var gas_cost = 0;
+var health_insurance = 0;
+
 
 var save_rate = "";
 var save_amount = (monthly_income*save_rate);
@@ -110,32 +107,39 @@ export default {
       },
 
   created: function() {
-      var intId = setInterval(counter, speed);
 
-      function counter() {
-        document.getElementById("month").innerHTML = month;
-        document.getElementById("year").innerHTML = year;
-        document.getElementById("age").innerHTML = age;
-        document.getElementById("savings").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_account);
-        document.getElementById("checking").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(check_account);
-        document.getElementById("stocks").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(stocks_account);
+    },
+    mounted() {
+      $('#exampleModalCenter').modal('show');
+    },
 
+    methods: {
+       startTimer() {
+        var intId = setInterval(counter, speed);
 
-        console.log(++count);
-        oneMonth()
+        function counter() {
+          document.getElementById("month").innerHTML = month;
+          document.getElementById("year").innerHTML = year;
+          document.getElementById("age").innerHTML = age;
+          document.getElementById("savings").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_account);
+          document.getElementById("checking").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(check_account);
+          document.getElementById("stocks").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(stocks_account);
+          console.log(++count);
 
-        if (count == 0){
-        // when January hits
-          console.log("testing");
-          oneYear();
-        } else if (count == 11) {
-        // resetting month count to month 1
-          count = -1
-        } else if (age == 65) {
-        // retirement 
-          clearInterval(intId)
+          oneMonth()
+
+          if (count == 0){
+          // when January hits
+            console.log("testing");
+            oneYear();
+          } else if (count == 11) {
+          // resetting month count to month 1
+            count = -1
+          } else if (age == 65) {
+          // retirement 
+            clearInterval(intId)
+          };
         };
-      };
 
       function oneYear() {
         console.log("this is one year");
@@ -171,15 +175,8 @@ export default {
 
         check_account = check_account + check_amount
       }
+      
     },
-    mounted() {
-      $('#exampleModalCenter').modal('show');
-    },
-
-    methods: {
-      startHere() {
-        console.log("x");
-      },
 
       speedUp() {
         speed = (speed - 100);
