@@ -113,7 +113,8 @@ var income = 0;
 // monthly_income
 var monthly_income = (income/12);
 // cost of living
-var col_bills = 0;
+var col_bills_rate = 0;
+var col_bill = 0;
 var monthly_bills = 0;
 // var cost_gas = 0;
 // var cost_food = 0;
@@ -223,10 +224,16 @@ export default {
           console.log(income);
           monthly_income = income/12
           console.log("this is monthly income", monthly_income);
-          col_bills = Math.floor(Math.random() * 10) + 1;
-          col_bills = col_bills/10
 
-          console.log("++++++++this is col", col_bills);
+          if (count > 6) {
+            col_bills_rate = Math.floor(Math.random() * 15) + 1;
+            col_bills_rate = col_bills_rate/10
+          } else {
+            col_bills_rate = Math.floor(Math.random() * 10) + 1;
+            col_bills_rate = col_bills_rate/10
+          }
+
+          console.log("++++++++this is col", col_bills_rate);
           console.log("++++++++this is the tax rate", income_tax);
 
           console.log("++++++++this is income pretax", monthly_income);
@@ -234,12 +241,15 @@ export default {
           console.log("++++++++this is income post tax", monthly_income);
           monthly_income = monthly_income - monthly_bills;
           console.log("++++++++this is income after bills", monthly_income);
-          monthly_income = monthly_income - (monthly_income*col_bills);
+          col_bill = monthly_income*col_bills_rate;
+          console.log("++++++++this is col bill", col_bill);
+          monthly_income = monthly_income - col_bill;
           console.log("++++++++this is income after col", monthly_income);
 
           save_amount = monthly_income*save_rate
           stocks_amount = monthly_income*stocks_rate
-          monthly_income = monthly_income - save_account - stocks_amount
+          monthly_income = monthly_income - (save_amount + stocks_amount)
+          console.log("++++++++this is net income after save", monthly_income);
 
           check_account = check_account + monthly_income
           save_account = save_account + save_amount
