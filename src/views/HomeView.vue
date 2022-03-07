@@ -1,22 +1,14 @@
 <template>
+  <body>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-      <form>
-        <input id="userIncome" type="text" placeholder="Enter Annual Income" v-model="income"/>
-        <br>
-        <input id="userIncome" type="text" placeholder="Percentage Saved" v-model="save_rate"/>
-        <br>
-        <input id="userIncome" type="text" placeholder="Percentage Invested in Stocks" v-model="stocks_rate"/>
-        <br>
-        <input id="userIncome" type="text" placeholder="Enter Monthly Bills" v-model="monthly_bills"/>
-        <br>
-        <button type="button" v-on:click="returnStart()">Submit</button>
 
-        <button type="button" v-on:click="speedUp()">Speed Up</button>
-        <button type="button" v-on:click="speedDown()">Speed Down</button>
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  Open modal
+</button> -->
 
-      </form>
+    <h1 class="animate__animated animate__bounce">An animated element</h1>
       <h1>The Month is <span id="month"></span></h1>
       <h1>The Year is <span id="year"></span></h1>
       <h1>You are <span id="age"></span> years old</h1>
@@ -28,6 +20,36 @@
       <h2>Stocks Account: <span id="stocks"></span></h2>
 
   </div>
+      <!-- The Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">ALERT</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form>
+            <input id="userIncome" type="text" placeholder="Enter Annual Income" v-model="income"/>
+            <br>
+            <input id="userIncome" type="text" placeholder="Percentage Saved" v-model="save_rate"/>
+            <br>
+            <input id="userIncome" type="text" placeholder="Percentage Invested in Stocks" v-model="stocks_rate"/>
+            <br>
+            <input id="userIncome" type="text" placeholder="Enter Monthly Bills" v-model="monthly_bills"/>
+            <br>
+          </form>
+
+          <div class="modal-footer">
+            <button type="button" class="" data-dismiss="modal" v-on:click="returnStart()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</body>
 </template>
 
 <script>
@@ -84,16 +106,10 @@ export default {
       income_tax: .08,
       check_account: 500,
       speed: 150,
-
-      // save_rate:null,
-      // monthly_income:null,
-      // save_amount:null,
-      // save_account:null,
         };
       },
 
   created: function() {
-
       var intId = setInterval(counter, speed);
 
       function counter() {
@@ -103,13 +119,11 @@ export default {
         document.getElementById("savings").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_account);
         document.getElementById("checking").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(check_account);
         document.getElementById("stocks").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(stocks_account);
+
+
         console.log(++count);
         oneMonth()
-        // console.log("*****", save_account, "*****");
-        // save_account = save_account + save_amount;
-        // month = (months[count])
-        // save_account = save_account + save_amount
-        // save_account = (save_account + (monthly_income*save_rate));
+
         if (count == 0){
         // when January hits
           console.log("testing");
@@ -147,7 +161,7 @@ export default {
         stocks_account = stocks_account + stocks_amount;
         check_amount = monthly_income - save_amount - stocks_amount;
 
-// col
+// cost of living
         console.log("++++++++this is before col", check_amount);
         col_bills = Math.floor(Math.random() * 14) + 1;
         col_bills = col_bills/10
@@ -156,15 +170,10 @@ export default {
         console.log("++++++++this is after col", check_amount);
 
         check_account = check_account + check_amount
-
-
       }
-
-      // function save_account() {
-      //   parseInt(save_rate);
-      //   save_account = save_account + (monthly_income*save_rate);
-      //   console.log(save_account);
-      // }
+    },
+    mounted() {
+      $('#exampleModalCenter').modal('show');
     },
 
     methods: {
@@ -208,9 +217,33 @@ export default {
         save_amount = (monthly_income*this.save_rate);
         stocks_amount = (monthly_income*this.stocks_rate);
       },
+
+      startModal() {
+      console.log('start modal...');
+      var params = {
+        // dog_id: this.user["dogs"][0]["id"],
+        // user_id: this.user["id"],
+        // latitude: this.latitude,
+        // longitude: this.longitude,
+        // dog_name: this.user["dogs"][0]["name"],
+        // color: this.user["dogs"][0]["color"],
+        // breed: this.user["dogs"][0]["breed"],
+        // address: this.address,
+        // owner_name: this.user["first_name"],
+        // contact_number: this.user["phone_number"],
+        };
+        $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+        })
+      },
     },
   }
 </script>
+
+<style>
+
+
+</style>
 
 <!-- date management -->
 <!-- moment.js -->
