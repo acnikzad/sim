@@ -4,8 +4,8 @@
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <h1 class="animate__animated animate__bounce">An animated element</h1>
-    <!-- <button v-on:click="speedUp()">Speed Up</button> -->
-    <!-- <button v-on:click="speedDown()">Slow Down</button> -->
+    <button v-on:click="speedUp()">Speed Up</button>
+    <button v-on:click="speedDown()">Slow Down</button>
       <h1>The Month is <span id="month"></span></h1>
       <h1>The Year is <span id="year"></span></h1>
       <h1>You are <span id="age"></span> years old</h1>
@@ -15,57 +15,46 @@
       <h2>Stocks Account: <span id="stocks"></span></h2>
       <h2>Monthly Savings Smount: <span id="save_amount"></span></h2>
       <h2>This years inflation rate: <span id="inflation"></span></h2>
+      <br>
+      <h2>Your cars value is: <span id="car_value"></span></h2>
+      <h2>Remaining Principle is:<span id="principal"></span></h2>
+      <h2>Remaining Payments:<span id="payments"></span></h2>
+      <button v-on:click="buyCar()">Buy Car</button>
+      <button v-on:click="openCI()">Compound Interest</button>
+
+      <div id="divUI">
+ 
+        <p><b>Retirement Savings Calculator</b></p>
+     
+        <label>Initial Savings:</label><br />
+        <input id="inputSavingsInitial" type="number" value="0"><br />
+         
+        <label>Return on Investment per Period Before Retirement:</label><br />
+        <input id="inputReturnOnInvestmentPerPeriodBeforeRetirement" type="number" value=".1"><br />
+     
+        <label>New Savings per Period:</label><br />
+        <input id="inputSavingsNewPerPeriod" type="number" value=".5"><br />
+     
+        <label>Return on Investment per Period After Retirement:</label><br />
+        <input id="inputReturnOnInvestmentPerPeriodAfterRetirement" type="number" value=".05"><br />
+     
+        <label>Retirement Income Desired per Period:</label><br />
+        <input id="inputRetirementIncomePerPeriod" value=".5"><br />
+     
+        <button v-on:click="buttonCalculate_Clicked();">Calculate</button><br />
+     
+        <label>Savings at Retirement:</label><br />
+        <input id="inputSavingsAtRetirement" disabled="true"><br />
+     
+        <label>Periods Required:</label><br />
+        <input id="inputPeriodsRequired" disabled="true"><br />
+     
+    </div>
   </div>
 
-  <form name="loandata">
-    <table>
-      <tr><td colspan="3"><b>Enter Loan Information:</b></td></tr>
-      <tr>
-        <td>1)</td>
-        <td>Amount of the loan (any currency):</td>
-        <td><input type="text" name="principal" size="12" 
-                   v-on:change="calculate();"></td>
-      </tr>
-      <tr>
-        <td>2)</td>
-        <td>Annual percentage rate of interest:</td>
-        <td><input type="text" name="interest" size="12" 
-                   v-on:change="calculate();"></td>
-      </tr>
-      <tr>
-        <td>3)</td>
-        <td>Repayment period in years:</td>
-        <td><input type="text" name="years" size="12" 
-                   v-on:change="calculate();"></td>
-      </tr>
-      <tr><td colspan="3">
-        <input type="button" value="Compute" v-on:click="calculate()">
-      </td></tr>
-      <tr><td colspan="3">
-        <b>Payment Information:</b>
-      </td></tr>
-      <tr>
-        <td>4)</td>
-        <td>Your monthly payment will be:</td>
-        <td><input type="text" name="payment" size="12"></td>
-      </tr>
-      <tr>
-        <td>5)</td>
-        <td>Your total payment will be:</td>
-        <td><input type="text" name="total" size="12"></td>
-      </tr>
-      <tr>
-        <td>6)</td>
-        <td>Your total interest payments will be:</td>
-        <td><input type="text" name="totalinterest" size="12"></td>
-      </tr>
-    </table>
-  </form>
-
-
-<!-- The Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+<!-- The Start Modal -->
+    <div class="modal fade" id="startModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" ro le="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">Welcome</h5>
@@ -91,6 +80,123 @@
         </div>
       </div>
     </div>
+
+<!-- The Car Modal -->
+    <div class="modal fade" id="buyCar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Buy a Car</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <form name="loandata">
+            <table>
+              <tr><td colspan="3"><b>Enter Loan Information:</b></td></tr>
+              <tr>
+                <td>Money Down:</td>
+                <td><input type="text" name="money_down" size="12" v-on:change="calculate();"></td>
+              </tr>
+              <tr>
+                <td>Amount of the loan:</td>
+                <td><input type="text" name="principal" size="12" v-on:change="calculate();"></td>
+              </tr>
+              <tr>
+                <td>Annual percentage rate of interest:</td>
+                <td><input type="text" name="interest" size="12" v-on:change="calculate();"></td>
+              </tr>
+              <tr>
+                <td>Repayment period in years:</td>
+                <td><input type="text" name="years" size="12" v-on:change="calculate();"></td>
+              </tr>
+              <tr><td colspan="3">
+                <input type="button" value="Compute" v-on:click="calculate()">
+              </td></tr>
+              <tr><td colspan="3">
+                <b>Payment Information:</b>
+              </td></tr>
+              <tr>
+                <td>Your monthly payment will be:</td>
+                <td><input type="text" name="payment" size="12"></td>
+              </tr>
+              <tr>
+                <td>Your total payment will be:</td>
+                <td><input type="text" name="total" size="12"></td>
+              </tr>
+              <tr>
+                <td>Your total interest payments will be:</td>
+                <td><input type="text" name="totalinterest" size="12"></td>
+              </tr>
+            </table>
+          </form>
+
+          <div class="modal-footer">
+            <button type="button" class="" data-dismiss="modal" v-on:click="calculate(), startTimer()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- open ci -->
+    <div class="modal fade" id="openCI" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Buy a Car</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <form name="loandata">
+            <table>
+              <tr><td colspan="3"><b>Enter Loan Information:</b></td></tr>
+              <tr>
+                <td>Money Down:</td>
+                <td><input type="text" name="money_down" size="12" v-on:change="calculate();"></td>
+              </tr>
+              <tr>
+                <td>Amount of the loan:</td>
+                <td><input type="text" name="principal" size="12" v-on:change="calculate();"></td>
+              </tr>
+              <tr>
+                <td>Annual percentage rate of interest:</td>
+                <td><input type="text" name="interest" size="12" v-on:change="calculate();"></td>
+              </tr>
+              <tr>
+                <td>Repayment period in years:</td>
+                <td><input type="text" name="years" size="12" v-on:change="calculate();"></td>
+              </tr>
+              <tr><td colspan="3">
+                <input type="button" value="Compute" v-on:click="calculate()">
+              </td></tr>
+              <tr><td colspan="3">
+                <b>Payment Information:</b>
+              </td></tr>
+              <tr>
+                <td>Your monthly payment will be:</td>
+                <td><input type="text" name="payment" size="12"></td>
+              </tr>
+              <tr>
+                <td>Your total payment will be:</td>
+                <td><input type="text" name="total" size="12"></td>
+              </tr>
+              <tr>
+                <td>Your total interest payments will be:</td>
+                <td><input type="text" name="totalinterest" size="12"></td>
+              </tr>
+            </table>
+          </form>
+
+          <div class="modal-footer">
+            <button type="button" class="" data-dismiss="modal" v-on:click="ci_account(), startTimer()">Compound Interest</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
 
 </body>
@@ -134,6 +240,10 @@ var stocks_account = 0;
 var stocks_rate = "";
 var stock_market_rate = .1
 
+var car_value = 0;
+var car_principal = 0;
+var car_payments = 0;
+
 var check_account = 1000;
 var check_amount = 0;
 
@@ -145,7 +255,7 @@ var count = -1;
 var rate = .4;
 var product = 0;
 var year = 2006;
-var age = 18;
+var age = 17;
 var x = 0;
 var month = "";
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -162,15 +272,19 @@ export default {
       check_account: 500,
       speed: 150,
       monthly_bills:"",
+      car_payment: 0,
+      car_value: 0,
+      car_principal: 0,
         };
       },
 
   created: function() {
 
     },
-    mounted() {
-      $('#exampleModalCenter').modal('show');
-    },
+
+    // mounted() {
+      // $('#startModal').modal('show');
+    // },
 
     methods: {
        startTimer() {
@@ -185,6 +299,9 @@ export default {
           document.getElementById("savings").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_account);
           document.getElementById("checking").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(check_account);
           document.getElementById("stocks").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(stocks_account);
+          document.getElementById("car_value").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(car_value);
+          document.getElementById("principal").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(principal);
+          document.getElementById("payments").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(payments);
           document.getElementById("inflation").innerHTML = parseFloat(inflation*100).toFixed(2)+"%";
           console.log(++count);
 
@@ -224,6 +341,11 @@ export default {
           console.log(income);
           monthly_income = income/12
           console.log("this is monthly income", monthly_income);
+
+          if (payments > 0) {
+            payments = payments - 1
+            console.log(payments)
+          }
 
           if (count > 6) {
             col_bills_rate = Math.floor(Math.random() * 15) + 1;
@@ -270,6 +392,14 @@ export default {
         console.log("THE SPEED IS: ", speed);
       },
 
+      buyCar(){
+        $('#buyCar').modal('show');
+      },
+
+      openCI(){
+        $('#openCI').modal('show');
+      },
+
       returnStart() {
         console.log("This is income:", this.income, this.save_rate, this.monthly_bills)
         console.log("** this is income:", this.income, "**"),
@@ -294,55 +424,21 @@ export default {
           }
       },
 
-    calculate() {
-      // Get the user's input from the form. Assume it is all valid.
-      // Convert interest from a percentage to a decimal, and convert from
-      // an annual rate to a monthly rate. Convert payment period in years
-      // to the number of monthly payments.
-      var principal = document.loandata.principal.value;
-      var interest = document.loandata.interest.value / 100 / 12;
-      var payments = document.loandata.years.value * 12;
-
-      // Now compute the monthly payment figure, using esoteric math.
-      var x = Math.pow(1 + interest, payments);
-      var monthly = (principal*x*interest)/(x-1);
-
-      // Check that the result is a finite number. If so, display the results.
-      if (!isNaN(monthly) && 
-          (monthly != Number.POSITIVE_INFINITY) &&
-          (monthly != Number.NEGATIVE_INFINITY)) {
-
-          console.log(principal);
-          console.log(interest);
-          console.log(payments);
-          console.log(monthly);
-
-          document.loandata.payment.value = (monthly);
-          document.loandata.total.value = (monthly * payments);
-          document.loandata.totalinterest.value = ((monthly * payments) - principal);
-
-              monthly = Math.round(monthly*100)/100;
-              console.log(monthly);
-      }
-      // Otherwise, the user's input was probably invalid, so don't
-      // display anything.
-      else {
-          document.loandata.payment.value = "";
-          document.loandata.total.value = "";
-          document.loandata.totalinterest.value = "";
-      }
-    },
-
+      ci_account() {
+          let ci_princ = 3500; // start deposit
+          let ci_monthly = 250; // monthly deposit (need plus it every year)
+          let ci_rate = 12 / 100; // interest rate divided to create decimal
+          let months = (10 * 12); //10 years of monthly contributions
+          for (let i = 1; i <= months; i++) {
+            ci_princ += ci_monthly;
+            ci_princ += ci_princ * (ci_rate / 12);
+            console.log(ci_princ);
+          }
+          console.log(ci_princ.toFixed(2)); //69636.12
+      },
     },
   }
 </script>
-
-<style>
-
-
-
-
-</style>
 
 <!-- date management -->
 <!-- moment.js -->
