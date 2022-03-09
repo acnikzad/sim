@@ -20,36 +20,8 @@
       <h2>Remaining Principle is:<span id="principal"></span></h2>
       <h2>Remaining Payments:<span id="payments"></span></h2>
       <button v-on:click="buyCar()">Buy Car</button>
+      <br>
       <button v-on:click="openCI()">Compound Interest</button>
-
-      <div id="divUI">
- 
-        <p><b>Retirement Savings Calculator</b></p>
-     
-        <label>Initial Savings:</label><br />
-        <input id="inputSavingsInitial" type="number" value="0"><br />
-         
-        <label>Return on Investment per Period Before Retirement:</label><br />
-        <input id="inputReturnOnInvestmentPerPeriodBeforeRetirement" type="number" value=".1"><br />
-     
-        <label>New Savings per Period:</label><br />
-        <input id="inputSavingsNewPerPeriod" type="number" value=".5"><br />
-     
-        <label>Return on Investment per Period After Retirement:</label><br />
-        <input id="inputReturnOnInvestmentPerPeriodAfterRetirement" type="number" value=".05"><br />
-     
-        <label>Retirement Income Desired per Period:</label><br />
-        <input id="inputRetirementIncomePerPeriod" value=".5"><br />
-     
-        <button v-on:click="buttonCalculate_Clicked();">Calculate</button><br />
-     
-        <label>Savings at Retirement:</label><br />
-        <input id="inputSavingsAtRetirement" disabled="true"><br />
-     
-        <label>Periods Required:</label><br />
-        <input id="inputPeriodsRequired" disabled="true"><br />
-     
-    </div>
   </div>
 
 <!-- The Start Modal -->
@@ -139,12 +111,12 @@
       </div>
     </div>
 
-<!-- open ci -->
+<!-- open ci modal-->
     <div class="modal fade" id="openCI" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Buy a Car</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Open an account with compound interest</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -152,44 +124,21 @@
 
           <form name="loandata">
             <table>
-              <tr><td colspan="3"><b>Enter Loan Information:</b></td></tr>
+              <tr><td colspan="3"><b>Enter Account Information:</b></td></tr>
               <tr>
-                <td>Money Down:</td>
-                <td><input type="text" name="money_down" size="12" v-on:change="calculate();"></td>
+                <td>Initial Deposit:</td>
+                <td><input type="text" name="ci_princ" size="12" placeholder="1000" v-model="ci_princ"></td>
               </tr>
               <tr>
-                <td>Amount of the loan:</td>
-                <td><input type="text" name="principal" size="12" v-on:change="calculate();"></td>
+                <td>Monthly Deposits:</td>
+                <td><input type="text" name="ci_monthly" size="12" placeholder="250" v-model="ci_monthly"></td>
               </tr>
               <tr>
-                <td>Annual percentage rate of interest:</td>
-                <td><input type="text" name="interest" size="12" v-on:change="calculate();"></td>
-              </tr>
-              <tr>
-                <td>Repayment period in years:</td>
-                <td><input type="text" name="years" size="12" v-on:change="calculate();"></td>
-              </tr>
-              <tr><td colspan="3">
-                <input type="button" value="Compute" v-on:click="calculate()">
-              </td></tr>
-              <tr><td colspan="3">
-                <b>Payment Information:</b>
-              </td></tr>
-              <tr>
-                <td>Your monthly payment will be:</td>
-                <td><input type="text" name="payment" size="12"></td>
-              </tr>
-              <tr>
-                <td>Your total payment will be:</td>
-                <td><input type="text" name="total" size="12"></td>
-              </tr>
-              <tr>
-                <td>Your total interest payments will be:</td>
-                <td><input type="text" name="totalinterest" size="12"></td>
+                <td>Interest Rate:</td>
+                <td><input type="text" name="ci_rate" size="12" placeholder="8" v-model="ci_rate"></td>
               </tr>
             </table>
           </form>
-
           <div class="modal-footer">
             <button type="button" class="" data-dismiss="modal" v-on:click="ci_account(), startTimer()">Compound Interest</button>
           </div>
@@ -282,9 +231,9 @@ export default {
 
     },
 
-    // mounted() {
-      // $('#startModal').modal('show');
-    // },
+    mounted() {
+      $('#startModal').modal('show');
+    },
 
     methods: {
        startTimer() {
@@ -425,16 +374,19 @@ export default {
       },
 
       ci_account() {
-          let ci_princ = 3500; // start deposit
-          let ci_monthly = 250; // monthly deposit (need plus it every year)
-          let ci_rate = 12 / 100; // interest rate divided to create decimal
-          let months = (10 * 12); //10 years of monthly contributions
-          for (let i = 1; i <= months; i++) {
-            ci_princ += ci_monthly;
-            ci_princ += ci_princ * (ci_rate / 12);
+            let ci_princ = parseInt(this.ci_princ); // start deposit
             console.log(ci_princ);
-          }
-          console.log(ci_princ.toFixed(2)); //69636.12
+            let ci_monthly = parseInt(this.ci_monthly); // monthly deposit (need plus it every year)
+            console.log(ci_monthly);
+            let rate = parseInt(this.ci_rate) / 100; // interest rate divided to create decimal
+            console.log(rate);
+            let months = (30 * 12); //10 years of monthly contributions
+            for (let i = 1; i <= months; i++) {
+              ci_princ += ci_monthly;
+              ci_princ += ci_princ * (rate / 12);
+              console.log(ci_princ);
+            }
+            console.log(ci_princ.toFixed(2)); //69636.12
       },
     },
   }
