@@ -14,14 +14,15 @@
       <h2>Savings Account: <span id="savings"></span></h2>
       <h2>Stocks Account: <span id="stocks"></span></h2>
       <h2>Monthly Savings Smount: <span id="save_amount"></span></h2>
+      <h2>Monthly 401k Smount: <span id="ci_princ"></span></h2>
       <h2>This years inflation rate: <span id="inflation"></span></h2>
       <br>
       <h2>Your cars value is: <span id="car_value"></span></h2>
-      <h2>Remaining Principle is:<span id="principal"></span></h2>
+      <h2>Remaining Principle is:<span id="car_principal"></span></h2>
       <h2>Remaining Payments:<span id="payments"></span></h2>
-      <button v-on:click="buyCar()">Buy Car</button>
+      <button v-on:click="buyCar(), pauseClock()">Buy Car</button>
       <br>
-      <button v-on:click="openCI()">Compound Interest</button>
+      <button v-on:click="openCI(), pauseClock()">Compound Interest</button>
   </div>
 
 <!-- The Start Modal -->
@@ -47,7 +48,7 @@
           </form>
 
           <div class="modal-footer">
-            <button type="button" class="" data-dismiss="modal" v-on:click="returnStart(), startTimer()">Submit</button>
+            <button type="button" class="" data-dismiss="modal" v-on:click="returnStart(), resumeClock(), startTimer()">Submit</button>
           </div>
         </div>
       </div>
@@ -105,7 +106,7 @@
           </form>
 
           <div class="modal-footer">
-            <button type="button" class="" data-dismiss="modal" v-on:click="calculate(), startTimer()">Submit</button>
+            <button type="button" class="" data-dismiss="modal" v-on:click="calculate(), resumeClock(),startTimer()">Submit</button>
           </div>
         </div>
       </div>
@@ -137,10 +138,14 @@
                 <td>Interest Rate:</td>
                 <td><input type="text" name="ci_rate" size="12" placeholder="8" v-model="ci_rate"></td>
               </tr>
+              <tr>
+                <td>Years:</td>
+                <td><input type="text" name="ci_rate" size="12" placeholder="30" v-model="ci_years"></td>
+              </tr>
             </table>
           </form>
           <div class="modal-footer">
-            <button type="button" class="" data-dismiss="modal" v-on:click="ci_account(), startTimer()">Compound Interest</button>
+            <button type="button" class="" data-dismiss="modal" v-on:click="ci_account(), resumeClock()">Compound Interest</button>
           </div>
         </div>
       </div>
@@ -153,61 +158,66 @@
 
 <script>
 
-var moment = require('moment');
-var formatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
+  var moment = require('moment');
+  var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
 
-  // These options are needed to round to whole numbers if that's what you want.
-  //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-  //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
-});
+    // These options are needed to round to whole numbers if that's what you want.
+    //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+    //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+  });
 
-// annual income
-var income = 0; 
-// monthly_income
-var monthly_income = (income/12);
-// cost of living
-var col_bills_rate = 0;
-var col_bill = 0;
-var monthly_bills = 0;
-// var cost_gas = 0;
-// var cost_food = 0;
-// var cost_car_insurance = 0;
-// var cost_health_insurance = 0;
-// var cost_subscriptions = 0;
-var ca
+  // annual income
+  var income = 0; 
+  // monthly_income
+  var monthly_income = (income/12);
+  var col_bills_rate = 0;
+  var col_bill = 0;
+  var monthly_bills = 0;
+  var ca
 
-var save_rate = "";
-var save_amount = (monthly_income*save_rate);
-var save_account = 0;
-var save_rate = "";
+  var save_rate = "";
+  var save_amount = (monthly_income*save_rate);
+  var save_account = 0;
+  var save_rate = "";
 
-var stocks_rate = "";
-var stocks_amount = (monthly_income*stocks_rate);
-var stocks_account = 0;
-var stocks_rate = "";
-var stock_market_rate = .1
+  var stocks_rate = "";
+  var stocks_amount = (monthly_income*stocks_rate);
+  var stocks_account = 0;
+  var stocks_rate = "";
+  var stock_market_rate = .1
 
-var car_value = 0;
-var car_principal = 0;
-var car_payments = 0;
+  var car_money_down = 0;
+  var car_principal = 0;
+  var car_interest = 0;
+  var car_terms = 0;
+  var car_payments = 0;
 
-var check_account = 1000;
-var check_amount = 0;
+  var check_account = 1000;
+  var check_amount = 0;
 
-var income_tax = 0.08;
-var inflation = 0;
+  var i = "";
+  var ci_months = "";
+  var ci_princ = "";
+  var ci_monthly = "";
+  var ci_rate = "";
+  var ci_years = "";
 
-var speed = 350;
-var count = -1;
-var rate = .4;
-var product = 0;
-var year = 2006;
-var age = 17;
-var x = 0;
-var month = "";
-var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+  var income_tax = 0.08;
+  var inflation = 0;
+
+  var speed = 300;
+  var count = -1;
+  var rate = .4;
+  var product = 0;
+  var year = 2006;
+  var age = 17;
+  var x = 0;
+  var month = "";
+  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  var state = 0  // 0 = idle, 1 = running, 2 = paused, 3= resumed
 
 
 export default {
@@ -219,8 +229,8 @@ export default {
       income_tax:null,
       income_tax: .08,
       check_account: 500,
-      speed: 150,
       monthly_bills:"",
+      speed:null,
       car_payment: 0,
       car_value: 0,
       car_principal: 0,
@@ -236,100 +246,130 @@ export default {
     },
 
     methods: {
+
+      resumeClock() {
+        state = 1
+        console.log("THIS IS THE STATE",state)
+        // return startTimer()
+      },
+
+      pauseClock() {
+        state = 0
+        console.log("THIS IS THE STATE",state)
+        // return startTimer()
+      },
+
        startTimer() {
-        var intId = setInterval(counter, speed);
+        console.log("THIS IS THE STARTING TIMER",state)
+          clearInterval(intId);
+          if (state == 1) {
+            var intId = setInterval(counter, speed);
+            function counter() {
+              document.getElementById("month").innerHTML = month;
+              document.getElementById("year").innerHTML = year;
+              document.getElementById("age").innerHTML = age;
+              document.getElementById("income").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(income);
+              document.getElementById("save_amount").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_amount);
+              document.getElementById("savings").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_account);
+              document.getElementById("checking").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(check_account);
+              document.getElementById("stocks").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(stocks_account);
+              document.getElementById("car_value").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(car_value);
+              document.getElementById("car_principal").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(car_principal);
+              document.getElementById("payments").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(payments);
+              document.getElementById("ci_princ").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(ci_princ);
+              document.getElementById("inflation").innerHTML = parseFloat(inflation*100).toFixed(2)+"%";
+              console.log(++count);
 
-        function counter() {
-          document.getElementById("month").innerHTML = month;
-          document.getElementById("year").innerHTML = year;
-          document.getElementById("age").innerHTML = age;
-          document.getElementById("income").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(income);
-          document.getElementById("save_amount").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_amount);
-          document.getElementById("savings").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_account);
-          document.getElementById("checking").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(check_account);
-          document.getElementById("stocks").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(stocks_account);
-          document.getElementById("car_value").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(car_value);
-          document.getElementById("principal").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(principal);
-          document.getElementById("payments").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(payments);
-          document.getElementById("inflation").innerHTML = parseFloat(inflation*100).toFixed(2)+"%";
-          console.log(++count);
+              oneMonth()
 
-          oneMonth()
+              if (count == 0){
+              // when January hits
+                console.log("testing");
+                oneYear();
+              } else if (count == 11) {
+              // resetting month count to month 1
+                count = -1
+              } else if (age == 65) {
+              // retirement 
+                clearInterval(intId)
+              };
+            };
 
-          if (count == 0){
-          // when January hits
-            console.log("testing");
-            oneYear();
-          } else if (count == 11) {
-          // resetting month count to month 1
-            count = -1
-          } else if (age == 65) {
-          // retirement 
-            clearInterval(intId)
-          };
-        };
+            function oneYear() {
+              console.log("this is one year");
+              year = year + 1
+              age = age + 1
 
-        function oneYear() {
-          console.log("this is one year");
-          year = year + 1
-          age = age + 1
+              stock_market_rate = Math.floor(Math.random() * 12) + 1;
+              stock_market_rate = (stock_market_rate/100)
+              console.log("/////////////stock_market_rate is:", stock_market_rate)
 
-          stock_market_rate = Math.floor(Math.random() * 12) + 1;
-          stock_market_rate = (stock_market_rate/100)
-          console.log("/////////////stock_market_rate is:", stock_market_rate)
+              inflation = Math.floor(Math.random() * 4) + 1;
+              inflation = (inflation/100)
+              console.log("/////////////inflation is:", inflation)
+              stocks_account = stocks_account + (stocks_account*stock_market_rate)
+            };
 
-          inflation = Math.floor(Math.random() * 4) + 1;
-          inflation = (inflation/100)
-          console.log("/////////////inflation is:", inflation)
+            function oneMonth() {
+              console.log("this is one month");
+              console.log(income);
+              monthly_income = income/12
+              console.log("this is monthly income", monthly_income);
 
-          stocks_account = stocks_account + (stocks_account*stock_market_rate)
-        };
+              if (payments > 0) {
+                payments = payments - 1
+                console.log(payments)
+              }
 
-        function oneMonth() {
-          console.log("this is one month");
-          console.log(income);
-          monthly_income = income/12
-          console.log("this is monthly income", monthly_income);
+              if (count > 6) {
+                col_bills_rate = Math.floor(Math.random() * 15) + 1;
+                col_bills_rate = col_bills_rate/10
+              } else {
+                col_bills_rate = Math.floor(Math.random() * 10) + 1;
+                col_bills_rate = col_bills_rate/10
+              }
 
-          if (payments > 0) {
-            payments = payments - 1
-            console.log(payments)
-          }
+              // console.log("++++++++this is col", col_bills_rate);
+              // console.log("++++++++this is the tax rate", income_tax);
 
-          if (count > 6) {
-            col_bills_rate = Math.floor(Math.random() * 15) + 1;
-            col_bills_rate = col_bills_rate/10
-          } else {
-            col_bills_rate = Math.floor(Math.random() * 10) + 1;
-            col_bills_rate = col_bills_rate/10
-          }
+              // console.log("++++++++this is income pretax", monthly_income);
+              monthly_income = monthly_income - (monthly_income*income_tax);
+              // console.log("++++++++this is income post tax", monthly_income);
+              monthly_income = monthly_income - monthly_bills;
+              // console.log("++++++++this is income after bills", monthly_income);
+              col_bill = monthly_income*col_bills_rate;
+              // console.log("++++++++this is col bill", col_bill);
+              monthly_income = monthly_income - col_bill;
+              // console.log("++++++++this is income after col", monthly_income);
 
-          console.log("++++++++this is col", col_bills_rate);
-          console.log("++++++++this is the tax rate", income_tax);
+              save_amount = monthly_income*save_rate
+              stocks_amount = monthly_income*stocks_rate
+              monthly_income = monthly_income - (save_amount + stocks_amount)
+              // console.log("++++++++this is net income after save", monthly_income);
 
-          console.log("++++++++this is income pretax", monthly_income);
-          monthly_income = monthly_income - (monthly_income*income_tax);
-          console.log("++++++++this is income post tax", monthly_income);
-          monthly_income = monthly_income - monthly_bills;
-          console.log("++++++++this is income after bills", monthly_income);
-          col_bill = monthly_income*col_bills_rate;
-          console.log("++++++++this is col bill", col_bill);
-          monthly_income = monthly_income - col_bill;
-          console.log("++++++++this is income after col", monthly_income);
+              check_account = check_account + monthly_income
+              save_account = save_account + save_amount
+              stocks_account = stocks_account + stocks_amount
 
-          save_amount = monthly_income*save_rate
-          stocks_amount = monthly_income*stocks_rate
-          monthly_income = monthly_income - (save_amount + stocks_amount)
-          console.log("++++++++this is net income after save", monthly_income);
+              month = (months[count])
 
-          check_account = check_account + monthly_income
-          save_account = save_account + save_amount
-          stocks_account = stocks_account + stocks_amount
 
-          month = (months[count])
-         };
-
-        },
+              console.log("this is the princ:", ci_princ)
+              console.log("this is the months:", ci_months)
+              console.log("this is the i:", i)
+              console.log("this is the monthly:", ci_monthly)
+              if (i <= ci_months) {
+                ci_princ += ci_monthly;
+                ci_princ += ci_princ * (rate / 12);
+                i += 1;
+                console.log(ci_princ);
+                console.log(i);
+                console.log(ci_months);
+              }
+              // console.log(ci_princ.toFixed(2)); //69636.12
+             };
+            }
+          },
 
       speedUp() {
         speed = (speed - 100);
@@ -343,6 +383,40 @@ export default {
 
       buyCar(){
         $('#buyCar').modal('show');
+      },
+
+      calculate() {
+        // Get the user's input from the form. Assume it is all valid.
+        // Convert interest from a percentage to a decimal, and convert from
+        // an annual rate to a monthly rate. Convert payment period in years
+        // to the number of monthly payments.
+        var principal = document.loandata.principal.value;
+        var interest = document.loandata.interest.value / 100 / 12;
+        var payments = document.loandata.years.value * 12;
+        // Now compute the monthly payment figure, using esoteric math.
+        var x = Math.pow(1 + interest, payments);
+        var monthly = (principal*x*interest)/(x-1);
+        // Check that the result is a finite number. If so, display the results.
+        if (!isNaN(monthly) && 
+            (monthly != Number.POSITIVE_INFINITY) &&
+            (monthly != Number.NEGATIVE_INFINITY)) {
+            console.log(principal);
+            console.log(interest);
+            console.log(payments);
+            console.log(monthly);
+            document.loandata.payment.value = (monthly);
+            document.loandata.total.value = (monthly * payments);
+            document.loandata.totalinterest.value = ((monthly * payments) - principal);
+                monthly = Math.round(monthly*100)/100;
+                console.log(monthly);
+        }
+        // Otherwise, the user's input was probably invalid, so don't
+        // display anything.
+        else {
+            document.loandata.payment.value = "";
+            document.loandata.total.value = "";
+            document.loandata.totalinterest.value = "";
+        }
       },
 
       openCI(){
@@ -374,19 +448,14 @@ export default {
       },
 
       ci_account() {
-            let ci_princ = parseInt(this.ci_princ); // start deposit
-            console.log(ci_princ);
-            let ci_monthly = parseInt(this.ci_monthly); // monthly deposit (need plus it every year)
-            console.log(ci_monthly);
-            let rate = parseInt(this.ci_rate) / 100; // interest rate divided to create decimal
-            console.log(rate);
-            let months = (30 * 12); //10 years of monthly contributions
-            for (let i = 1; i <= months; i++) {
-              ci_princ += ci_monthly;
-              ci_princ += ci_princ * (rate / 12);
-              console.log(ci_princ);
-            }
-            console.log(ci_princ.toFixed(2)); //69636.12
+            console.log("This is CI:", this.ci_princ, this.ci_rate, this.ci_years, this.ci_monthly);
+
+            ci_princ = parseInt(this.ci_princ); // start deposit
+            ci_rate = parseInt(this.ci_rate) / 100; // monthly deposit (need plus it every year)
+            ci_years = parseInt(this.ci_years); // term years
+            ci_monthly = parseInt(this.ci_monthly); // monthly deposit (need plus it every year)
+            ci_months = (ci_years * 12); //10 years of monthly contributions
+            i = 1
       },
     },
   }
