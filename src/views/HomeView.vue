@@ -13,8 +13,8 @@
       <h2>Checking Account: <span id="checking"></span></h2>
       <h2>Savings Account: <span id="savings"></span></h2>
       <h2>Stocks Account: <span id="stocks"></span></h2>
+      <h2>Compound Interest Account: <span id="ci_princ"></span></h2>
       <h2>Monthly Savings Smount: <span id="save_amount"></span></h2>
-      <h2>Monthly 401k Smount: <span id="ci_princ"></span></h2>
       <h2>This years inflation rate: <span id="inflation"></span></h2>
       <br>
       <h2>Your cars value is: <span id="car_value"></span></h2>
@@ -360,7 +360,7 @@ export default {
               console.log("this is the monthly:", ci_monthly)
               if (i <= ci_months) {
                 ci_princ += ci_monthly;
-                ci_princ += ci_princ * (rate / 12);
+                ci_princ += (ci_princ * (ci_rate / 12));
                 i += 1;
                 console.log(ci_princ);
                 console.log(i);
