@@ -147,7 +147,7 @@
             </table>
           </form>
           <div class="modal-footer">
-            <button type="button" class="" data-dismiss="modal" v-on:click="ci_account(), resumeClock()">Compound Interest</button>
+            <button type="button" class="" data-dismiss="modal" v-on:click="ci_account(), resumeClock(), startTimer()">Compound Interest</button>
           </div>
         </div>
       </div>
@@ -197,6 +197,7 @@
   var car_years = "";
   var car_terms = "";
   var car_payments = "";
+  var car_pay_b4_i = "";
   var car_total_payments = "";
   var car_total_interest = "";
   var x = "";
@@ -216,7 +217,6 @@
   var inflation = 0;
   var net_worth = "";
 
-  var speed = 300;
   var count = -1;
   var rate = .4;
   var product = 0;
@@ -225,14 +225,14 @@
   var x = 0;
   var month = "";
   var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  var state = 0  // 0 = idle, 1 = running, 2 = paused, 3= resumed
-
+  var state = 0;  // 0 = idle, 1 = running, 2 = paused, 3= resumed
+  var speed = 300;
 
 export default {
   name: 'ExampleModal',
   data() {
     return {
- 
+      timer: null,
       income: "",
       income_tax:null,
       income_tax: .08,
@@ -258,20 +258,23 @@ export default {
       resumeClock() {
         state = 1
         console.log("THIS IS THE STATE",state)
-        // return startTimer()
       },
 
       pauseClock() {
+        clearInterval(this.timer);
         state = 0
         console.log("THIS IS THE STATE",state)
-        // return startTimer()
       },
 
        startTimer() {
         console.log("THIS IS THE STARTING TIMER",state)
-          clearInterval(intId);
+          clearInterval(this.timer);
           if (state == 1) {
-            var intId = setInterval(counter, speed);
+            if ( age < 65) {
+            this.timer = setInterval(() => {
+              counter()
+            }, speed)
+            //var intId = setInterval(counter, speed);
             function counter() {
               document.getElementById("month").innerHTML = month;
               document.getElementById("year").innerHTML = year;
@@ -291,7 +294,7 @@ export default {
               console.log(++count);
 
               oneMonth()
-
+              console.log("THIS IS THE COUNT BEFORE IF:", count);
               if (count == 0){
               // when January hits
                 console.log("testing");
@@ -304,11 +307,16 @@ export default {
                 clearInterval(intId)
               };
 
+              console.log("this is the count", count)
+
               if (car_terms > 0) {
                 car_terms = (car_terms - 1);
-                car_principal = (car_principal - car_payments);
+                car_principal = (car_principal - car_pay_b4_i);
               }
             };
+          } else if (age == 65) {
+            state = 0
+          }
 
             function oneYear() {
               console.log("this is one year");
@@ -382,12 +390,12 @@ export default {
           },
 
       speedUp() {
-        speed = (speed - 100);
+        speed += 100;
         console.log("THE SPEED IS: ", speed);
       },
 
       speedDown() {
-        speed = (speed + 100);
+        speed -= 100;
         console.log("THE SPEED IS: ", speed);
       },
 
@@ -405,6 +413,7 @@ export default {
         car_interest = parseInt(this.car_interest) / 100 / 12;
         car_years = parseInt(this.car_years);
         car_terms = (car_years * 12);
+        car_pay_b4_i = (car_principal/car_terms);
 
         console.log(car_money_down);
         console.log(car_principal);
@@ -429,6 +438,8 @@ export default {
             car_value = (car_money_down + car_principal);
             console.log("this is car car_value", car_value);
         }
+
+        check_account = check_account - car_money_down
         // Otherwise, the user's input was probably invalid, so don't
         // display anything.
         // else {
@@ -474,7 +485,10 @@ export default {
             ci_years = parseInt(this.ci_years); // term years
             ci_monthly = parseInt(this.ci_monthly); // monthly deposit (need plus it every year)
             ci_months = (ci_years * 12); //10 years of monthly contributions
+            check_account = check_account - ci_princ
             i = 1
+
+
       },
     },
   }
