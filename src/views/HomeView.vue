@@ -16,10 +16,12 @@
       <h2>Compound Interest Account: <span id="ci_princ"></span></h2>
       <h2>Monthly Savings Smount: <span id="save_amount"></span></h2>
       <h2>This years inflation rate: <span id="inflation"></span></h2>
+      <h1>Your Net Wealth is: <span id="net_worth"></span></h1>
       <br>
       <h2>Your cars value is: <span id="car_value"></span></h2>
       <h2>Remaining Principle is:<span id="car_principal"></span></h2>
-      <h2>Remaining Payments:<span id="payments"></span></h2>
+      <h2>Your car payment is:<span id="payments"></span></h2>
+      <h2>Remaining payments:<span id="car_terms"></span></h2>
       <button v-on:click="buyCar(), pauseClock()">Buy Car</button>
       <br>
       <button v-on:click="openCI(), pauseClock()">Compound Interest</button>
@@ -70,19 +72,19 @@
               <tr><td colspan="3"><b>Enter Loan Information:</b></td></tr>
               <tr>
                 <td>Money Down:</td>
-                <td><input type="text" name="money_down" size="12" v-on:change="calculate();"></td>
+                <td><input type="text" name="car_money_down" size="12" v-model="car_money_down"></td>
               </tr>
               <tr>
                 <td>Amount of the loan:</td>
-                <td><input type="text" name="principal" size="12" v-on:change="calculate();"></td>
+                <td><input type="text" name="car_principal" size="12" v-model="car_principal"></td>
               </tr>
               <tr>
                 <td>Annual percentage rate of interest:</td>
-                <td><input type="text" name="interest" size="12" v-on:change="calculate();"></td>
+                <td><input type="text" name="car_interest" size="12" v-model="car_interest"></td>
               </tr>
               <tr>
                 <td>Repayment period in years:</td>
-                <td><input type="text" name="years" size="12" v-on:change="calculate();"></td>
+                <td><input type="text" name="car_years" size="12" v-model="car_years"></td>
               </tr>
               <tr><td colspan="3">
                 <input type="button" value="Compute" v-on:click="calculate()">
@@ -92,15 +94,15 @@
               </td></tr>
               <tr>
                 <td>Your monthly payment will be:</td>
-                <td><input type="text" name="payment" size="12"></td>
+                <td><input type="text" name="car_payments" size="12"></td>
               </tr>
               <tr>
                 <td>Your total payment will be:</td>
-                <td><input type="text" name="total" size="12"></td>
+                <td><input type="text" name="car_total_payments" size="12"></td>
               </tr>
               <tr>
                 <td>Your total interest payments will be:</td>
-                <td><input type="text" name="totalinterest" size="12"></td>
+                <td><input type="text" name="car_total_interest" size="12"></td>
               </tr>
             </table>
           </form>
@@ -188,11 +190,16 @@
   var stocks_rate = "";
   var stock_market_rate = .1
 
-  var car_money_down = 0;
-  var car_principal = 0;
-  var car_interest = 0;
-  var car_terms = 0;
-  var car_payments = 0;
+  var car_value = "";
+  var car_money_down = "";
+  var car_principal = "";
+  var car_interest = "";
+  var car_years = "";
+  var car_terms = "";
+  var car_payments = "";
+  var car_total_payments = "";
+  var car_total_interest = "";
+  var x = "";
 
   var check_account = 1000;
   var check_amount = 0;
@@ -207,6 +214,7 @@
 
   var income_tax = 0.08;
   var inflation = 0;
+  var net_worth = "";
 
   var speed = 300;
   var count = -1;
@@ -268,6 +276,7 @@ export default {
               document.getElementById("month").innerHTML = month;
               document.getElementById("year").innerHTML = year;
               document.getElementById("age").innerHTML = age;
+              document.getElementById("car_terms").innerHTML = car_terms;
               document.getElementById("income").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(income);
               document.getElementById("save_amount").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_amount);
               document.getElementById("savings").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_account);
@@ -275,8 +284,9 @@ export default {
               document.getElementById("stocks").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(stocks_account);
               document.getElementById("car_value").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(car_value);
               document.getElementById("car_principal").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(car_principal);
-              document.getElementById("payments").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(payments);
+              document.getElementById("payments").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(car_payments);
               document.getElementById("ci_princ").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(ci_princ);
+              document.getElementById("net_worth").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(net_worth);
               document.getElementById("inflation").innerHTML = parseFloat(inflation*100).toFixed(2)+"%";
               console.log(++count);
 
@@ -293,12 +303,18 @@ export default {
               // retirement 
                 clearInterval(intId)
               };
+
+              if (car_terms > 0) {
+                car_terms = (car_terms - 1);
+                car_principal = (car_principal - car_payments);
+              }
             };
 
             function oneYear() {
               console.log("this is one year");
               year = year + 1
               age = age + 1
+              car_value = (car_value * .91)
 
               stock_market_rate = Math.floor(Math.random() * 12) + 1;
               stock_market_rate = (stock_market_rate/100)
@@ -329,18 +345,10 @@ export default {
                 col_bills_rate = col_bills_rate/10
               }
 
-              // console.log("++++++++this is col", col_bills_rate);
-              // console.log("++++++++this is the tax rate", income_tax);
-
-              // console.log("++++++++this is income pretax", monthly_income);
               monthly_income = monthly_income - (monthly_income*income_tax);
-              // console.log("++++++++this is income post tax", monthly_income);
-              monthly_income = monthly_income - monthly_bills;
-              // console.log("++++++++this is income after bills", monthly_income);
+              monthly_income = monthly_income - monthly_bills - ci_monthly - car_payments;
               col_bill = monthly_income*col_bills_rate;
-              // console.log("++++++++this is col bill", col_bill);
               monthly_income = monthly_income - col_bill;
-              // console.log("++++++++this is income after col", monthly_income);
 
               save_amount = monthly_income*save_rate
               stocks_amount = monthly_income*stocks_rate
@@ -352,6 +360,8 @@ export default {
               stocks_account = stocks_account + stocks_amount
 
               month = (months[count])
+
+              net_worth = stocks_account + check_account + ci_princ
 
 
               console.log("this is the princ:", ci_princ)
@@ -390,33 +400,42 @@ export default {
         // Convert interest from a percentage to a decimal, and convert from
         // an annual rate to a monthly rate. Convert payment period in years
         // to the number of monthly payments.
-        var principal = document.loandata.principal.value;
-        var interest = document.loandata.interest.value / 100 / 12;
-        var payments = document.loandata.years.value * 12;
+        car_money_down = parseInt(this.car_money_down);
+        car_principal = parseInt(this.car_principal);
+        car_interest = parseInt(this.car_interest) / 100 / 12;
+        car_years = parseInt(this.car_years);
+        car_terms = (car_years * 12);
+
+        console.log(car_money_down);
+        console.log(car_principal);
+        console.log(car_interest);
+        console.log(car_years);
+        console.log(car_terms);
+
         // Now compute the monthly payment figure, using esoteric math.
-        var x = Math.pow(1 + interest, payments);
-        var monthly = (principal*x*interest)/(x-1);
+        x = Math.pow(1 + car_interest, car_terms);
+        car_payments = (car_principal*x*car_interest)/(x-1);
         // Check that the result is a finite number. If so, display the results.
-        if (!isNaN(monthly) && 
-            (monthly != Number.POSITIVE_INFINITY) &&
-            (monthly != Number.NEGATIVE_INFINITY)) {
-            console.log(principal);
-            console.log(interest);
-            console.log(payments);
-            console.log(monthly);
-            document.loandata.payment.value = (monthly);
-            document.loandata.total.value = (monthly * payments);
-            document.loandata.totalinterest.value = ((monthly * payments) - principal);
-                monthly = Math.round(monthly*100)/100;
-                console.log(monthly);
+        if (!isNaN(car_payments) && 
+            (car_payments != Number.POSITIVE_INFINITY) &&
+            (car_payments != Number.NEGATIVE_INFINITY)) {
+            console.log("this is car car_principal", car_principal);
+            console.log("this is car car_interest", car_interest);
+            console.log("this is car car_payments", car_payments);
+            car_value = (car_payments * car_terms);
+            car_total_interest = ((car_payments * car_terms) - car_principal);
+            car_payments = Math.round(car_payments*100)/100;
+            console.log("this is car car_total_interest", car_total_interest);
+            car_value = (car_money_down + car_principal);
+            console.log("this is car car_value", car_value);
         }
         // Otherwise, the user's input was probably invalid, so don't
         // display anything.
-        else {
-            document.loandata.payment.value = "";
-            document.loandata.total.value = "";
-            document.loandata.totalinterest.value = "";
-        }
+        // else {
+        //     document.loandata.payment.value = "";
+        //     document.loandata.total.value = "";
+        //     document.loandata.totalinterest.value = "";
+        // }
       },
 
       openCI(){
