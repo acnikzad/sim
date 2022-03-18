@@ -25,6 +25,8 @@
       <button v-on:click="buyCar(), pauseClock()">Buy Car</button>
       <br>
       <button v-on:click="openCI(), pauseClock()">Compound Interest</button>
+      <br>
+      <button v-on:click="openRE(), pauseClock()">Buy Real Estate</button>
   </div>
 
 <!-- The Start Modal -->
@@ -33,14 +35,8 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">Welcome</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
           </div>
-
           <form>
-            <input id="userIncome" type="number" min="0" oninput="validity.valid||(value='');" placeholder="Enter Annual Income" v-model="income"/>
-            <p><i>*Average Income for an 18 year old is $10,569*</i></p>
             <input id="userIncome" type="number" min="0" oninput="validity.valid||(value='');" placeholder="Percentage Saved" v-model="save_rate"/>
             <br>
             <input id="userIncome" type="number" min="0" oninput="validity.valid||(value='');" placeholder="Percentage Invested in Stocks" v-model="stocks_rate"/>
@@ -88,9 +84,8 @@
               </tr>
             </table>
           </form>
-
           <div class="modal-footer">
-            <button type="button" class="" data-dismiss="modal" v-on:click="calculate(), resumeClock(),startTimer()">Submit</button>
+            <button type="button" class="" data-dismiss="modal" v-on:click="car_loan(), resumeClock(),startTimer()">Submit</button>
           </div>
         </div>
       </div>
@@ -135,17 +130,56 @@
       </div>
     </div>
 
+<!-- open RE modal-->
+    <div class="modal fade" id="buyHouse" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Buy a Car</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <form name="loandata">
+            <table>
+              <tr><td colspan="3"><b>Enter Mortgage Information:</b></td></tr>
+              <tr>
+                <td>Money Down:</td>
+                <td><input type="number" min="0" oninput="validity.valid||(value='');" name="home_money_down" size="12" v-model="home_money_down"></td>
+              </tr>
+              <tr>
+                <td>Amount of the loan:</td>
+                <td><input type="number" min="0" oninput="validity.valid||(value='');" name="home_principal" size="12" v-model="home_principal"></td>
+              </tr>
+              <tr>
+                <td>Annual percentage rate of interest:</td>
+                <td><input type="number" min="0" oninput="validity.valid||(value='');" name="home_interest" size="12" v-model="home_interest"></td>
+              </tr>
+              <tr>
+                <td>Repayment period in years:</td>
+                <td><input type="number" min="0" oninput="validity.valid||(value='');" name="home_years" size="12" v-model="home_years"></td>
+              </tr>
+            </table>
+          </form>
+          <div class="modal-footer">
+            <button type="button" class="" data-dismiss="modal" v-on:click="home_loan(), resumeClock(),startTimer()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 <!-- open end modal-->
     <div class="modal fade" id="endModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Open an account with compound interest</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Congrats! You are retired!</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <h1>Your Net Wealth is: <span id="net_worth"></span></h1>
+          <h1>Your Net Wealth is: <span id="retired_net_worth"></span></h1>
         </div>
       </div>
     </div>
@@ -199,6 +233,18 @@
   var car_total_interest = "";
   var x = "";
 
+  var home_value = "";
+  var home_money_down = "";
+  var home_principal = "";
+  var home_interest = "";
+  var home_years = "";
+  var home_terms = "";
+  var home_payments = "";
+  var home_pay_b4_i = "";
+  var home_total_payments = "";
+  var home_total_interest = "";
+  var home_x = "";
+
   var check_account = 1000;
   var check_amount = 0;
 
@@ -223,7 +269,7 @@
   var month = "";
   var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   var state = 0;  // 0 = idle, 1 = running, 2 = paused, 3= resumed
-  var speed = 300;
+  var speed = 150;
 
 export default {
   name: 'ExampleModal',
@@ -286,6 +332,7 @@ export default {
             document.getElementById("payments").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(car_payments);
             document.getElementById("ci_princ").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(ci_princ);
             document.getElementById("net_worth").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(net_worth);
+            document.getElementById("retired_net_worth").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(net_worth);
             document.getElementById("inflation").innerHTML = parseFloat(inflation*100).toFixed(2)+"%";
             console.log(++count);
 
@@ -318,8 +365,115 @@ export default {
               car_value = (car_value * .91)
             }
 
-            if (age == 65) {
+            if (age == 18) {
+              income = 9725
+            } else if (age == 19) {
+              income = 15062
+            } else if (age == 20) {
+              income = 18513
+            } else if (age == 21) {
+              income = 20712
+            } else if (age == 22) {
+              income = 24447
+            } else if (age == 23) {
+              income = 29814
+            } else if (age == 24) {
+              income = 33164
+            } else if (age == 25) {
+              income = 41461
+            } else if (age == 26) {
+              income = 43945
+            } else if (age == 27) {
+              income = 48376
+            } else if (age == 28) {
+              income = 47399
+            } else if (age == 29) {
+              income = 51638
+            } else if (age == 30) {
+              income = 52706
+            } else if (age == 31) {
+              income = 59068
+            } else if (age == 32) {
+              income = 58708
+            } else if (age == 33) {
+              income = 59082
+            } else if (age == 34) {
+              income = 60506
+            } else if (age == 35) {
+              income = 66320
+            } else if (age == 36) {
+              income = 68082
+            } else if (age == 37) {
+              income = 69128
+            } else if (age == 38) {
+              income = 66746
+            } else if (age == 39) {
+              income = 70235
+            } else if (age == 40) {
+              income = 72731
+            } else if (age == 41) {
+              income = 77143
+            } else if (age == 42) {
+              income = 71286
+            } else if (age == 43) {
+              income = 83279
+            } else if (age == 44) {
+              income = 74478
+            } else if (age == 45) {
+              income = 79101
+            } else if (age == 46) {
+              income = 75233
+            } else if (age == 47) {
+              income = 78354
+            } else if (age == 48) {
+              income = 68728
+            } else if (age == 49) {
+              income = 75458
+            } else if (age == 50) {
+              income = 81711
+            } else if (age == 51) {
+              income = 75777
+            } else if (age == 52) {
+              income = 80279
+            } else if (age == 53) {
+              income = 80802
+            } else if (age == 54) {
+              income = 77406
+            } else if (age == 55) {
+              income = 77308
+            } else if (age == 56) {
+              income = 76857
+            } else if (age == 57) {
+              income = 78139
+            } else if (age == 58) {
+              income = 73165
+            } else if (age == 59) {
+              income = 78624
+            } else if (age == 60) {
+              income = 73392
+            } else if (age == 61) {
+              income = 77592
+            } else if (age == 62) {
+              income = 77624
+            } else if (age == 63) {
+              income = 77189
+            } else if (age == 64) {
+              income = 73604
+            } else if (age == 65) {
+              income = 74420
               endModal();
+            } 
+
+            if (income < 22000) {
+              income_tax = .02
+            } else if (income > 22001 && income < 48000) {
+              income_tax = .06
+            } else if (income > 48001 && income < 61000) {
+              income_tax = .08
+            } else if (income > 61001 && income < 312000) {
+              income_tax = .093
+            } else {
+              income_tax = .113
             }
 
             stock_market_rate = Math.floor(Math.random() * 12) + 1;
@@ -406,7 +560,15 @@ export default {
         $('#buyCar').modal({backdrop: 'static', keyboard: false}, 'show');
       },
 
-      calculate() {
+      openCI(){
+        $('#openCI').modal({backdrop: 'static', keyboard: false}, 'show');
+      },
+
+      openRE(){
+        $('#openRE').modal({backdrop: 'static', keyboard: false}, 'show');
+      },
+
+      car_loan() {
         // Get the user's input from the form. Assume it is all valid.
         // Convert interest from a percentage to a decimal, and convert from
         // an annual rate to a monthly rate. Convert payment period in years
@@ -452,12 +614,8 @@ export default {
         // }
       },
 
-      openCI(){
-        $('#openCI').modal({backdrop: 'static', keyboard: false}, 'show');
-      },
-
       returnStart() {
-        console.log("This is income:", this.income, this.save_rate, this.monthly_bills)
+        console.log("This is income:", this.save_rate, this.monthly_bills)
         console.log("** this is income:", this.income, "**"),
         income = this.income;
         if (isNaN(income)) {
@@ -470,18 +628,6 @@ export default {
         stock_market_rate = Math.floor(Math.random() * 11) + 1;
         save_rate = (this.save_rate/100)
         stocks_rate = (this.stocks_rate/100)
-
-        if (income < 22000) {
-            income_tax = .02
-          } else if (income > 22001 && income < 48000) {
-            income_tax = .06
-          } else if (income > 48001 && income < 61000) {
-            income_tax = .08
-          } else if (income > 61001 && income < 312000) {
-            income_tax = .093
-          } else {
-            income_tax = .113
-          }
       },
 
       ci_account() {
@@ -494,8 +640,41 @@ export default {
             ci_months = (ci_years * 12); //10 years of monthly contributions
             check_account = check_account - ci_princ
             i = 1
+      },
 
+      home_loan() {
+        home_money_down = parseInt(this.home_money_down);
+        home_principal = parseInt(this.home_principal);
+        home_interest = parseInt(this.home_interest) / 100 / 12;
+        home_years = parseInt(this.home_years);
+        home_terms = (home_years * 12);
+        home_pay_b4_i = (home_principal/home_terms);
 
+        console.log(home_money_down);
+        console.log(home_principal);
+        console.log(home_interest);
+        console.log(home_years);
+        console.log(home_terms);
+
+        home_x = Math.pow(1 + home_interest, home_terms);
+        home_payments = (home_principal*home_x*home_interest)/(home_x-1);
+
+        if (!isNaN(home_payments) && 
+            (home_payments != Number.POSITIVE_INFINITY) &&
+            (home_payments != Number.NEGATIVE_INFINITY)) {
+            console.log("this is car home_principal", home_principal);
+            console.log("this is car home_interest", home_interest);
+            console.log("this is car home_payments", home_payments);
+            home_value = (home_payments * home_terms);
+            home_total_interest = ((home_payments * home_terms) - home_principal);
+            home_payments = Math.round(home_payments*100)/100;
+            console.log("this is car home_total_interest", home_total_interest);
+            home_value = (home_money_down + home_principal);
+            console.log("this is car home_value", home_value);
+        }
+
+        check_account = check_account - home_money_down
+ 
       },
     },
   }
