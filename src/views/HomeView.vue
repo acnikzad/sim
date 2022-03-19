@@ -37,17 +37,16 @@
             <h5 class="modal-title" id="exampleModalLongTitle">Welcome</h5>
           </div>
           <form>
-            <input id="userIncome" type="number" min="0" oninput="validity.valid||(value='');" placeholder="Percentage Saved" v-model="save_rate"/>
+            <input id="userIncome" type="number" max="50" oninput="validity.valid||(value='');" placeholder="Percentage Saved" v-model="save_rate" required/>
             <br>
-            <input id="userIncome" type="number" min="0" oninput="validity.valid||(value='');" placeholder="Percentage Invested in Stocks" v-model="stocks_rate"/>
+            <input id="userIncome" type="number" max="50" oninput="validity.valid||(value='');" placeholder="Percentage Invested in Stocks" v-model="stocks_rate" required/>
             <br>
-            <input id="userIncome" type="number" min="0" oninput="validity.valid||(value='');" placeholder="Enter Monthly Bills" v-model="monthly_bills"/>
+            <input id="userIncome" type="number" min="0" oninput="validity.valid||(value='');" placeholder="Enter Monthly Bills" v-model="monthly_bills" required/>
             <br>
-          </form>
-
           <div class="modal-footer">
             <button type="button" class="" data-dismiss="modal" v-on:click="returnStart(), resumeClock(), startTimer()">Submit</button>
           </div>
+          </form>
         </div>
       </div>
     </div>
@@ -135,7 +134,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Buy a Car</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Buy Real Estate</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -565,7 +564,7 @@ export default {
       },
 
       openRE(){
-        $('#openRE').modal({backdrop: 'static', keyboard: false}, 'show');
+        $('#buyHouse').modal({backdrop: 'static', keyboard: false}, 'show');
       },
 
       car_loan() {
@@ -618,13 +617,25 @@ export default {
         console.log("This is income:", this.save_rate, this.monthly_bills)
         console.log("** this is income:", this.income, "**"),
         income = this.income;
-        if (isNaN(income)) {
+        if (isNaN(save_rate)) {
           alert("Must input numbers");
           return false;
         }
+
+        if (isNaN(stocks_rate)) {
+          alert("Must input numbers");
+          return false;
+        }
+
+        if (isNaN(monthly_bills)) {
+          alert("Must input numbers");
+          return false;
+        }
+
+
         monthly_bills = this.monthly_bills;
-        save_rate = this.save_rate;
-        stocks_rate = this.stocks_rate;
+        save_rate = this.save_rate || 0;
+        stocks_rate = this.stocks_rate || 0;
         stock_market_rate = Math.floor(Math.random() * 11) + 1;
         save_rate = (this.save_rate/100)
         stocks_rate = (this.stocks_rate/100)
