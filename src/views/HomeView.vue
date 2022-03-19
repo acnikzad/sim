@@ -8,20 +8,28 @@
     <button v-on:click="speedDown()">Slow Down</button>
       <h1>The Month is <span id="month"></span></h1>
       <h1>The Year is <span id="year"></span></h1>
-      <h1>You are <span id="age"></span> years old</h1>
-      <h2>Your income is <span id="income"></span> per year</h2>
-      <h2>Checking Account: <span id="checking"></span></h2>
-      <h2>Savings Account: <span id="savings"></span></h2>
-      <h2>Stocks Account: <span id="stocks"></span></h2>
-      <h2>Compound Interest Account: <span id="ci_princ"></span></h2>
-      <h2>Monthly Savings Smount: <span id="save_amount"></span></h2>
-      <h2>This years inflation rate: <span id="inflation"></span></h2>
-      <h1>Your Net Wealth is: <span id="net_worth"></span></h1>
+      <h3>This years inflation rate: <span id="inflation"></span></h3>
       <br>
-      <h2>Your cars value is: <span id="car_value"></span></h2>
-      <h2>Remaining Principle is:<span id="car_principal"></span></h2>
-      <h2>Your car payment is:<span id="payments"></span></h2>
-      <h2>Remaining payments:<span id="car_terms"></span></h2>
+      <h1>You are <span id="age"></span> years old</h1>
+      <h3>Your income is <span id="income"></span> per year</h3>
+      <br>
+      <h3>Checking Account: <span id="checking"></span></h3>
+      <h3>Savings Account: <span id="savings"></span></h3>
+      <h3><i>Monthly Savings Smount: <span id="save_amount"></span></i></h3>
+      <h3>Stocks Account: <span id="stocks"></span></h3>
+      <h3>Compound Interest Account: <span id="ci_princ"></span></h3>
+      <br>
+      <h3>Your cars value is: <span id="car_value"></span></h3>
+      <h3>Remaining Principle is:<span id="car_principal"></span></h3>
+      <h3>Your car payment is:<span id="payments"></span></h3>
+      <h3>Remaining payments:<span id="car_terms"></span></h3>
+      <br>
+      <h3>Your house value is: <span id="home_value"></span></h3>
+      <h3>Remaining Principle is:<span id="home_principal"></span></h3>
+      <h3>Your mortgage payment is:<span id="mortgage"></span></h3>
+      <h3>Remaining payments:<span id="home_terms"></span></h3>
+      <br>
+      <h1>Your Net Wealth is: <span id="net_worth"></span></h1>
       <button v-on:click="buyCar(), pauseClock()">Buy Car</button>
       <br>
       <button v-on:click="openCI(), pauseClock()">Compound Interest</button>
@@ -332,6 +340,12 @@ export default {
             document.getElementById("ci_princ").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(ci_princ);
             document.getElementById("net_worth").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(net_worth);
             document.getElementById("retired_net_worth").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(net_worth);
+
+            document.getElementById("home_terms").innerHTML = home_terms;
+            document.getElementById("home_value").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_value);
+            document.getElementById("home_principal").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_principal);
+            document.getElementById("mortgage").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_payments);
+
             document.getElementById("inflation").innerHTML = parseFloat(inflation*100).toFixed(2)+"%";
             console.log(++count);
 
