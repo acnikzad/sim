@@ -1,9 +1,9 @@
 <template>
   <body>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <h1 class="animate__animated animate__bounce">An animated element</h1>
+    <!-- <h1 class="animate__animated animate__bounce">An animated element</h1> -->
     <button v-on:click="speedUp()">Speed Up</button>
     <button v-on:click="speedDown()">Slow Down</button>
       <h1>The Month is <span id="month"></span></h1>
@@ -191,8 +191,6 @@
       </div>
     </div>
 
-
-
 </body>
 </template>
 
@@ -241,6 +239,8 @@
   var x = "";
 
   var home_value = "";
+  var home_equity = "";
+  var property_tax = "";
   var home_money_down = "";
   var home_principal = "";
   var home_interest = "";
@@ -251,6 +251,7 @@
   var home_total_payments = "";
   var home_total_interest = "";
   var home_x = "";
+  var real_estate = [];
 
   var check_account = 1000;
   var check_amount = 0;
@@ -351,7 +352,6 @@ export default {
 
             oneMonth()
 
-            console.log("THIS IS THE COUNT BEFORE IF:", count);
             if (count == 0){
             // when January hits
               console.log("testing");
@@ -360,8 +360,6 @@ export default {
             // resetting month count to month 1
               count = -1
             };
-
-            console.log("this is the count", count)
 
             if (car_terms > 0) {
               car_terms = (car_terms - 1);
@@ -492,6 +490,9 @@ export default {
             stock_market_rate = Math.floor(Math.random() * 12) + 1;
             stock_market_rate = (stock_market_rate/100)
             console.log("/////////////stock_market_rate is:", stock_market_rate)
+
+            home_appreciation = Math.floor(Math.random() * 7) + 1;
+            console.log("this is the home appreciation rate:", home_appreciation)
 
             inflation = Math.floor(Math.random() * 4) + 1;
             inflation = (inflation/100)
@@ -668,6 +669,20 @@ export default {
       },
 
       home_loan() {
+
+        function real_estate(money_down, home_principal, home_interest, home_years) {
+          this.money_down = money_down;
+          this.home_principal = home_principal;
+          this.home_interest = home_interest;
+          this.home_years = home_years;
+          this.getInfo = function() {
+            return this.money_down + "<--- Money down. Home interest --->" + this.home_interest;
+          console.log();
+          };
+        }
+
+
+
         home_money_down = parseInt(this.home_money_down);
         home_principal = parseInt(this.home_principal);
         home_interest = parseInt(this.home_interest) / 100 / 12;
@@ -699,6 +714,7 @@ export default {
         }
 
         check_account = check_account - home_money_down
+        home_equity = home_money_down
  
       },
     },
