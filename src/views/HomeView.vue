@@ -251,7 +251,8 @@
   var home_total_payments = "";
   var home_total_interest = "";
   var home_x = "";
-  var real_estate = [];
+  var properties = {};
+  var property = {};
 
   var check_account = 1000;
   var check_amount = 0;
@@ -260,7 +261,7 @@
   var ci_months = "";
   var ci_princ = "";
   var ci_monthly = "";
-  var ci_rate = "";
+  var ci_rate = ""; 
   var ci_years = "";
 
 
@@ -491,8 +492,8 @@ export default {
             stock_market_rate = (stock_market_rate/100)
             console.log("/////////////stock_market_rate is:", stock_market_rate)
 
-            home_appreciation = Math.floor(Math.random() * 7) + 1;
-            console.log("this is the home appreciation rate:", home_appreciation)
+            // home_appreciation = Math.floor(Math.random() * 7) + 1;
+            // console.log("this is the home appreciation rate:", home_appreciation)
 
             inflation = Math.floor(Math.random() * 4) + 1;
             inflation = (inflation/100)
@@ -667,28 +668,33 @@ export default {
             check_account = check_account - ci_princ
             i = 1
       },
-
       home_loan() {
 
-        function real_estate(money_down, home_principal, home_interest, home_years) {
-          this.money_down = money_down;
-          this.home_principal = home_principal;
-          this.home_interest = home_interest;
-          this.home_years = home_years;
-          this.getInfo = function() {
-            return this.money_down + "<--- Money down. Home interest --->" + this.home_interest;
-          console.log();
+
+        function real_estate(ev) {
+          ev.preventDefault();
+          var property = {
+            // home_money_down: document.getElementById('money_down').value,
+            // home_principal: document.getElementById('home_principal').value,
+            // home_interest: document.getElementById('home_interest').value,
+            // home_years: document.getElementById('home_years').value,
+        home_money_down: parseInt(this.home_money_down),
+        home_principal: parseInt(this.home_principal),
+        home_interest: parseInt(this.home_interest) / 100 / 12,
+        home_years: parseInt(this.home_years),
+        home_terms: (home_years * 12),
+        home_pay_b4_i: (home_principal/home_terms),
+
+          }
+
+          properties.push(property);
+          console.log("**********************", property);
+          console.log("**********************", properties);
+
           };
-        }
+  
 
 
-
-        home_money_down = parseInt(this.home_money_down);
-        home_principal = parseInt(this.home_principal);
-        home_interest = parseInt(this.home_interest) / 100 / 12;
-        home_years = parseInt(this.home_years);
-        home_terms = (home_years * 12);
-        home_pay_b4_i = (home_principal/home_terms);
 
         console.log(home_money_down);
         console.log(home_principal);
