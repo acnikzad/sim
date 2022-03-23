@@ -321,7 +321,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
+          <div class="col-lg-4 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
                 <div class="row">
@@ -333,7 +333,7 @@
                   <div class="col-7">
                     <div class="numbers">
                       <p class="card-category">Month</p>
-                      <h1 class="card-title"><span id="month"></span></h1>
+                      <h3 class="card-title"><span id="month"></span>, <span id="year"></span></h3>
                     </div>
                   </div>s
                 </div>
@@ -346,7 +346,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
+          <div class="col-lg-4 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
                 <div class="row">
@@ -357,8 +357,9 @@
                   </div>
                   <div class="col-7">
                     <div class="numbers">
-                      <p class="card-category">Followers</p>
-                      <h3 class="card-title">+45k</h3>
+                      <p class="card-category">Age</p>
+                      <h3 class="card-title"><span id="age"></span></h3>
+                      <br>
                     </div>
                   </div>
                 </div>
@@ -371,7 +372,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
+          <div class="col-lg-4 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
                 <div class="row">
@@ -382,8 +383,8 @@
                   </div>
                   <div class="col-7">
                     <div class="numbers">
-                      <p class="card-category">Users</p>
-                      <h3 class="card-title">150,000</h3>
+                      <p class="card-category">Your Annual Income</p>
+                      <h3 class="card-title"><span id="income"></span></h3>
                     </div>
                   </div>
                 </div>
@@ -392,31 +393,6 @@
                 <hr>
                 <div class="stats">
                   <i class="tim-icons icon-trophy"></i> Customers feedback
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="card card-stats">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-5">
-                    <div class="info-icon text-center icon-danger">
-                      <i class="tim-icons icon-molecule-40"></i>
-                    </div>
-                  </div>
-                  <div class="col-7">
-                    <div class="numbers">
-                      <p class="card-category">Errors</p>
-                      <h3 class="card-title">12</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer">
-                <hr>
-                <div class="stats">
-                  <i class="tim-icons icon-watch-time"></i> In the last hours
                 </div>
               </div>
             </div>
@@ -1249,7 +1225,7 @@
   var month = "";
   var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   var state = 0;  // 0 = idle, 1 = running, 2 = paused, 3= resumed
-  var speed = 150;
+  var speed = 250;
 
 export default {
   name: 'ExampleModal',
