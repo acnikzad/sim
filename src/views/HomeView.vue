@@ -1,11 +1,981 @@
 <template>
   <body>
   <div class="home">
-    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <!-- <h1 class="animate__animated animate__bounce">An animated element</h1> -->
+      <div class="navbar-minimize-fixed">
+        <button class="minimize-sidebar btn btn-link btn-just-icon">
+          <i class="tim-icons icon-align-center visible-on-sidebar-regular text-muted"></i>
+          <i class="tim-icons icon-bullet-list-67 visible-on-sidebar-mini text-muted"></i>
+        </button>
+      </div>
+      <div class="sidebar" data-color="blue">
+        <!--
+          Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+      -->
+        <div class="sidebar-wrapper">
+          <div class="logo">
+            <a href="javascript:void(0)" class="simple-text logo-mini">
+              CT
+            </a>
+            <a href="javascript:void(0)" class="simple-text logo-normal">
+              Creative Tim
+            </a>
+          </div>
+          <ul class="nav">
+            <li class="active">
+              <a href="../examples/dashboard.html">
+                <i class="tim-icons icon-chart-pie-36"></i>
+                <p>Dashboard</p>
+              </a>
+            </li>
+            <li>
+              <a data-toggle="collapse" href="#pagesExamples">
+                <i class="tim-icons icon-image-02"></i>
+                <p>
+                  Pages
+                  <b class="caret"></b>
+                </p>
+              </a>
+              <div class="collapse" id="pagesExamples">
+                <ul class="nav">
+                  <li>
+                    <a href="../examples/pages/pricing.html">
+                      <span class="sidebar-mini-icon">P</span>
+                      <span class="sidebar-normal"> Pricing </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../examples/pages/rtl.html">
+                      <span class="sidebar-mini-icon">RS</span>
+                      <span class="sidebar-normal"> RTL Support </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../examples/pages/timeline.html">
+                      <span class="sidebar-mini-icon">T</span>
+                      <span class="sidebar-normal"> Timeline </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../examples/pages/login.html">
+                      <span class="sidebar-mini-icon">L</span>
+                      <span class="sidebar-normal"> Login </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../examples/pages/register.html">
+                      <span class="sidebar-mini-icon">R</span>
+                      <span class="sidebar-normal"> Register </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../examples/pages/lock.html">
+                      <span class="sidebar-mini-icon">LS</span>
+                      <span class="sidebar-normal"> Lock Screen </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../examples/pages/user.html">
+                      <span class="sidebar-mini-icon">UP</span>
+                      <span class="sidebar-normal"> User Profile </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a data-toggle="collapse" href="#componentsExamples">
+                <i class="tim-icons icon-molecule-40"></i>
+                <p>
+                  Components
+                  <b class="caret"></b>
+                </p>
+              </a>
+              <div class="collapse" id="componentsExamples">
+                <ul class="nav">
+                  <li>
+                    <a data-toggle="collapse" aria-expanded="false" href="#multicollapse">
+                      <span class="sidebar-mini-icon">MLT</span>
+                      <span class="sidebar-normal"> Multi Level Collapse
+                        <b class="caret"></b>
+                      </span>
+                    </a>
+                    <div class="collapse" id="multicollapse">
+                      <ul class="nav">
+                        <li>
+                          <a>
+                            <span class="sidebar-mini-icon">E</span>
+                            <span class="sidebar-normal"> Example </span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <a href="../examples/components/buttons.html">
+                      <span class="sidebar-mini-icon">B</span>
+                      <span class="sidebar-normal"> Buttons </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../examples/components/grid.html">
+                      <span class="sidebar-mini-icon">G</span>
+                      <span class="sidebar-normal"> Grid System </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../examples/components/panels.html">
+                      <span class="sidebar-mini-icon">P</span>
+                      <span class="sidebar-normal"> Panels </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../examples/components/sweet-alert.html">
+                      <span class="sidebar-mini-icon">SA</span>
+                      <span class="sidebar-normal"> Sweet Alert </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../examples/components/notifications.html">
+                      <span class="sidebar-mini-icon">N</span>
+                      <span class="sidebar-normal"> Notifications </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../examples/components/icons.html">
+                      <span class="sidebar-mini-icon">I</span>
+                      <span class="sidebar-normal"> Icons </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../examples/components/typography.html">
+                      <span class="sidebar-mini-icon">T</span>
+                      <span class="sidebar-normal"> Typography </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a data-toggle="collapse" href="#formsExamples">
+                <i class="tim-icons icon-notes"></i>
+                <p>
+                  Forms
+                  <b class="caret"></b>
+                </p>
+              </a>
+              <div class="collapse" id="formsExamples">
+                <ul class="nav">
+                  <li>
+                    <a href="../examples/forms/regular.html">
+                      <span class="sidebar-mini-icon">RF</span>
+                      <span class="sidebar-normal"> Regular Forms </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../examples/forms/extended.html">
+                      <span class="sidebar-mini-icon">EF</span>
+                      <span class="sidebar-normal"> Extended Forms </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../examples/forms/validation.html">
+                      <span class="sidebar-mini-icon">V</span>
+                      <span class="sidebar-normal"> Validation Forms </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../examples/forms/wizard.html">
+                      <span class="sidebar-mini-icon">W</span>
+                      <span class="sidebar-normal"> Wizard </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a data-toggle="collapse" href="#tablesExamples">
+                <i class="tim-icons icon-puzzle-10"></i>
+                <p>
+                  Tables
+                  <b class="caret"></b>
+                </p>
+              </a>
+              <div class="collapse" id="tablesExamples">
+                <ul class="nav">
+                  <li>
+                    <a href="../examples/tables/regular.html">
+                      <span class="sidebar-mini-icon">RT</span>
+                      <span class="sidebar-normal"> Regular Tables </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../examples/tables/extended.html">
+                      <span class="sidebar-mini-icon">ET</span>
+                      <span class="sidebar-normal"> Extended Tables </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../examples/tables/datatables.net.html">
+                      <span class="sidebar-mini-icon">DT</span>
+                      <span class="sidebar-normal"> DataTables.net </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a data-toggle="collapse" href="#mapsExamples">
+                <i class="tim-icons icon-pin"></i>
+                <p>
+                  Maps
+                  <b class="caret"></b>
+                </p>
+              </a>
+              <div class="collapse" id="mapsExamples">
+                <ul class="nav">
+                  <li>
+                    <a href="../examples/maps/google.html">
+                      <span class="sidebar-mini-icon">GM</span>
+                      <span class="sidebar-normal"> Google Maps </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../examples/maps/fullscreen.html">
+                      <span class="sidebar-mini-icon">FM</span>
+                      <span class="sidebar-normal"> Full Screen Map </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../examples/maps/vector.html">
+                      <span class="sidebar-mini-icon">VM</span>
+                      <span class="sidebar-normal"> Vector Map </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="../examples/widgets.html">
+                <i class="tim-icons icon-settings"></i>
+                <p>Widgets</p>
+              </a>
+            </li>
+            <li>
+              <a href="../examples/charts.html">
+                <i class="tim-icons icon-chart-bar-32"></i>
+                <p>Charts</p>
+              </a>
+            </li>
+            <li>
+              <a href="../examples/calendar.html">
+                <i class="tim-icons icon-time-alarm"></i>
+                <p>Calendar</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="main-panel">
+      <div class="content">
+        <div class="row">
+          <div class="col-12">
+            <div class="card card-chart">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-sm-6 text-left">
+                    <h5 class="card-category">Total Shipments</h5>
+                    <h2 class="card-title">Performance</h2>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                      <label class="btn btn-sm btn-primary btn-simple active" id="0">
+                        <input type="radio" name="options" checked>
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Accounts</span>
+                        <span class="d-block d-sm-none">
+                          <i class="tim-icons icon-single-02"></i>
+                        </span>
+                      </label>
+                      <label class="btn btn-sm btn-primary btn-simple" id="1">
+                        <input type="radio" class="d-none d-sm-none" name="options">
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Purchases</span>
+                        <span class="d-block d-sm-none">
+                          <i class="tim-icons icon-gift-2"></i>
+                        </span>
+                      </label>
+                      <label class="btn btn-sm btn-primary btn-simple" id="2">
+                        <input type="radio" class="d-none" name="options">
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Sessions</span>
+                        <span class="d-block d-sm-none">
+                          <i class="tim-icons icon-tap-02"></i>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="chartBig1"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="card card-stats">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-5">
+                    <div class="info-icon text-center icon-warning">
+                      <i class="tim-icons icon-chat-33"></i>
+                    </div>
+                  </div>
+                  <div class="col-7">
+                    <div class="numbers">
+                      <p class="card-category">Month</p>
+                      <h1 class="card-title"><span id="month"></span></h1>
+                    </div>
+                  </div>s
+                </div>
+              </div>
+              <div class="card-footer">
+                <hr>
+                <div class="stats">
+                  <i class="tim-icons icon-refresh-01"></i> Update Now
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="card card-stats">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-5">
+                    <div class="info-icon text-center icon-primary">
+                      <i class="tim-icons icon-shape-star"></i>
+                    </div>
+                  </div>
+                  <div class="col-7">
+                    <div class="numbers">
+                      <p class="card-category">Followers</p>
+                      <h3 class="card-title">+45k</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <hr>
+                <div class="stats">
+                  <i class="tim-icons icon-sound-wave"></i> Last Research
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="card card-stats">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-5">
+                    <div class="info-icon text-center icon-success">
+                      <i class="tim-icons icon-single-02"></i>
+                    </div>
+                  </div>
+                  <div class="col-7">
+                    <div class="numbers">
+                      <p class="card-category">Users</p>
+                      <h3 class="card-title">150,000</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <hr>
+                <div class="stats">
+                  <i class="tim-icons icon-trophy"></i> Customers feedback
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="card card-stats">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-5">
+                    <div class="info-icon text-center icon-danger">
+                      <i class="tim-icons icon-molecule-40"></i>
+                    </div>
+                  </div>
+                  <div class="col-7">
+                    <div class="numbers">
+                      <p class="card-category">Errors</p>
+                      <h3 class="card-title">12</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <hr>
+                <div class="stats">
+                  <i class="tim-icons icon-watch-time"></i> In the last hours
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Total Shipments</h5>
+                <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> 763,215</h3>
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="chartLinePurple"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Daily Sales</h5>
+                <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info"></i> 3,500€</h3>
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="CountryChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Completed Tasks</h5>
+                <h3 class="card-title"><i class="tim-icons icon-send text-success"></i> 12,100K</h3>
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="chartLineGreen"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5">
+            <div class="card card-tasks">
+              <div class="card-header">
+                <h6 class="title d-inline">Tasks(5)</h6>
+                <p class="card-category d-inline">today</p>
+                <div class="dropdown">
+                  <button type="button" class="btn btn-link dropdown-toggle btn-icon" data-toggle="dropdown">
+                    <i class="tim-icons icon-settings-gear-63"></i>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="#pablo">Action</a>
+                    <a class="dropdown-item" href="#pablo">Another action</a>
+                    <a class="dropdown-item" href="#pablo">Something else</a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="table-full-width table-responsive">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input" type="checkbox" value="">
+                              <span class="form-check-sign">
+                                <span class="check"></span>
+                              </span>
+                            </label>
+                          </div>
+                        </td>
+                        <td>
+                          <p class="title">Update the Documentation</p>
+                          <p class="text-muted">Dwuamish Head, Seattle, WA 8:47 AM</p>
+                        </td>
+                        <td class="td-actions text-right">
+                          <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                            <i class="tim-icons icon-pencil"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input" type="checkbox" value="" checked="">
+                              <span class="form-check-sign">
+                                <span class="check"></span>
+                              </span>
+                            </label>
+                          </div>
+                        </td>
+                        <td>
+                          <p class="title">GDPR Compliance</p>
+                          <p class="text-muted">The GDPR is a regulation that requires businesses to protect the personal data and privacy of Europe citizens for transactions that occur within EU member states.</p>
+                        </td>
+                        <td class="td-actions text-right">
+                          <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                            <i class="tim-icons icon-pencil"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input" type="checkbox" value="">
+                              <span class="form-check-sign">
+                                <span class="check"></span>
+                              </span>
+                            </label>
+                          </div>
+                        </td>
+                        <td>
+                          <p class="title">Solve the issues</p>
+                          <p class="text-muted">Fifty percent of all respondents said they would be more likely to shop at a company </p>
+                        </td>
+                        <td class="td-actions text-right">
+                          <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                            <i class="tim-icons icon-pencil"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input" type="checkbox" value="">
+                              <span class="form-check-sign">
+                                <span class="check"></span>
+                              </span>
+                            </label>
+                          </div>
+                        </td>
+                        <td>
+                          <p class="title">Release v2.0.0</p>
+                          <p class="text-muted">Ra Ave SW, Seattle, WA 98116, SUA 11:19 AM</p>
+                        </td>
+                        <td class="td-actions text-right">
+                          <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                            <i class="tim-icons icon-pencil"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input" type="checkbox" value="">
+                              <span class="form-check-sign">
+                                <span class="check"></span>
+                              </span>
+                            </label>
+                          </div>
+                        </td>
+                        <td>
+                          <p class="title">Export the processed files</p>
+                          <p class="text-muted">The report also shows that consumers will not easily forgive a company once a breach exposing their personal data occurs. </p>
+                        </td>
+                        <td class="td-actions text-right">
+                          <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                            <i class="tim-icons icon-pencil"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input" type="checkbox" value="">
+                              <span class="form-check-sign">
+                                <span class="check"></span>
+                              </span>
+                            </label>
+                          </div>
+                        </td>
+                        <td>
+                          <p class="title">Arival at export process</p>
+                          <p class="text-muted">Capitol Hill, Seattle, WA 12:34 AM</p>
+                        </td>
+                        <td class="td-actions text-right">
+                          <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                            <i class="tim-icons icon-pencil"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="card">
+              <div class="card-header">
+                <div class="tools float-right">
+                  <div class="dropdown">
+                    <button type="button" class="btn btn-link dropdown-toggle btn-icon" data-toggle="dropdown">
+                      <i class="tim-icons icon-settings-gear-63"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <a class="dropdown-item" href="#pablo">Action</a>
+                      <a class="dropdown-item" href="#pablo">Another action</a>
+                      <a class="dropdown-item" href="#pablo">Something else</a>
+                      <a class="dropdown-item text-danger" href="#pablo">Remove Data</a>
+                    </div>
+                  </div>
+                </div>
+                <h5 class="card-title">Management Table</h5>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class="text-primary">
+                      <tr>
+                        <th class="text-center">
+                          #
+                        </th>
+                        <th>
+                          Name
+                        </th>
+                        <th>
+                          Job Position
+                        </th>
+                        <th>
+                          Milestone
+                        </th>
+                        <th class="text-right">
+                          Salary
+                        </th>
+                        <th class="text-right">
+                          Actions
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-center">
+                          <div class="photo">
+                            <!-- <img src="../assets/img/tania.jpg" alt="photo"> -->
+                          </div>
+                        </td>
+                        <td>
+                          Tania Mike
+                        </td>
+                        <td>
+                          Develop
+                        </td>
+                        <td class="text-center">
+                          <div class="progress-container progress-sm">
+                            <div class="progress">
+                              <span class="progress-value">25%</span>
+                              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="text-right">
+                          € 99,225
+                        </td>
+                        <td class="text-right">
+                          <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm btn-simple" data-original-title="Tooltip on top" title="Refresh">
+                            <i class="tim-icons icon-refresh-01"></i>
+                          </button>
+                          <button type="button" rel="tooltip" class="btn btn-danger btn-link btn-icon btn-sm btn-simple" data-original-title="Tooltip on top" title="Delete">
+                            <i class="tim-icons icon-simple-remove"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">
+                          <div class="photo">
+                            <!-- <img src="../assets/img/robi.jpg" alt="photo"> -->
+                          </div>
+                        </td>
+                        <td>
+                          John Doe
+                        </td>
+                        <td>
+                          CEO
+                        </td>
+                        <td class="text-center">
+                          <div class="progress-container progress-sm">
+                            <div class="progress">
+                              <span class="progress-value">77%</span>
+                              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 77%;"></div>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="text-right">
+                          € 89,241
+                        </td>
+                        <td class="text-right">
+                          <button type="button" rel="tooltip" class="btn btn-success btn-link btn-sm btn-icon btn-simple" data-original-title="Tooltip on top" title="Refresh">
+                            <i class="tim-icons icon-refresh-01"></i>
+                          </button>
+                          <button type="button" rel="tooltip" class="btn btn-danger btn-link btn-sm btn-icon btn-simple" data-original-title="Tooltip on top" title="Delete">
+                            <i class="tim-icons icon-simple-remove"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">
+                          <div class="photo">
+                            <!-- <img src="../assets/img/lora.jpg" alt="photo"> -->
+                          </div>
+                        </td>
+                        <td>
+                          Alexa Mike
+                        </td>
+                        <td>
+                          Design
+                        </td>
+                        <td class="text-center">
+                          <div class="progress-container progress-sm">
+                            <div class="progress">
+                              <span class="progress-value">41%</span>
+                              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 41%;"></div>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="text-right">
+                          € 92,144
+                        </td>
+                        <td class="text-right">
+                          <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm btn-simple" data-original-title="Tooltip on top" title="Refresh">
+                            <i class="tim-icons icon-refresh-01"></i>
+                          </button>
+                          <button type="button" rel="tooltip" class="btn btn-danger btn-link btn-icon btn-sm btn-simple" data-original-title="Tooltip on top" title="Delete">
+                            <i class="tim-icons icon-simple-remove"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">
+                          <div class="photo">
+                            <!-- <img src="../assets/img/jana.jpg" alt="photo"> -->
+                          </div>
+                        </td>
+                        <td>
+                          Jana Monday
+                        </td>
+                        <td>
+                          Marketing
+                        </td>
+                        <td class="text-center">
+                          <div class="progress-container progress-sm">
+                            <div class="progress">
+                              <span class="progress-value">50%</span>
+                              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="text-right">
+                          € 49,990
+                        </td>
+                        <td class="text-right">
+                          <button type="button" rel="tooltip" class="btn btn-success btn-link btn-sm btn-icon" data-original-title="Tooltip on top" title="Refresh">
+                            <i class="tim-icons icon-refresh-01"></i>
+                          </button>
+                          <button type="button" rel="tooltip" class="btn btn-danger btn-link btn-sm btn-icon" data-original-title="Tooltip on top" title="Delete">
+                            <i class="tim-icons icon-simple-remove"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">
+                          <div class="photo">
+                            <!-- <img src="../assets/img/mike.jpg" alt="photo"> -->
+                          </div>
+                        </td>
+                        <td>
+                          Paul Dickens
+                        </td>
+                        <td>
+                          Develop
+                        </td>
+                        <td class="text-center">
+                          <div class="progress-container progress-sm">
+                            <div class="progress">
+                              <span class="progress-value">100%</span>
+                              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="text-right">
+                          € 69,201
+                        </td>
+                        <td class="text-right">
+                          <button type="button" rel="tooltip" class="btn btn-success btn-link btn-sm  btn-icon" data-original-title="Tooltip on top" title="Refresh">
+                            <i class="tim-icons icon-refresh-01"></i>
+                          </button>
+                          <button type="button" rel="tooltip" class="btn btn-danger btn-link btn-sm btn-icon" data-original-title="Tooltip on top" title="Delete">
+                            <i class="tim-icons icon-simple-remove"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">
+                          <div class="photo">
+                            <!-- <img src="../assets/img/emilyz.jpg" alt="photo"> -->
+                          </div>
+                        </td>
+                        <td>
+                          Manuela Rico
+                        </td>
+                        <td>
+                          Manager
+                        </td>
+                        <td class="text-center">
+                          <div class="progress-container progress-sm">
+                            <div class="progress">
+                              <span class="progress-value">15%</span>
+                              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 15%;"></div>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="text-right">
+                          € 99,201
+                        </td>
+                        <td class="text-right">
+                          <button type="button" rel="tooltip" class="btn btn-success btn-link btn-sm btn-icon" data-original-title="Tooltip on top" title="Refresh">
+                            <i class="tim-icons icon-refresh-01"></i>
+                          </button>
+                          <button type="button" rel="tooltip" class="btn btn-danger btn-link btn-sm btn-icon" data-original-title="Tooltip on top" title="Delete">
+                            <i class="tim-icons icon-simple-remove"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">Global Sales by Top Locations</h4>
+                <p class="card-category">All products that were shipped</p>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <div class="flag">
+                                <!-- <img src="../assets/img/US.png" alt="flag"> -->
+                              </div>
+                            </td>
+                            <td>USA</td>
+                            <td class="text-right">
+                              2.920
+                            </td>
+                            <td class="text-right">
+                              53.23%
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="flag">
+                                <!-- <img src="../assets/img/DE.png" alt="flag"> -->
+                              </div>
+                            </td>
+                            <td>Germany</td>
+                            <td class="text-right">
+                              1.300
+                            </td>
+                            <td class="text-right">
+                              20.43%
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="flag">
+                                <!-- <img src="../assets/img/AU.png" alt="flag"> -->
+                              </div>
+                            </td>
+                            <td>Australia</td>
+                            <td class="text-right">
+                              760
+                            </td>
+                            <td class="text-right">
+                              10.35%
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="flag">
+                                <!-- <img src="../assets/img/GB.png" alt="flag"> -->
+                              </div>
+                            </td>
+                            <td>United Kingdom</td>
+                            <td class="text-right">
+                              690
+                            </td>
+                            <td class="text-right">
+                              7.87%
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="flag">
+                                <!-- <img src="../assets/img/RO.png" alt="flag"> -->
+                              </div>
+                            </td>
+                            <td>Romania</td>
+                            <td class="text-right">
+                              600
+                            </td>
+                            <td class="text-right">
+                              5.94%
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="flag">
+                                <!-- <img src="../assets/img/BR.png" alt="flag"> -->
+                              </div>
+                            </td>
+                            <td>Brasil</td>
+                            <td class="text-right">
+                              550
+                            </td>
+                            <td class="text-right">
+                              4.34%
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="col-md-6 ml-auto mr-auto">
+                    <div id="worldMap" style="height: 300px;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+<!-- <img alt="Vue logo" src="../assets/logo.png"> -->
+<!--     <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1 class="animate__animated animate__bounce">An animated element</h1>
     <button v-on:click="speedUp()">Speed Up</button>
-    <button v-on:click="speedDown()">Slow Down</button>
+    <button v-on:click="speedDown()">Slow Down</button> -->
+    <!-- <div style="background-color: #1a1e34;"> -->
       <h1>The Month is <span id="month"></span></h1>
       <h1>The Year is <span id="year"></span></h1>
       <h3>This years inflation rate: <span id="inflation"></span></h3>
@@ -30,12 +1000,13 @@
       <h3>Remaining payments:<span id="home_terms"></span></h3>
       <br>
       <h1>Your Net Wealth is: <span id="net_worth"></span></h1>
+    </div>
       <button v-on:click="buyCar(), pauseClock()">Buy Car</button>
       <br>
       <button v-on:click="openCI(), pauseClock()">Compound Interest</button>
       <br>
       <button v-on:click="openRE(), pauseClock()">Buy Real Estate</button>
-  </div>
+  <!-- </div> -->
 
 <!-- The Start Modal -->
     <div class="modal fade" id="startModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -52,7 +1023,7 @@
             <input id="userIncome" type="number" min="0" oninput="validity.valid||(value='');" placeholder="Enter Monthly Bills" v-model="monthly_bills" required/>
             <br>
           <div class="modal-footer">
-            <button type="button" class="" data-dismiss="modal" v-on:click="returnStart(), resumeClock(), startTimer()">Submit</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" v-on:click="returnStart(), resumeClock(), startTimer()">Submit</button>
           </div>
           </form>
         </div>
@@ -725,6 +1696,123 @@ export default {
       },
     },
   }
+
+    $(document).ready(function() {
+      $().ready(function() {
+        $sidebar = $('.sidebar');
+        $navbar = $('.navbar');
+        $main_panel = $('.main-panel');
+
+        $full_page = $('.full-page');
+
+        $sidebar_responsive = $('body > .navbar-collapse');
+        sidebar_mini_active = true;
+        white_color = false;
+
+        window_width = $(window).width();
+
+        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+
+
+        $('.fixed-plugin a').click(function(event) {
+          if ($(this).hasClass('switch-trigger')) {
+            if (event.stopPropagation) {
+              event.stopPropagation();
+            } else if (window.event) {
+              window.event.cancelBubble = true;
+            }
+          }
+        });
+
+        $('.fixed-plugin .background-color span').click(function() {
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          var new_color = $(this).data('color');
+
+          if ($sidebar.length != 0) {
+            $sidebar.attr('data', new_color);
+          }
+
+          if ($main_panel.length != 0) {
+            $main_panel.attr('data', new_color);
+          }
+
+          if ($full_page.length != 0) {
+            $full_page.attr('filter-color', new_color);
+          }
+
+          if ($sidebar_responsive.length != 0) {
+            $sidebar_responsive.attr('data', new_color);
+          }
+        });
+
+        $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
+          var $btn = $(this);
+
+          if (sidebar_mini_active == true) {
+            $('body').removeClass('sidebar-mini');
+            sidebar_mini_active = false;
+            blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
+          } else {
+            $('body').addClass('sidebar-mini');
+            sidebar_mini_active = true;
+            blackDashboard.showSidebarMessage('Sidebar mini activated...');
+          }
+
+          // we simulate the window Resize so the charts will get updated in realtime.
+          var simulateWindowResize = setInterval(function() {
+            window.dispatchEvent(new Event('resize'));
+          }, 180);
+
+          // we stop the simulation of Window Resize after the animations are completed
+          setTimeout(function() {
+            clearInterval(simulateWindowResize);
+          }, 1000);
+        });
+
+        $('.switch-change-color input').on("switchChange.bootstrapSwitch", function() {
+          var $btn = $(this);
+
+          if (white_color == true) {
+
+            $('body').addClass('change-background');
+            setTimeout(function() {
+              $('body').removeClass('change-background');
+              $('body').removeClass('white-content');
+            }, 900);
+            white_color = false;
+          } else {
+
+            $('body').addClass('change-background');
+            setTimeout(function() {
+              $('body').removeClass('change-background');
+              $('body').addClass('white-content');
+            }, 900);
+
+            white_color = true;
+          }
+
+
+        });
+
+        $('.light-badge').click(function() {
+          $('body').addClass('white-content');
+        });
+
+        $('.dark-badge').click(function() {
+          $('body').removeClass('white-content');
+        });
+      });
+    });
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initDashboardPageCharts();
+
+      demo.initVectorMap();
+
+    });
 </script>
 
 <!-- date management -->
