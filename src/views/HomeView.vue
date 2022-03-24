@@ -340,8 +340,8 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-5">
-                    <div class="info-icon text-center icon-warning">
-                      <i class="tim-icons icon-chat-33"></i>
+                    <div class="info-icon text-center icon-success">
+                      <i class="tim-icons icon-calendar-60"></i>
                     </div>
                   </div>
                   <div class="col-7">
@@ -397,7 +397,7 @@
                   </div>
                   <div class="col-7">
                     <div class="numbers">
-                      <p class="card-category">Your Annual Income</p>
+                      <p class="card-category">National Average Income per Age</p>
                       <h3 class="card-title"><span id="income"></span></h3>
                     </div>
                   </div>
@@ -411,7 +411,84 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4">
+                    <div class="col-lg-4 col-md-6">
+            <div class="card card-stats">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-5">
+                    <div class="info-icon text-center icon-warning">
+                      <i class="tim-icons icon-money-coins"></i>
+                    </div>
+                  </div>
+                  <div class="col-7">
+                    <div class="numbers">
+                      <p class="card-category">Checking Account</p>
+                      <h3 class="card-title"><span id="checking"></span></h3>
+                    </div>
+                  </div>s
+                </div>
+              </div>
+              <div class="card-footer">
+                <hr>
+                <div class="stats">
+                  <i class="tim-icons icon-refresh-01"></i> Update Now
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card card-stats">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-5">
+                    <div class="info-icon text-center icon-success">
+                      <i class="tim-icons icon-single-02"></i>
+                    </div>
+                  </div>
+                  <div class="col-7">
+                    <div class="numbers">
+                      <p class="card-category">Savings Account</p>
+                      <h3 class="card-title"><span id="savings"></span></h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <hr>
+                <div class="stats">
+                  <i class="tim-icons icon-trophy"></i> Customers feedback
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card card-stats">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-5">
+                    <div class="info-icon text-center icon-primary">
+                      <i class="tim-icons icon-shape-star"></i>
+                    </div>
+                  </div>
+                  <div class="col-7">
+                    <div class="numbers">
+                      <p class="card-category">Stocks Portfolio</p>
+                      <h3 class="card-title"><span id="stocks"></span></h3>
+                      <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <hr>
+                <div class="stats">
+                  <i class="tim-icons icon-sound-wave"></i> Last Research
+                </div>
+              </div>
+            </div>
+          </div>
+
+      <!--     <div class="col-lg-4">
             <div class="card card-chart">
               <div class="card-header">
                 <h5 class="card-category">Total Shipments</h5>
@@ -423,8 +500,8 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-lg-4">
+          </div> -->
+        <!--   <div class="col-lg-4">
             <div class="card card-chart">
               <div class="card-header">
                 <h5 class="card-category">Daily Sales</h5>
@@ -436,8 +513,8 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-lg-4">
+          </div> -->
+     <!--      <div class="col-lg-4">
             <div class="card card-chart">
               <div class="card-header">
                 <h5 class="card-category">Completed Tasks</h5>
@@ -449,10 +526,10 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="row">
-          <div class="col-lg-5">
+          <!-- <div class="col-lg-5">
             <div class="card card-tasks">
               <div class="card-header">
                 <h6 class="title d-inline">Tasks(5)</h6>
@@ -603,8 +680,8 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-lg-7">
+          </div> -->
+        <!--   <div class="col-lg-7">
             <div class="card">
               <div class="card-header">
                 <div class="tools float-right">
@@ -650,8 +727,8 @@
                     <tbody>
                       <tr>
                         <td class="text-center">
-                          <div class="photo">
-                            <!-- <img src="../assets/img/tania.jpg" alt="photo"> -->
+                          <div class="photo"> -->
+                    <!--         <img src="../assets/img/tania.jpg" alt="photo">
                           </div>
                         </td>
                         <td>
@@ -683,7 +760,7 @@
                       <tr>
                         <td class="text-center">
                           <div class="photo">
-                            <!-- <img src="../assets/img/robi.jpg" alt="photo"> -->
+                            <img src="../assets/img/robi.jpg" alt="photo">
                           </div>
                         </td>
                         <td>
@@ -714,8 +791,8 @@
                       </tr>
                       <tr>
                         <td class="text-center">
-                          <div class="photo">
-                            <!-- <img src="../assets/img/lora.jpg" alt="photo"> -->
+                          <div class="photo"> -->
+          <!--                   <img src="../assets/img/lora.jpg" alt="photo">
                           </div>
                         </td>
                         <td>
@@ -747,7 +824,7 @@
                       <tr>
                         <td class="text-center">
                           <div class="photo">
-                            <!-- <img src="../assets/img/jana.jpg" alt="photo"> -->
+                            <img src="../assets/img/jana.jpg" alt="photo">
                           </div>
                         </td>
                         <td>
@@ -779,7 +856,7 @@
                       <tr>
                         <td class="text-center">
                           <div class="photo">
-                            <!-- <img src="../assets/img/mike.jpg" alt="photo"> -->
+                            <img src="../assets/img/mike.jpg" alt="photo">
                           </div>
                         </td>
                         <td>
@@ -811,8 +888,8 @@
                       </tr>
                       <tr>
                         <td class="text-center">
-                          <div class="photo">
-                            <!-- <img src="../assets/img/emilyz.jpg" alt="photo"> -->
+                          <div class="photo"> -->
+                            <!-- <img src="../assets/img/emilyz.jpg" alt="photo">
                           </div>
                         </td>
                         <td>
@@ -846,7 +923,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="col-lg-12">
             <div class="card">
               <div class="card-header">
@@ -999,23 +1076,56 @@
   <!-- </div> -->
 
 <!-- The Start Modal -->
-    <div class="modal fade" id="startModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" ro le="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Welcome</h5>
+      <div class="modal fade" id="startModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-notice">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                <i class="tim-icons icon-simple-remove"></i>
+              </button>
+              <h5 class="modal-title" id="myModalLabel">How Do You Become an Affiliate?</h5>
+            </div>
+            <!-- <div class="modal-body"> -->
+             <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Form Elements</h4>
+                </div>
+                <div class="card-body">
+                  <form method="get" action="/" class="form-horizontal">
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Income Saved:</label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input id="userIncome" class="form-control" type="number" max="50" oninput="validity.valid||(value='');" placeholder="Percentage Saved" v-model="save_rate" required/>
+                          <span class="form-text">A block of help text that breaks onto a new line.</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Income Invested:</label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input id="userIncome" class="form-control" type="number" max="50" oninput="validity.valid||(value='');" placeholder="Percentage Invested in Stocks" v-model="stocks_rate" required/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Monthly Bills:</label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input id="userIncome" class="form-control" type="number" min="0" oninput="validity.valid||(value='');" placeholder="Enter Monthly Bills" v-model="monthly_bills" required/>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          <!-- </div> -->
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-primary btn-round" data-dismiss="modal" v-on:click="returnStart(), resumeClock(), startTimer()">Submit</button>
           </div>
-          <form>
-            <input id="userIncome" type="number" max="50" oninput="validity.valid||(value='');" placeholder="Percentage Saved" v-model="save_rate" required/>
-            <br>
-            <input id="userIncome" type="number" max="50" oninput="validity.valid||(value='');" placeholder="Percentage Invested in Stocks" v-model="stocks_rate" required/>
-            <br>
-            <input id="userIncome" type="number" min="0" oninput="validity.valid||(value='');" placeholder="Enter Monthly Bills" v-model="monthly_bills" required/>
-            <br>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal" v-on:click="returnStart(), resumeClock(), startTimer()">Submit</button>
-          </div>
-          </form>
         </div>
       </div>
     </div>
@@ -1230,6 +1340,7 @@
   var inflation = 0;
   var net_worth = "";
   var arrWealth = [];
+  var arrSavings = [];
 
   var count = -1;
   var rate = .4;
@@ -1320,10 +1431,13 @@ export default {
             // when January hits
               console.log("testing");
               oneYear();
-              if (age % 5 === 0) {
+              if (age % 2 === 0) {
               arrWealth.push(parseInt(net_worth))
               chartWealth();
-              console.log(arrWealth)
+
+              arrSavings.push(parseInt(save_account))
+              chartSavings();
+              console.log("this is arrsavings",arrSavings)
               };
 
             } else if (count == 11) {
@@ -1525,9 +1639,54 @@ export default {
             // console.log(ci_princ.toFixed(2)); //69636.12
            };
 
-           function chartWealth() {
+         function chartWealth() {
 
-              var chart_labels = ['20', '25', '30', '35', '40', '45', '50', '55', '60', '65'];
+            var chart_labels = ['18', '20', '22', '24', '26', '28', '30', '32', '34', '36', '38', '40', '42', '44', '46', '48', '50', '52', '54', '56', '58', '60', '62', '64'];
+
+
+
+            var ctx = document.getElementById("chartBig1").getContext('2d');
+
+            var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+            gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
+            gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
+            gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
+            var config = {
+              type: 'line',
+              data: {
+                labels: chart_labels,
+                datasets: [{
+                  label: "Net Wealth",
+                  fill: true,
+                  backgroundColor: gradientStroke,
+                  borderColor: '#d346b1',
+                  borderWidth: 2,
+                  borderDash: [],
+                  borderDashOffset: 0.0,
+                  pointBackgroundColor: '#d346b1',
+                  pointBorderColor: 'rgba(255,255,255,0)',
+                  pointHoverBackgroundColor: '#d346b1',
+                  pointBorderWidth: 20,
+                  pointHoverRadius: 4,
+                  pointHoverBorderWidth: 15,
+                  pointRadius: 4,
+                  data: arrWealth,
+                }]
+              },
+              options: gradientChartOptionsConfigurationWithTooltipPurple
+            };
+            var myChartData = new Chart(ctx, config);
+            $("#0").click(function() {
+              var data = myChartData.config.data;
+              data.datasets[0].data = chart_data;
+              data.labels = chart_labels;
+              myChartData.update();
+            });
+          };
+          function chartSavings() {
+
+              var chart_labels = ['18', '20', '22', '24', '26', '28', '30', '32', '34', '36', '38', '40', '42', '44', '46', '48', '50', '52', '54', '56', '58', '60', '62', '64'];
 
   
 
@@ -1543,7 +1702,7 @@ export default {
                 data: {
                   labels: chart_labels,
                   datasets: [{
-                    label: "My First dataset",
+                    label: "Net Wealth",
                     fill: true,
                     backgroundColor: gradientStroke,
                     borderColor: '#d346b1',
@@ -1557,10 +1716,10 @@ export default {
                     pointHoverRadius: 4,
                     pointHoverBorderWidth: 15,
                     pointRadius: 4,
-                    data: arrWealth,
+                    data: arrSavings,
                   }]
                 },
-                options: gradientChartOptionsConfigurationWithTooltipPurple
+                options: gradientChartOptionsConfigurationWithTooltipGreen
               };
               var myChartData = new Chart(ctx, config);
               $("#0").click(function() {
@@ -1570,6 +1729,7 @@ export default {
                 myChartData.update();
               });
             };
+
 
           function endModal() {
               $('#endModal').modal('show');

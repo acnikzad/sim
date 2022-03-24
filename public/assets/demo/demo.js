@@ -751,7 +751,7 @@ demo = {
       responsive: true,
       scales: {
         yAxes: [{
-          barPercentage: 1.6,
+          barPercentage: 0,
           gridLines: {
             drawBorder: false,
             color: 'rgba(29,140,248,0.0)',
@@ -766,7 +766,7 @@ demo = {
         }],
 
         xAxes: [{
-          barPercentage: 1.6,
+          barPercentage: 0,
           gridLines: {
             drawBorder: false,
             color: 'rgba(225,78,202,0.1)',
