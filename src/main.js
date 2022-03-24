@@ -5,6 +5,7 @@ import 'animate.css';
 import 'popper.js';
 import 'jquery';
 import 'bootstrap/dist/css/bootstrap.css';
+// import 'vue-chartjs';
 // import 'bootstrap-vue/dist/css/bootstrap-vue.css';
 
 createApp(App).use(router).mount('#app')

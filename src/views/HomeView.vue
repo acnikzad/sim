@@ -1215,6 +1215,7 @@
   var income_tax = 0.08;
   var inflation = 0;
   var net_worth = "";
+  var arrWealth = [];
 
   var count = -1;
   var rate = .4;
@@ -1228,6 +1229,7 @@
   var speed = 250;
 
 export default {
+
   name: 'ExampleModal',
   data() {
     return {
@@ -1241,6 +1243,8 @@ export default {
       car_payment: 0,
       car_value: 0,
       car_principal: 0,
+
+      arrWealth: [],
         };
       },
 
@@ -1298,12 +1302,16 @@ export default {
             document.getElementById("inflation").innerHTML = parseFloat(inflation*100).toFixed(2)+"%";
             console.log(++count);
 
-            oneMonth()
-
             if (count == 0){
             // when January hits
               console.log("testing");
               oneYear();
+              if (age % 5 === 0) {
+              arrWealth.push(parseInt(net_worth))
+              chartWealth();
+              console.log(arrWealth)
+              };
+
             } else if (count == 11) {
             // resetting month count to month 1
               count = -1
@@ -1313,6 +1321,8 @@ export default {
               car_terms = (car_terms - 1);
               car_principal = (car_principal - car_pay_b4_i);
             }
+
+            oneMonth()
           };
 
           function oneYear() {
@@ -1500,6 +1510,52 @@ export default {
             }
             // console.log(ci_princ.toFixed(2)); //69636.12
            };
+
+           function chartWealth() {
+
+              var chart_labels = ['20', '25', '30', '35', '40', '45', '50', '55', '60', '65'];
+
+  
+
+              var ctx = document.getElementById("chartBig1").getContext('2d');
+
+              var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+              gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
+              gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
+              gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
+              var config = {
+                type: 'line',
+                data: {
+                  labels: chart_labels,
+                  datasets: [{
+                    label: "My First dataset",
+                    fill: true,
+                    backgroundColor: gradientStroke,
+                    borderColor: '#d346b1',
+                    borderWidth: 2,
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    pointBackgroundColor: '#d346b1',
+                    pointBorderColor: 'rgba(255,255,255,0)',
+                    pointHoverBackgroundColor: '#d346b1',
+                    pointBorderWidth: 20,
+                    pointHoverRadius: 4,
+                    pointHoverBorderWidth: 15,
+                    pointRadius: 4,
+                    data: arrWealth,
+                  }]
+                },
+                options: gradientChartOptionsConfigurationWithTooltipPurple
+              };
+              var myChartData = new Chart(ctx, config);
+              $("#0").click(function() {
+                var data = myChartData.config.data;
+                data.datasets[0].data = chart_data;
+                data.labels = chart_labels;
+                myChartData.update();
+              });
+            };
 
           function endModal() {
               $('#endModal').modal('show');
@@ -1794,3 +1850,4 @@ export default {
 <!-- date management -->
 <!-- moment.js -->
 <!-- start with a counter associate to month -->
+
