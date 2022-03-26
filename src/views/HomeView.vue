@@ -335,6 +335,31 @@
               </div>
             </div>
           </div>
+          <div class="col-lg-12 col-md-6">
+            <div class="card card-stats">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-5">
+                    <div class="info-icon text-center icon-success">
+                      <i class="tim-icons icon-calendar-60"></i>
+                    </div>
+                  </div>
+                  <div class="col-7">
+                    <div class="numbers">
+                      <p class="card-category">Net Worth</p>
+                      <h3 class="card-title" align="center"><span id="net_worth"></span></h3>
+                    </div>
+                  </div>s
+                </div>
+              </div>
+              <div class="card-footer">
+                <hr>
+                <div class="stats">
+                  <i class="tim-icons icon-refresh-01"></i> Update Now
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="col-lg-4 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
@@ -346,7 +371,7 @@
                   </div>
                   <div class="col-7">
                     <div class="numbers">
-                      <p class="card-category">Month</p>
+                      <p class="card-category">Date</p>
                       <h3 class="card-title"><span id="month"></span>, <span id="year"></span></h3>
                     </div>
                   </div>s
@@ -411,7 +436,7 @@
               </div>
             </div>
           </div>
-                    <div class="col-lg-4 col-md-6">
+          <div class="col-lg-4 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
                 <div class="row">
@@ -487,201 +512,7 @@
               </div>
             </div>
           </div>
-
-      <!--     <div class="col-lg-4">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-category">Total Shipments</h5>
-                <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> 763,215</h3>
-              </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="chartLinePurple"></canvas>
-                </div>
-              </div>
-            </div>
-          </div> -->
-        <!--   <div class="col-lg-4">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-category">Daily Sales</h5>
-                <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info"></i> 3,500€</h3>
-              </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="CountryChart"></canvas>
-                </div>
-              </div>
-            </div>
-          </div> -->
-     <!--      <div class="col-lg-4">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-category">Completed Tasks</h5>
-                <h3 class="card-title"><i class="tim-icons icon-send text-success"></i> 12,100K</h3>
-              </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="chartLineGreen"></canvas>
-                </div>
-              </div>
-            </div>
-          </div> -->
-        </div>
-        <div class="row">
-          <!-- <div class="col-lg-5">
-            <div class="card card-tasks">
-              <div class="card-header">
-                <h6 class="title d-inline">Tasks(5)</h6>
-                <p class="card-category d-inline">today</p>
-                <div class="dropdown">
-                  <button type="button" class="btn btn-link dropdown-toggle btn-icon" data-toggle="dropdown">
-                    <i class="tim-icons icon-settings-gear-63"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#pablo">Action</a>
-                    <a class="dropdown-item" href="#pablo">Another action</a>
-                    <a class="dropdown-item" href="#pablo">Something else</a>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="table-full-width table-responsive">
-                  <table class="table">
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="title">Update the Documentation</p>
-                          <p class="text-muted">Dwuamish Head, Seattle, WA 8:47 AM</p>
-                        </td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                            <i class="tim-icons icon-pencil"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="" checked="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="title">GDPR Compliance</p>
-                          <p class="text-muted">The GDPR is a regulation that requires businesses to protect the personal data and privacy of Europe citizens for transactions that occur within EU member states.</p>
-                        </td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                            <i class="tim-icons icon-pencil"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="title">Solve the issues</p>
-                          <p class="text-muted">Fifty percent of all respondents said they would be more likely to shop at a company </p>
-                        </td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                            <i class="tim-icons icon-pencil"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="title">Release v2.0.0</p>
-                          <p class="text-muted">Ra Ave SW, Seattle, WA 98116, SUA 11:19 AM</p>
-                        </td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                            <i class="tim-icons icon-pencil"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="title">Export the processed files</p>
-                          <p class="text-muted">The report also shows that consumers will not easily forgive a company once a breach exposing their personal data occurs. </p>
-                        </td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                            <i class="tim-icons icon-pencil"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="title">Arival at export process</p>
-                          <p class="text-muted">Capitol Hill, Seattle, WA 12:34 AM</p>
-                        </td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                            <i class="tim-icons icon-pencil"></i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div> -->
-        <!--   <div class="col-lg-7">
+          <div class="col-lg-12">
             <div class="card">
               <div class="card-header">
                 <div class="tools float-right">
@@ -727,8 +558,7 @@
                     <tbody>
                       <tr>
                         <td class="text-center">
-                          <div class="photo"> -->
-                    <!--         <img src="../assets/img/tania.jpg" alt="photo">
+                          <div class="photo">
                           </div>
                         </td>
                         <td>
@@ -760,7 +590,6 @@
                       <tr>
                         <td class="text-center">
                           <div class="photo">
-                            <img src="../assets/img/robi.jpg" alt="photo">
                           </div>
                         </td>
                         <td>
@@ -791,8 +620,7 @@
                       </tr>
                       <tr>
                         <td class="text-center">
-                          <div class="photo"> -->
-          <!--                   <img src="../assets/img/lora.jpg" alt="photo">
+                          <div class="photo">
                           </div>
                         </td>
                         <td>
@@ -824,7 +652,6 @@
                       <tr>
                         <td class="text-center">
                           <div class="photo">
-                            <img src="../assets/img/jana.jpg" alt="photo">
                           </div>
                         </td>
                         <td>
@@ -856,7 +683,6 @@
                       <tr>
                         <td class="text-center">
                           <div class="photo">
-                            <img src="../assets/img/mike.jpg" alt="photo">
                           </div>
                         </td>
                         <td>
@@ -870,7 +696,7 @@
                             <div class="progress">
                               <span class="progress-value">100%</span>
                               <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-                              </div>
+                              </div>s
                             </div>
                           </div>
                         </td>
@@ -888,8 +714,7 @@
                       </tr>
                       <tr>
                         <td class="text-center">
-                          <div class="photo"> -->
-                            <!-- <img src="../assets/img/emilyz.jpg" alt="photo">
+                          <div class="photo">
                           </div>
                         </td>
                         <td>
@@ -920,113 +745,6 @@
                       </tr>
                     </tbody>
                   </table>
-                </div>
-              </div>
-            </div>
-          </div> -->
-          <div class="col-lg-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title">Global Sales by Top Locations</h4>
-                <p class="card-category">All products that were shipped</p>
-              </div>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="table-responsive">
-                      <table class="table">
-                        <tbody>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <!-- <img src="../assets/img/US.png" alt="flag"> -->
-                              </div>
-                            </td>
-                            <td>USA</td>
-                            <td class="text-right">
-                              2.920
-                            </td>
-                            <td class="text-right">
-                              53.23%
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <!-- <img src="../assets/img/DE.png" alt="flag"> -->
-                              </div>
-                            </td>
-                            <td>Germany</td>
-                            <td class="text-right">
-                              1.300
-                            </td>
-                            <td class="text-right">
-                              20.43%
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <!-- <img src="../assets/img/AU.png" alt="flag"> -->
-                              </div>
-                            </td>
-                            <td>Australia</td>
-                            <td class="text-right">
-                              760
-                            </td>
-                            <td class="text-right">
-                              10.35%
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <!-- <img src="../assets/img/GB.png" alt="flag"> -->
-                              </div>
-                            </td>
-                            <td>United Kingdom</td>
-                            <td class="text-right">
-                              690
-                            </td>
-                            <td class="text-right">
-                              7.87%
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <!-- <img src="../assets/img/RO.png" alt="flag"> -->
-                              </div>
-                            </td>
-                            <td>Romania</td>
-                            <td class="text-right">
-                              600
-                            </td>
-                            <td class="text-right">
-                              5.94%
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <!-- <img src="../assets/img/BR.png" alt="flag"> -->
-                              </div>
-                            </td>
-                            <td>Brasil</td>
-                            <td class="text-right">
-                              550
-                            </td>
-                            <td class="text-right">
-                              4.34%
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                  <div class="col-md-6 ml-auto mr-auto">
-                    <div id="worldMap" style="height: 300px;"></div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -1083,13 +801,13 @@
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                 <i class="tim-icons icon-simple-remove"></i>
               </button>
-              <h5 class="modal-title" id="myModalLabel">How Do You Become an Affiliate?</h5>
+              <h5 class="modal-title" id="myModalLabel">My Finance Sim</h5>
             </div>
             <!-- <div class="modal-body"> -->
              <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">Form Elements</h4>
+                  <h4 class="card-title">Enter Information</h4>
                 </div>
                 <div class="card-body">
                   <form method="get" action="/" class="form-horizontal">
@@ -1224,24 +942,24 @@
               <tr><td colspan="3"><b>Enter Mortgage Information:</b></td></tr>
               <tr>
                 <td>Money Down:</td>
-                <td><input type="number" min="0" oninput="validity.valid||(value='');" name="home_money_down" size="12" v-model="home_money_down"></td>
+                <td><input id="home_money_down" type="number" min="0" oninput="validity.valid||(value='');" v-model="home_money_down"></td>
               </tr>
               <tr>
                 <td>Amount of the loan:</td>
-                <td><input type="number" min="0" oninput="validity.valid||(value='');" name="home_principal" size="12" v-model="home_principal"></td>
+                <td><input id="home_principal" type="number" min="0" oninput="validity.valid||(value='');" v-model="home_principal"></td>
               </tr>
               <tr>
                 <td>Annual percentage rate of interest:</td>
-                <td><input type="number" min="0" oninput="validity.valid||(value='');" name="home_interest" size="12" v-model="home_interest"></td>
+                <td><input id="home_interest" type="number" min="0" oninput="validity.valid||(value='');" v-model="home_interest"></td>
               </tr>
               <tr>
                 <td>Repayment period in years:</td>
-                <td><input type="number" min="0" oninput="validity.valid||(value='');" name="home_years" size="12" v-model="home_years"></td>
+                <td><input id="home_years" type="number" min="0" oninput="validity.valid||(value='');" v-model="home_years"></td>
               </tr>
             </table>
           </form>
           <div class="modal-footer">
-            <button type="button" class="" data-dismiss="modal" v-on:click="home_loan(), resumeClock(),startTimer()">Submit</button>
+            <button type="button" class="" data-dismiss="modal" v-on:click="createRealEstate(), resumeClock(),startTimer()">Submit</button>
           </div>
         </div>
       </div>
@@ -1351,7 +1069,7 @@
   var month = "";
   var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   var state = 0;  // 0 = idle, 1 = running, 2 = paused, 3= resumed
-  var speed = 175;
+  var speed = 375;
 
 export default {
 
@@ -1394,250 +1112,251 @@ export default {
         console.log("THIS IS THE STATE",state)
       },
 
-     startTimer() {
-      console.log("THIS IS THE STARTING TIMER",state)
-        clearInterval(this.timer);
-        if (state == 1) {
-          this.timer = setInterval(() => {
-            counter()
-          }, speed)
-          //var intId = setInterval(counter, speed);
-          function counter() {
-            document.getElementById("month").innerHTML = month;
-            document.getElementById("year").innerHTML = year;
-            document.getElementById("age").innerHTML = age;
-            document.getElementById("car_terms").innerHTML = car_terms;
-            document.getElementById("income").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(income);
-            document.getElementById("save_amount").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_amount);
-            document.getElementById("savings").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_account);
-            document.getElementById("checking").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(check_account);
-            document.getElementById("stocks").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(stocks_account);
-            document.getElementById("car_value").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(car_value);
-            document.getElementById("car_principal").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(car_principal);
-            document.getElementById("payments").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(car_payments);
-            document.getElementById("ci_princ").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(ci_princ);
-            document.getElementById("net_worth").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(net_worth);
-            document.getElementById("retired_net_worth").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(net_worth);
+      startTimer() {
+        console.log("THIS IS THE STARTING TIMER",state)
+          clearInterval(this.timer);
+          if (state == 1) {
+            this.timer = setInterval(() => {
+              counter()
+            }, speed)
+            function counter() {
+              document.getElementById("month").innerHTML = month;
+              document.getElementById("year").innerHTML = year;
+              document.getElementById("age").innerHTML = age;
+              document.getElementById("car_terms").innerHTML = car_terms;
+              document.getElementById("income").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(income);
+              document.getElementById("save_amount").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_amount);
+              document.getElementById("savings").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_account);
+              document.getElementById("checking").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(check_account);
+              document.getElementById("stocks").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(stocks_account);
+              document.getElementById("car_value").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(car_value);
+              document.getElementById("car_principal").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(car_principal);
+              document.getElementById("payments").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(car_payments);
+              document.getElementById("ci_princ").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(ci_princ);
+              document.getElementById("net_worth").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(net_worth);
+              document.getElementById("retired_net_worth").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(net_worth);
 
-            document.getElementById("home_terms").innerHTML = home_terms;
-            document.getElementById("home_value").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_value);
-            document.getElementById("home_principal").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_principal);
-            document.getElementById("mortgage").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_payments);
+              document.getElementById("home_terms").innerHTML = home_terms;
+              document.getElementById("home_value").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_value);
+              document.getElementById("home_principal").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_principal);
+              document.getElementById("mortgage").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_payments);
 
-            document.getElementById("inflation").innerHTML = parseFloat(inflation*100).toFixed(2)+"%";
-            console.log(++count);
+              document.getElementById("inflation").innerHTML = parseFloat(inflation*100).toFixed(2)+"%";
+              console.log(++count);
 
-            if (count == 0){
-            // when January hits
-              console.log("testing");
-              oneYear();
-              if (age % 2 === 0) {
-              arrWealth.push(parseInt(net_worth))
-              chartWealth();
 
-              arrSavings.push(parseInt(save_account))
-              chartSavings();
-              console.log("this is arrsavings",arrSavings)
+              if (count == 0){
+              // when January hits
+                oneMonth();
+                oneYear();
+              } else if (count < 11){
+                oneMonth();
+              } else if (count == 11) {
+              // resetting month count to month 1
+                oneMonth();
+                count = -1
               };
 
-            } else if (count == 11) {
-            // resetting month count to month 1
-              count = -1
+              if (car_terms > 0) {
+                car_terms = (car_terms - 1);
+                car_principal = (car_principal - car_pay_b4_i);
+              }
             };
 
-            if (car_terms > 0) {
-              car_terms = (car_terms - 1);
-              car_principal = (car_principal - car_pay_b4_i);
-            }
+            function oneYear() {
+              console.log("this is one year");
+              year += 1;
+              age += 1;
 
-            oneMonth()
-          };
+              if (car_value > 3000) {
+                car_value = (car_value * .91)
+              }
 
-          function oneYear() {
-            console.log("this is one year");
-            year = year + 1
-            age = age + 1
+              if (age == 18) {
+                income = 9725
+              } else if (age == 19) {
+                income = 15062
+              } else if (age == 20) {
+                income = 18513
+              } else if (age == 21) {
+                income = 20712
+              } else if (age == 22) {
+                income = 24447
+              } else if (age == 23) {
+                income = 29814
+              } else if (age == 24) {
+                income = 33164
+              } else if (age == 25) {
+                income = 41461
+              } else if (age == 26) {
+                income = 43945
+              } else if (age == 27) {
+                income = 48376
+              } else if (age == 28) {
+                income = 47399
+              } else if (age == 29) {
+                income = 51638
+              } else if (age == 30) {
+                income = 52706
+              } else if (age == 31) {
+                income = 59068
+              } else if (age == 32) {
+                income = 58708
+              } else if (age == 33) {
+                income = 59082
+              } else if (age == 34) {
+                income = 60506
+              } else if (age == 35) {
+                income = 66320
+              } else if (age == 36) {
+                income = 68082
+              } else if (age == 37) {
+                income = 69128
+              } else if (age == 38) {
+                income = 66746
+              } else if (age == 39) {
+                income = 70235
+              } else if (age == 40) {
+                income = 72731
+              } else if (age == 41) {
+                income = 77143
+              } else if (age == 42) {
+                income = 71286
+              } else if (age == 43) {
+                income = 83279
+              } else if (age == 44) {
+                income = 74478
+              } else if (age == 45) {
+                income = 79101
+              } else if (age == 46) {
+                income = 75233
+              } else if (age == 47) {
+                income = 78354
+              } else if (age == 48) {
+                income = 68728
+              } else if (age == 49) {
+                income = 75458
+              } else if (age == 50) {
+                income = 81711
+              } else if (age == 51) {
+                income = 75777
+              } else if (age == 52) {
+                income = 80279
+              } else if (age == 53) {
+                income = 80802
+              } else if (age == 54) {
+                income = 77406
+              } else if (age == 55) {
+                income = 77308
+              } else if (age == 56) {
+                income = 76857
+              } else if (age == 57) {
+                income = 78139
+              } else if (age == 58) {
+                income = 73165
+              } else if (age == 59) {
+                income = 78624
+              } else if (age == 60) {
+                income = 73392
+              } else if (age == 61) {
+                income = 77592
+              } else if (age == 62) {
+                income = 77624
+              } else if (age == 63) {
+                income = 77189
+              } else if (age == 64) {
+                income = 73604
+              } else if (age == 65) {
+                income = 74420
+                endModal();
+              }
 
-            if (car_value > 3000) {
-              car_value = (car_value * .91)
-            }
-
-            if (age == 18) {
-              income = 9725
-            } else if (age == 19) {
-              income = 15062
-            } else if (age == 20) {
-              income = 18513
-            } else if (age == 21) {
-              income = 20712
-            } else if (age == 22) {
-              income = 24447
-            } else if (age == 23) {
-              income = 29814
-            } else if (age == 24) {
-              income = 33164
-            } else if (age == 25) {
-              income = 41461
-            } else if (age == 26) {
-              income = 43945
-            } else if (age == 27) {
-              income = 48376
-            } else if (age == 28) {
-              income = 47399
-            } else if (age == 29) {
-              income = 51638
-            } else if (age == 30) {
-              income = 52706
-            } else if (age == 31) {
-              income = 59068
-            } else if (age == 32) {
-              income = 58708
-            } else if (age == 33) {
-              income = 59082
-            } else if (age == 34) {
-              income = 60506
-            } else if (age == 35) {
-              income = 66320
-            } else if (age == 36) {
-              income = 68082
-            } else if (age == 37) {
-              income = 69128
-            } else if (age == 38) {
-              income = 66746
-            } else if (age == 39) {
-              income = 70235
-            } else if (age == 40) {
-              income = 72731
-            } else if (age == 41) {
-              income = 77143
-            } else if (age == 42) {
-              income = 71286
-            } else if (age == 43) {
-              income = 83279
-            } else if (age == 44) {
-              income = 74478
-            } else if (age == 45) {
-              income = 79101
-            } else if (age == 46) {
-              income = 75233
-            } else if (age == 47) {
-              income = 78354
-            } else if (age == 48) {
-              income = 68728
-            } else if (age == 49) {
-              income = 75458
-            } else if (age == 50) {
-              income = 81711
-            } else if (age == 51) {
-              income = 75777
-            } else if (age == 52) {
-              income = 80279
-            } else if (age == 53) {
-              income = 80802
-            } else if (age == 54) {
-              income = 77406
-            } else if (age == 55) {
-              income = 77308
-            } else if (age == 56) {
-              income = 76857
-            } else if (age == 57) {
-              income = 78139
-            } else if (age == 58) {
-              income = 73165
-            } else if (age == 59) {
-              income = 78624
-            } else if (age == 60) {
-              income = 73392
-            } else if (age == 61) {
-              income = 77592
-            } else if (age == 62) {
-              income = 77624
-            } else if (age == 63) {
-              income = 77189
-            } else if (age == 64) {
-              income = 73604
-            } else if (age == 65) {
-              income = 74420
-              endModal();
-            } 
-
-            if (income < 22000) {
-              income_tax = .02
-            } else if (income > 22001 && income < 48000) {
-              income_tax = .06
-            } else if (income > 48001 && income < 61000) {
-              income_tax = .08
-            } else if (income > 61001 && income < 312000) {
-              income_tax = .093
-            } else {
-              income_tax = .113
-            }
-
-            stock_market_rate = Math.floor(Math.random() * 12) + 1;
-            stock_market_rate = (stock_market_rate/100)
-            console.log("/////////////stock_market_rate is:", stock_market_rate)
-
-            // home_appreciation = Math.floor(Math.random() * 7) + 1;
-            // console.log("this is the home appreciation rate:", home_appreciation)
-
-            inflation = Math.floor(Math.random() * 4) + 1;
-            inflation = (inflation/100)
-            console.log("/////////////inflation is:", inflation)
-            stocks_account = stocks_account + (stocks_account*stock_market_rate)
-          };
-
-          function oneMonth() {
-            console.log("this is one month");
-            console.log(income);
-            monthly_income = income/12
-            console.log("this is monthly income", monthly_income);
-
-            if (payments > 0) {
-              payments = payments - 1
-              console.log(payments)
-            }
-
-            if (count > 6) {
-              col_bills_rate = Math.floor(Math.random() * 15) + 1;
-              col_bills_rate = col_bills_rate/10
-            } else {
-              col_bills_rate = Math.floor(Math.random() * 10) + 1;
-              col_bills_rate = col_bills_rate/10
-            }
-
-            monthly_income = monthly_income - (monthly_income*income_tax);
-            monthly_income = monthly_income - monthly_bills - ci_monthly - car_payments;
-            col_bill = monthly_income*col_bills_rate;
-            monthly_income = monthly_income - col_bill;
-
-            save_amount = monthly_income*save_rate
-            stocks_amount = monthly_income*stocks_rate
-            monthly_income = monthly_income - (save_amount + stocks_amount)
-            // console.log("++++++++this is net income after save", monthly_income);
-
-            check_account = check_account + monthly_income
-            save_account = save_account + save_amount
-            stocks_account = stocks_account + stocks_amount
-
-            month = (months[count])
-
-            net_worth = stocks_account + check_account + ci_princ
+              if (age % 2 === 0) {
+                arrWealth.push(parseInt(net_worth))
+                chartWealth();
+                console.log("this is arrsavings",arrSavings)
+                }
 
 
-            console.log("this is the princ:", ci_princ)
-            console.log("this is the months:", ci_months)
-            console.log("this is the i:", i)
-            console.log("this is the monthly:", ci_monthly)
-            if (i <= ci_months) {
-              ci_princ += ci_monthly;
-              ci_princ += (ci_princ * (ci_rate / 12));
-              i += 1;
-              console.log(ci_princ);
-              console.log(i);
-              console.log(ci_months);
-            }
-            // console.log(ci_princ.toFixed(2)); //69636.12
-           };
+              if (income < 22000) {
+                income_tax = .02
+              } else if (income > 22001 && income < 48000) {
+                income_tax = .06
+              } else if (income > 48001 && income < 61000) {
+                income_tax = .08
+              } else if (income > 61001 && income < 312000) {
+                income_tax = .093
+              } else {
+                income_tax = .113
+              }
+
+              stock_market_rate = Math.floor(Math.random() * 12) + 1;
+              stock_market_rate = (stock_market_rate/100)
+              console.log("/////////////stock_market_rate is:", stock_market_rate)
+
+              // home_appreciation = Math.floor(Math.random() * 7) + 1;
+              // console.log("this is the home appreciation rate:", home_appreciation)
+
+              inflation = Math.floor(Math.random() * 4) + 1;
+              inflation = (inflation/100)
+              console.log("/////////////inflation is:", inflation)
+              stocks_account = stocks_account + (stocks_account*stock_market_rate)
+            };
+
+            function oneMonth() {
+              month = (months[count])
+
+              console.log(income);
+              monthly_income = income/12
+              console.log("this is monthly income", monthly_income);
+
+              if (payments > 0) {
+                payments = payments - 1
+                console.log(payments)
+              }
+
+              if (count > 6) {
+                col_bills_rate = Math.floor(Math.random() * 15) + 1;
+                console.log("this is col rate", col_bills_rate)
+                col_bills_rate = col_bills_rate/10
+                console.log("this is col rate", col_bills_rate)
+              } else {
+                col_bills_rate = Math.floor(Math.random() * 10) + 1;
+                col_bills_rate = col_bills_rate/10
+              }
+
+              monthly_income = monthly_income - (monthly_income*income_tax);
+              console.log("this is monthly income after tax", monthly_income);
+              monthly_income = monthly_income - monthly_bills - ci_monthly - car_payments;
+              col_bill = monthly_income*col_bills_rate;
+              monthly_income = monthly_income - col_bill;
+
+              save_amount = monthly_income*save_rate
+              stocks_amount = monthly_income*stocks_rate
+              monthly_income = monthly_income - (save_amount + stocks_amount)
+              // console.log("++++++++this is net income after save", monthly_income);
+
+              check_account = check_account + monthly_income
+              save_account = save_account + save_amount
+              stocks_account = stocks_account + stocks_amount
+
+              net_worth = stocks_account + check_account + ci_princ
+
+
+              // console.log("this is the princ:", ci_princ)
+              // console.log("this is the months:", ci_months)
+              // console.log("this is the i:", i)
+              // console.log("this is the monthly:", ci_monthly)
+              if (i <= ci_months) {
+                ci_princ += ci_monthly;
+                ci_princ += (ci_princ * (ci_rate / 12));
+                i += 1;
+                // console.log(ci_princ);
+                // console.log(i);
+                // console.log(ci_months);
+              }
+              // console.log(ci_princ.toFixed(2)); //69636.12
+             };
 
          function chartWealth() {
 
@@ -1684,6 +1403,7 @@ export default {
               myChartData.update();
             });
           };
+
           function chartSavings() {
 
               var chart_labels = ['18', '20', '22', '24', '26', '28', '30', '32', '34', '36', '38', '40', '42', '44', '46', '48', '50', '52', '54', '56', '58', '60', '62', '64'];
@@ -1730,11 +1450,11 @@ export default {
               });
             };
 
-
           function endModal() {
               $('#endModal').modal('show');
               pauseClock();
             };
+
           }
         },
 
@@ -1759,6 +1479,44 @@ export default {
       openRE(){
         $('#buyHouse').modal({backdrop: 'static', keyboard: false}, 'show');
       },
+
+      createRealEstate() {
+            var home_money_down = document.getElementById('home_money_down').value;
+            var home_principal = document.getElementById('home_principal').value;
+            var home_interest = document.getElementById('home_interest').value;
+            var home_years = document.getElementById('home_years').value;
+
+            console.log("this is home interest", home_interest)
+            console.log("this is home principal", home_principal)
+
+            function property(home_money_down, home_principal, home_interest, home_years) {
+              this.home_money_down = home_money_down;
+              this.home_principal = home_principal;
+              this.home_interest = home_interest;
+              this.home_years = home_years;
+            }
+            var NewProperty = new property(home_money_down, home_principal, home_interest, home_years);
+            console.log("THIS IS THE PROPERTY", NewProperty)
+
+          // home_x = Math.pow(1 + home_interest, home_terms);
+          // home_payments = (home_principal*home_x*home_interest)/(home_x-1);
+
+          // if (!isNaN(home_payments) && 
+          //     (home_payments != Number.POSITIVE_INFINITY) &&
+          //     (home_payments != Number.NEGATIVE_INFINITY)) {
+          //     console.log("this is car home_principal", home_principal);
+          //     console.log("this is car home_interest", home_interest);
+          //     console.log("this is car home_payments", home_payments);
+          //     home_value = (home_payments * home_terms);
+          //     home_total_interest = ((home_payments * home_terms) - home_principal);
+          //     home_payments = Math.round(home_payments*100)/100;
+          //     console.log("this is car home_total_interest", home_total_interest);
+          //     home_value = (home_money_down + home_principal);
+          //     console.log("this is car home_value", home_value);
+          // }
+          // check_account = check_account - home_money_down
+          // home_equity = home_money_down
+        },
 
       car_loan() {
         // Get the user's input from the form. Assume it is all valid.
@@ -1844,61 +1602,6 @@ export default {
             ci_months = (ci_years * 12); //10 years of monthly contributions
             check_account = check_account - ci_princ
             i = 1
-      },
-      home_loan() {
-
-
-        function real_estate(ev) {
-          ev.preventDefault();
-          var property = {
-            // home_money_down: document.getElementById('money_down').value,
-            // home_principal: document.getElementById('home_principal').value,
-            // home_interest: document.getElementById('home_interest').value,
-            // home_years: document.getElementById('home_years').value,
-        home_money_down: parseInt(this.home_money_down),
-        home_principal: parseInt(this.home_principal),
-        home_interest: parseInt(this.home_interest) / 100 / 12,
-        home_years: parseInt(this.home_years),
-        home_terms: (home_years * 12),
-        home_pay_b4_i: (home_principal/home_terms),
-
-          }
-
-          properties.push(property);
-          console.log("**********************", property);
-          console.log("**********************", properties);
-
-          };
-  
-
-
-
-        console.log(home_money_down);
-        console.log(home_principal);
-        console.log(home_interest);
-        console.log(home_years);
-        console.log(home_terms);
-
-        home_x = Math.pow(1 + home_interest, home_terms);
-        home_payments = (home_principal*home_x*home_interest)/(home_x-1);
-
-        if (!isNaN(home_payments) && 
-            (home_payments != Number.POSITIVE_INFINITY) &&
-            (home_payments != Number.NEGATIVE_INFINITY)) {
-            console.log("this is car home_principal", home_principal);
-            console.log("this is car home_interest", home_interest);
-            console.log("this is car home_payments", home_payments);
-            home_value = (home_payments * home_terms);
-            home_total_interest = ((home_payments * home_terms) - home_principal);
-            home_payments = Math.round(home_payments*100)/100;
-            console.log("this is car home_total_interest", home_total_interest);
-            home_value = (home_money_down + home_principal);
-            console.log("this is car home_value", home_value);
-        }
-
-        check_account = check_account - home_money_down
-        home_equity = home_money_down
- 
       },
     },
   }
