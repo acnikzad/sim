@@ -751,16 +751,6 @@
           </div>
         </div>
       </div>
-
-
-
-
-<!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-<!--     <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <h1 class="animate__animated animate__bounce">An animated element</h1>
-    <button v-on:click="speedUp()">Speed Up</button>
-    <button v-on:click="speedDown()">Slow Down</button> -->
-    <!-- <div style="background-color: #1a1e34;"> -->
       <h1>The Month is <span id="month"></span></h1>
       <h1>The Year is <span id="year"></span></h1>
       <h3>This years inflation rate: <span id="inflation"></span></h3>
@@ -786,6 +776,9 @@
       <br>
       <h1>Your Net Wealth is: <span id="net_worth"></span></h1>
     </div>
+      <button class="btn btn-primary" data-toggle="modal" v-on:click="buyCar(), pauseClock()">
+                      Classic modal
+                    </button>
       <button v-on:click="buyCar(), pauseClock()">Buy Car</button>
       <br>
       <button v-on:click="openCI(), pauseClock()">Compound Interest</button>
@@ -842,46 +835,47 @@
             </div>
           <!-- </div> -->
           <div class="modal-footer justify-content-center">
-            <button type="button" class="btn btn-primary btn-round" data-dismiss="modal" v-on:click="returnStart(), resumeClock(), startTimer()">Submit</button>
+            <button class="btn btn-success animation-on-hover" type="button" rel="tooltip" data-original-title="Lets get money!" data-placement="bottom" data-dismiss="modal" v-on:click="returnStart(), resumeClock(), startTimer()">Submit</button>
           </div>
         </div>
       </div>
     </div>
 
 <!-- The Car Modal -->
-    <div class="modal fade" id="buyCar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal fade" id="buyCar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Buy a Car</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+          <div class="modal-header justify-content-center">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" v-on:click="resumeClock(), startTimer()">
+              <i class="tim-icons icon-simple-remove"></i>
             </button>
+            <h6 class="title title-up">Modal title</h6>
           </div>
-
-          <form name="loandata">
-            <table>
-              <tr><td colspan="3"><b>Enter Loan Information:</b></td></tr>
-              <tr>
-                <td>Money Down:</td>
-                <td><input type="number" min="0" oninput="validity.valid||(value='');" name="car_money_down" size="12" v-model="car_money_down"></td>
-              </tr>
-              <tr>
-                <td>Amount of the loan:</td>
-                <td><input type="number" min="0" oninput="validity.valid||(value='');" name="car_principal" size="12" v-model="car_principal"></td>
-              </tr>
-              <tr>
-                <td>Annual percentage rate of interest:</td>
-                <td><input type="number" min="0" oninput="validity.valid||(value='');" name="car_interest" size="12" v-model="car_interest"></td>
-              </tr>
-              <tr>
-                <td>Repayment period in years:</td>
-                <td><input type="number" min="0" oninput="validity.valid||(value='');" name="car_years" size="12" v-model="car_years"></td>
-              </tr>
-            </table>
-          </form>
+          <div class="modal-body">
+            <form name="loandata">
+              <table>
+                <tr><td colspan="3"><b>Enter Loan Information:</b></td></tr>
+                <tr>
+                  <td>Money Down:</td>
+                  <td><input type="number" min="0" oninput="validity.valid||(value='');" name="car_money_down" size="12" v-model="car_money_down"></td>
+                </tr>
+                <tr>
+                  <td>Amount of the loan:</td>
+                  <td><input type="number" min="0" oninput="validity.valid||(value='');" name="car_principal" size="12" v-model="car_principal"></td>
+                </tr>
+                <tr>
+                  <td>Annual percentage rate of interest:</td>
+                  <td><input type="number" min="0" oninput="validity.valid||(value='');" name="car_interest" size="12" v-model="car_interest"></td>
+                </tr>
+                <tr>
+                  <td>Repayment period in years:</td>
+                  <td><input type="number" min="0" oninput="validity.valid||(value='');" name="car_years" size="12" v-model="car_years"></td>
+                </tr>
+              </table>
+            </form>  
+          </div>
           <div class="modal-footer">
-            <button type="button" class="" data-dismiss="modal" v-on:click="car_loan(), resumeClock(),startTimer()">Submit</button>
+            <button class="btn btn-success animation-on-hover" type="button" rel="tooltip" data-original-title="Sweet Ride!" data-placement="bottom" data-dismiss="modal" v-on:click="car_loan(), resumeClock(), startTimer()">Submit</button>
           </div>
         </div>
       </div>
