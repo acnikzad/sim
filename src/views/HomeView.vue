@@ -803,13 +803,13 @@
                   <h4 class="card-title">Enter Information</h4>
                 </div>
                 <div class="card-body">
-                  <form method="get" action="/" class="form-horizontal">
+                  <form id="RangeValidation" class="form-horizontal">
                     <div class="row">
                       <label class="col-sm-2 col-form-label">Income Saved:</label>
                       <div class="col-sm-10">
                         <div class="form-group">
-                          <input id="userIncome" class="form-control" type="number" max="50" oninput="validity.valid||(value='');" placeholder="Percentage Saved" v-model="save_rate" required/>
-                          <span class="form-text">A block of help text that breaks onto a new line.</span>
+                          <input id="userIncome" class="form-control" type="number" min="1" max="50" placeholder="Percentage Saved" v-model="save_rate" required/>
+                          <!-- <span class="form-text">A block of help text that breaks onto a new line.</span> -->
                         </div>
                       </div>
                     </div>
@@ -817,7 +817,7 @@
                       <label class="col-sm-2 col-form-label">Income Invested:</label>
                       <div class="col-sm-10">
                         <div class="form-group">
-                          <input id="userIncome" class="form-control" type="number" max="50" oninput="validity.valid||(value='');" placeholder="Percentage Invested in Stocks" v-model="stocks_rate" required/>
+                          <input id="userIncome" class="form-control" type="number" min="1" max="50" placeholder="Percentage Invested in Stocks" v-model="stocks_rate" required/>
                         </div>
                       </div>
                     </div>
@@ -825,7 +825,7 @@
                       <label class="col-sm-2 col-form-label">Monthly Bills:</label>
                       <div class="col-sm-10">
                         <div class="form-group">
-                          <input id="userIncome" class="form-control" type="number" min="0" oninput="validity.valid||(value='');" placeholder="Enter Monthly Bills" v-model="monthly_bills" required/>
+                          <input id="userIncome" class="form-control" type="number" max="800" placeholder="Enter Monthly Bills" v-model="monthly_bills" required/>
                         </div>
                       </div>
                     </div>
@@ -1715,6 +1715,26 @@ export default {
 
       demo.initVectorMap();
 
+    });
+
+    function setFormValidation(id) {
+      $(id).validate({
+        highlight: function(element) {
+          $(element).closest('.form-group').removeClass('has-success').addClass('has-danger');
+          $(element).closest('.form-check').removeClass('has-success').addClass('has-danger');
+        },
+        success: function(element) {
+          $(element).closest('.form-group').removeClass('has-danger').addClass('has-success');
+          $(element).closest('.form-check').removeClass('has-danger').addClass('has-success');
+        },
+        errorPlacement: function(error, element) {
+          $(element).closest('.form-group').append(error);
+        },
+      });
+    };
+
+    $(document).ready(function() {
+      setFormValidation('#RangeValidation');
     });
 </script>
 
