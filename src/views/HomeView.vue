@@ -751,6 +751,10 @@
           </div>
         </div>
       </div>
+      <button class="btn btn-primary" data-toggle="modal" v-on:click="buyCar(), pauseClock()">Buy Car</button>
+      <button class="btn btn-primary" data-toggle="modal" v-on:click="openCI(), pauseClock()">Compound Interest</button>
+      <button class="btn btn-primary" data-toggle="modal" v-on:click="openRE(), pauseClock()">Buy Real Estate</button>
+      <button class="btn btn-primary" data-toggle="modal" v-on:click="openCrypto(), pauseClock()">Buy Crypto</button>
       <h1>The Month is <span id="month"></span></h1>
       <h1>The Year is <span id="year"></span></h1>
       <h3>This years inflation rate: <span id="inflation"></span></h3>
@@ -776,15 +780,8 @@
       <br>
       <h1>Your Net Wealth is: <span id="net_worth"></span></h1>
     </div>
-      <button class="btn btn-primary" data-toggle="modal" v-on:click="buyCar(), pauseClock()">
-                      Classic modal
-                    </button>
-      <button v-on:click="buyCar(), pauseClock()">Buy Car</button>
-      <br>
-      <button v-on:click="openCI(), pauseClock()">Compound Interest</button>
-      <br>
-      <button v-on:click="openRE(), pauseClock()">Buy Real Estate</button>
   <!-- </div> -->
+
 
 <!-- The Start Modal -->
       <div class="modal fade" id="startModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -796,7 +793,7 @@
               </button>
               <h5 class="modal-title" id="myModalLabel">My Finance Sim</h5>
             </div>
-            <!-- <div class="modal-body"> -->
+            <div class="modal-body">
              <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
@@ -833,9 +830,56 @@
                 </div>
               </div>
             </div>
-          <!-- </div> -->
+          </div>
           <div class="modal-footer justify-content-center">
-            <button class="btn btn-success animation-on-hover" type="button" rel="tooltip" data-original-title="Lets get money!" data-placement="bottom" data-dismiss="modal" v-on:click="returnStart(), resumeClock(), startTimer()">Submit</button>
+            <button class="btn btn-primary animation-on-hover" rel="tooltip" data-original-title="Lets get money!" data-placement="bottom" data-dismiss="modal" v-on:click="returnStart(), resumeClock(), startTimer()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- The Crypto Modal -->
+    <div class="modal fade" id="cryptoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-notice">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <i class="tim-icons icon-simple-remove"></i>
+            </button>
+            <h5 class="modal-title" id="myModalLabel">Buy Crypto</h5>
+          </div>
+          <div class="modal-body">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Enter Information</h4>
+                </div>
+                <div class="card-body">
+                  <form id="RangeValidation" class="form-horizontal">
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Initial Investment:</label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input class="form-control" type="number" min="1" max="50" placeholder="1000" v-model="crypto_initial" required/>
+                          <!-- <span class="form-text">A block of help text that breaks onto a new line.</span> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Monthly Crypto Purchases:</label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input class="form-control" type="number" min="1" max="50" placeholder="250" v-model="crypto_monthly" required/>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button class="btn btn-primary animation-on-hover" rel="tooltip" data-original-title="To the moon!" data-placement="bottom" data-dismiss="modal" v-on:click="cryptoAccount(), resumeClock(), startTimer()">Submit</button>
           </div>
         </div>
       </div>
@@ -881,7 +925,7 @@
       </div>
     </div>
 
-<!-- open ci modal-->
+<!-- The Compound Interest Modal-->
     <div class="modal fade" id="openCI" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -920,7 +964,7 @@
       </div>
     </div>
 
-<!-- open RE modal-->
+<!-- The Real Estate Modal-->
     <div class="modal fade" id="buyHouse" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -1006,8 +1050,14 @@
   var stocks_rate = "";
   var stocks_amount = (monthly_income*stocks_rate);
   var stocks_account = 0;
-  var stocks_rate = "";
-  var stock_market_rate = .1
+  var stock_market_rate = "";
+
+  var crypto_rate = "";
+  var crypto_amount = "";
+  var crypto_account = "";
+  var crypto_market_rate = "";
+  var crypto_initial = "";
+  var crypto_monthly = "";
 
   var car_value = "";
   var car_money_down = "";
@@ -1080,7 +1130,6 @@ export default {
       car_payment: 0,
       car_value: 0,
       car_principal: 0,
-
       arrWealth: [],
         };
       },
@@ -1299,7 +1348,6 @@ export default {
 
             function oneMonth() {
               month = (months[count])
-
               console.log(income);
               monthly_income = income/12
               console.log("this is monthly income", monthly_income);
@@ -1319,9 +1367,18 @@ export default {
                 col_bills_rate = col_bills_rate/10
               }
 
+              crypto_rate = Math.floor(Math.random() * 20) + 1;
+              crypto_rate = crypto_rate/10
+              console.log("----------------this is the crypto rate", crypto_rate)
+
+              crypto_account += crypto_monthly;
+              crypto_account = crypto_account*crypto_market_rate;
+              console.log("----------------this is the crypto account", crypto_account)
+
+
               monthly_income = monthly_income - (monthly_income*income_tax);
               console.log("this is monthly income after tax", monthly_income);
-              monthly_income = monthly_income - monthly_bills - ci_monthly - car_payments;
+              monthly_income = monthly_income - monthly_bills - ci_monthly - car_payments - crypto_monthly;
               col_bill = monthly_income*col_bills_rate;
               monthly_income = monthly_income - col_bill;
 
@@ -1334,7 +1391,7 @@ export default {
               save_account = save_account + save_amount
               stocks_account = stocks_account + stocks_amount
 
-              net_worth = stocks_account + check_account + ci_princ
+              net_worth = stocks_account + check_account + ci_princ + crypto_account
 
 
               // console.log("this is the princ:", ci_princ)
@@ -1352,11 +1409,9 @@ export default {
               // console.log(ci_princ.toFixed(2)); //69636.12
              };
 
-         function chartWealth() {
+            function chartWealth() {
 
             var chart_labels = ['18', '20', '22', '24', '26', '28', '30', '32', '34', '36', '38', '40', '42', '44', '46', '48', '50', '52', '54', '56', '58', '60', '62', '64'];
-
-
 
             var ctx = document.getElementById("chartBig1").getContext('2d');
 
@@ -1401,16 +1456,13 @@ export default {
           function chartSavings() {
 
               var chart_labels = ['18', '20', '22', '24', '26', '28', '30', '32', '34', '36', '38', '40', '42', '44', '46', '48', '50', '52', '54', '56', '58', '60', '62', '64'];
-
-  
-
               var ctx = document.getElementById("chartBig1").getContext('2d');
-
               var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
 
               gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
               gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
               gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
+
               var config = {
                 type: 'line',
                 data: {
@@ -1474,23 +1526,27 @@ export default {
         $('#buyHouse').modal({backdrop: 'static', keyboard: false}, 'show');
       },
 
+      openCrypto(){
+        $('#cryptoModal').modal({backdrop: 'static', keyboard: false}, 'show');
+      },
+
       createRealEstate() {
-            var home_money_down = document.getElementById('home_money_down').value;
-            var home_principal = document.getElementById('home_principal').value;
-            var home_interest = document.getElementById('home_interest').value;
-            var home_years = document.getElementById('home_years').value;
+        var home_money_down = document.getElementById('home_money_down').value;
+        var home_principal = document.getElementById('home_principal').value;
+        var home_interest = document.getElementById('home_interest').value;
+        var home_years = document.getElementById('home_years').value;
 
-            console.log("this is home interest", home_interest)
-            console.log("this is home principal", home_principal)
+        console.log("this is home interest", home_interest)
+        console.log("this is home principal", home_principal)
 
-            function property(home_money_down, home_principal, home_interest, home_years) {
-              this.home_money_down = home_money_down;
-              this.home_principal = home_principal;
-              this.home_interest = home_interest;
-              this.home_years = home_years;
-            }
-            var NewProperty = new property(home_money_down, home_principal, home_interest, home_years);
-            console.log("THIS IS THE PROPERTY", NewProperty)
+        function property(home_money_down, home_principal, home_interest, home_years) {
+          this.home_money_down = home_money_down;
+          this.home_principal = home_principal;
+          this.home_interest = home_interest;
+          this.home_years = home_years;
+        }
+        var NewProperty = new property(home_money_down, home_principal, home_interest, home_years);
+        console.log("THIS IS THE PROPERTY", NewProperty)
 
           // home_x = Math.pow(1 + home_interest, home_terms);
           // home_payments = (home_principal*home_x*home_interest)/(home_x-1);
@@ -1548,14 +1604,7 @@ export default {
             console.log("this is car car_value", car_value);
         }
 
-        check_account = check_account - car_money_down
-        // Otherwise, the user's input was probably invalid, so don't
-        // display anything.
-        // else {
-        //     document.loandata.payment.value = "";
-        //     document.loandata.total.value = "";
-        //     document.loandata.totalinterest.value = "";
-        // }
+        check_account -= car_money_down
       },
 
       returnStart() {
@@ -1577,25 +1626,37 @@ export default {
           return false;
         }
 
-
-        monthly_bills = this.monthly_bills;
-        save_rate = this.save_rate || 0;
-        stocks_rate = this.stocks_rate || 0;
+        monthly_bills = parseInt(this.monthly_bills);
+        save_rate = parseInt(this.save_rate) || 0;
+        stocks_rate = parseInt(this.stocks_rate) || 0;
         stock_market_rate = Math.floor(Math.random() * 11) + 1;
-        save_rate = (this.save_rate/100)
-        stocks_rate = (this.stocks_rate/100)
+        save_rate = (parseInt(this.save_rate)/100)
+        stocks_rate = (parseInt(this.stocks_rate)/100)
+      },
+
+      cryptoAccount() {
+        crypto_initial = parseInt(this.crypto_initial);
+        crypto_monthly = parseInt(this.crypto_monthly);
+        console.log("this is the initial crypto dep", crypto_initial);
+        console.log("this is the crypto monthly", crypto_monthly);
+        check_account -= crypto_initial;
+        crypto_account += crypto_initial;
+
+        console.log("++++++++++++ this is the crypto_account", crypto_account)
+
       },
 
       ci_account() {
-            console.log("This is CI:", this.ci_princ, this.ci_rate, this.ci_years, this.ci_monthly);
+        console.log("This is CI:", this.ci_princ, this.ci_rate, this.ci_years, this.ci_monthly);
 
-            ci_princ = parseInt(this.ci_princ); // start deposit
-            ci_rate = parseInt(this.ci_rate) / 100; // monthly deposit (need plus it every year)
-            ci_years = parseInt(this.ci_years); // term years
-            ci_monthly = parseInt(this.ci_monthly); // monthly deposit (need plus it every year)
-            ci_months = (ci_years * 12); //10 years of monthly contributions
-            check_account = check_account - ci_princ
-            i = 1
+        ci_princ = parseInt(this.ci_princ); // start deposit
+        ci_rate = parseInt(this.ci_rate) / 100; // monthly deposit (need plus it every year)
+        ci_years = parseInt(this.ci_years); // term years
+        ci_monthly = parseInt(this.ci_monthly); // monthly deposit (need plus it every year)
+        ci_months = (ci_years * 12); //10 years of monthly contributions
+
+        check_account -= ci_princ
+        i = 1
       },
     },
   }
@@ -1697,7 +1758,6 @@ export default {
             white_color = true;
           }
 
-
         });
 
         $('.light-badge').click(function() {
@@ -1734,6 +1794,11 @@ export default {
     };
 
     $(document).ready(function() {
+
+      setFormValidation('#RegisterValidation');
+      setFormValidation('#TypeValidation');
+      setFormValidation('#LoginValidation');
+      setFormValidation('#RangeValidation');
       setFormValidation('#RangeValidation');
     });
 </script>
