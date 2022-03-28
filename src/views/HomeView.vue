@@ -779,13 +779,14 @@
       <h3>Remaining payments:<span id="home_terms"></span></h3>
       <br>
       <h1>Your Net Wealth is: <span id="net_worth"></span></h1>
+      <h1>Your Crypto Account is: <span id="crypto_account"></span></h1>
     </div>
   <!-- </div> -->
 
 
 <!-- The Start Modal -->
-      <div class="modal fade" id="startModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-notice">
+      <div class="modal fade bd-example-modal-lg" id="startModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -840,7 +841,7 @@
 
 <!-- The Crypto Modal -->
     <div class="modal fade" id="cryptoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-notice">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -860,7 +861,7 @@
                       <label class="col-sm-2 col-form-label">Initial Investment:</label>
                       <div class="col-sm-10">
                         <div class="form-group">
-                          <input class="form-control" type="number" min="1" max="50" placeholder="1000" v-model="crypto_initial" required/>
+                          <input class="form-control" type="number" min="1" placeholder="1000" v-model="crypto_initial" required/>
                           <!-- <span class="form-text">A block of help text that breaks onto a new line.</span> -->
                         </div>
                       </div>
@@ -869,7 +870,7 @@
                       <label class="col-sm-2 col-form-label">Monthly Crypto Purchases:</label>
                       <div class="col-sm-10">
                         <div class="form-group">
-                          <input class="form-control" type="number" min="1" max="50" placeholder="250" v-model="crypto_monthly" required/>
+                          <input class="form-control" type="number" min="1" placeholder="250" v-model="crypto_monthly" required/>
                         </div>
                       </div>
                     </div>
@@ -887,84 +888,193 @@
 
 <!-- The Car Modal -->
     <div class="modal fade" id="buyCar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <div class="modal-header justify-content-center">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" v-on:click="resumeClock(), startTimer()">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
               <i class="tim-icons icon-simple-remove"></i>
             </button>
-            <h6 class="title title-up">Modal title</h6>
+            <h5 class="modal-title" id="myModalLabel">Take a Car Loan</h5>
           </div>
           <div class="modal-body">
-            <form name="loandata">
-              <table>
-                <tr><td colspan="3"><b>Enter Loan Information:</b></td></tr>
-                <tr>
-                  <td>Money Down:</td>
-                  <td><input type="number" min="0" oninput="validity.valid||(value='');" name="car_money_down" size="12" v-model="car_money_down"></td>
-                </tr>
-                <tr>
-                  <td>Amount of the loan:</td>
-                  <td><input type="number" min="0" oninput="validity.valid||(value='');" name="car_principal" size="12" v-model="car_principal"></td>
-                </tr>
-                <tr>
-                  <td>Annual percentage rate of interest:</td>
-                  <td><input type="number" min="0" oninput="validity.valid||(value='');" name="car_interest" size="12" v-model="car_interest"></td>
-                </tr>
-                <tr>
-                  <td>Repayment period in years:</td>
-                  <td><input type="number" min="0" oninput="validity.valid||(value='');" name="car_years" size="12" v-model="car_years"></td>
-                </tr>
-              </table>
-            </form>  
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Enter Information</h4>
+                </div>
+                <div class="card-body">
+                  <form id="RangeValidation" class="form-horizontal">
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Down Payment:</label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" placeholder="5000" name="car_money_down" v-model="car_money_down">
+                          <!-- <span class="form-text">A block of help text that breaks onto a new line.</span> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Amount of Money Borrowed:</label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" name="car_principal" placeholder="20000" v-model="car_principal">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Interest Rate:</label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" name="car_interest" placeholder="8" v-model="car_interest">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Years of Loan:</label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" name="car_years" placeholder="5" v-model="car_years">
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="modal-footer">
-            <button class="btn btn-success animation-on-hover" type="button" rel="tooltip" data-original-title="Sweet Ride!" data-placement="bottom" data-dismiss="modal" v-on:click="car_loan(), resumeClock(), startTimer()">Submit</button>
+          <div class="modal-footer justify-content-center">
+            <button class="btn btn-primary animation-on-hover" rel="tooltip" data-original-title="To the moon!" data-placement="bottom" data-dismiss="modal" v-on:click="car_loan(), resumeClock(), startTimer()">Submit</button>
           </div>
         </div>
       </div>
     </div>
 
 <!-- The Compound Interest Modal-->
-    <div class="modal fade" id="openCI" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal fade" id="openCI" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Open an account with compound interest</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <i class="tim-icons icon-simple-remove"></i>
             </button>
+            <h5 class="modal-title" id="myModalLabel">Open an Account with Compound Interest</h5>
           </div>
-
-          <form name="loandata">
-            <table>
-              <tr><td colspan="3"><b>Enter Account Information:</b></td></tr>
-              <tr>
-                <td>Initial Deposit:</td>
-                <td><input type="number" min="0" oninput="validity.valid||(value='');" name="ci_princ" size="12" placeholder="1000" v-model="ci_princ"></td>
-              </tr>
-              <tr>
-                <td>Monthly Deposits:</td>
-                <td><input type="number" min="0" oninput="validity.valid||(value='');" name="ci_monthly" size="12" placeholder="250" v-model="ci_monthly"></td>
-              </tr>
-              <tr>
-                <td>Interest Rate:</td>
-                <td><input type="number" min="0" oninput="validity.valid||(value='');" name="ci_rate" size="12" placeholder="8" v-model="ci_rate"></td>
-              </tr>
-              <tr>
-                <td>Years:</td>
-                <td><input type="number" min="0" oninput="validity.valid||(value='');" name="ci_rate" size="12" placeholder="30" v-model="ci_years"></td>
-              </tr>
-            </table>
-          </form>
-          <div class="modal-footer">
-            <button type="button" class="" data-dismiss="modal" v-on:click="ci_account(), resumeClock(), startTimer()">Compound Interest</button>
+          <div class="modal-body">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Enter Information</h4>
+                </div>
+                <div class="card-body">
+                  <form id="RangeValidation" class="form-horizontal">
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Initial Deposit:</label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" name="ci_princ" size="12" placeholder="1000" v-model="ci_princ">
+                          <!-- <span class="form-text">A block of help text that breaks onto a new line.</span> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Monthly Contributions:</label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" name="ci_monthly" size="12" placeholder="250" v-model="ci_monthly">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Interest Rate:</label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" name="ci_rate" size="12" placeholder="8" v-model="ci_rate">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Years of Loan:</label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" name="ci_rate" size="12" placeholder="30" v-model="ci_years">
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button class="btn btn-primary animation-on-hover" rel="tooltip" data-original-title="To the moon!" data-placement="bottom" data-dismiss="modal" v-on:click="ci_account(), resumeClock(), startTimer()">Submit</button>
           </div>
         </div>
       </div>
     </div>
 
 <!-- The Real Estate Modal-->
+    <div class="modal fade" id="buyHouse" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <i class="tim-icons icon-simple-remove"></i>
+            </button>
+            <h5 class="modal-title" id="myModalLabel">Purchase Real Estate</h5>
+          </div>
+          <div class="modal-body">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Enter Information</h4>
+                </div>
+                <div class="card-body">
+                  <form id="RangeValidation" class="form-horizontal">
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Down Payment:</label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" name="home_money_down" placeholder="40000" v-model="home_money_down">
+                          <!-- <span class="form-text">A block of help text that breaks onto a new line.</span> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Amount of Money Borrowed:</label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" name="home_principal" placeholder="200000" v-model="home_principal">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Interest Rate:</label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" name="home_interest" placeholder="4" v-model="home_interest">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Years of Loan:</label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" name="home_years" placeholder="30" v-model="home_years">
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button class="btn btn-primary animation-on-hover" rel="tooltip" data-original-title="To the moon!" data-placement="bottom" data-dismiss="modal" v-on:click="car_loan(), resumeClock(), startTimer()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="modal fade" id="buyHouse" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -1054,7 +1164,7 @@
 
   var crypto_rate = "";
   var crypto_amount = "";
-  var crypto_account = "";
+  var crypto_account = 0;
   var crypto_market_rate = "";
   var crypto_initial = "";
   var crypto_monthly = "";
@@ -1183,6 +1293,7 @@ export default {
               document.getElementById("home_value").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_value);
               document.getElementById("home_principal").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_principal);
               document.getElementById("mortgage").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_payments);
+              document.getElementById("crypto_account").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(crypto_account);
 
               document.getElementById("inflation").innerHTML = parseFloat(inflation*100).toFixed(2)+"%";
               console.log(++count);
@@ -1372,7 +1483,7 @@ export default {
               console.log("----------------this is the crypto rate", crypto_rate)
 
               crypto_account += crypto_monthly;
-              crypto_account = crypto_account*crypto_market_rate;
+              // crypto_account = crypto_account*crypto_market_rate;
               console.log("----------------this is the crypto account", crypto_account)
 
 
@@ -1411,58 +1522,15 @@ export default {
 
             function chartWealth() {
 
-            var chart_labels = ['18', '20', '22', '24', '26', '28', '30', '32', '34', '36', '38', '40', '42', '44', '46', '48', '50', '52', '54', '56', '58', '60', '62', '64'];
-
-            var ctx = document.getElementById("chartBig1").getContext('2d');
-
-            var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
-
-            gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
-            gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
-            gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
-            var config = {
-              type: 'line',
-              data: {
-                labels: chart_labels,
-                datasets: [{
-                  label: "Net Wealth",
-                  fill: true,
-                  backgroundColor: gradientStroke,
-                  borderColor: '#d346b1',
-                  borderWidth: 2,
-                  borderDash: [],
-                  borderDashOffset: 0.0,
-                  pointBackgroundColor: '#d346b1',
-                  pointBorderColor: 'rgba(255,255,255,0)',
-                  pointHoverBackgroundColor: '#d346b1',
-                  pointBorderWidth: 20,
-                  pointHoverRadius: 4,
-                  pointHoverBorderWidth: 15,
-                  pointRadius: 4,
-                  data: arrWealth,
-                }]
-              },
-              options: gradientChartOptionsConfigurationWithTooltipPurple
-            };
-            var myChartData = new Chart(ctx, config);
-            $("#0").click(function() {
-              var data = myChartData.config.data;
-              data.datasets[0].data = chart_data;
-              data.labels = chart_labels;
-              myChartData.update();
-            });
-          };
-
-          function chartSavings() {
-
               var chart_labels = ['18', '20', '22', '24', '26', '28', '30', '32', '34', '36', '38', '40', '42', '44', '46', '48', '50', '52', '54', '56', '58', '60', '62', '64'];
+
               var ctx = document.getElementById("chartBig1").getContext('2d');
+
               var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
 
               gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
               gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
               gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
-
               var config = {
                 type: 'line',
                 data: {
@@ -1482,10 +1550,10 @@ export default {
                     pointHoverRadius: 4,
                     pointHoverBorderWidth: 15,
                     pointRadius: 4,
-                    data: arrSavings,
+                    data: arrWealth,
                   }]
                 },
-                options: gradientChartOptionsConfigurationWithTooltipGreen
+                options: gradientChartOptionsConfigurationWithTooltipPurple
               };
               var myChartData = new Chart(ctx, config);
               $("#0").click(function() {
@@ -1496,11 +1564,53 @@ export default {
               });
             };
 
+          function chartSavings() {
+
+            var chart_labels = ['18', '20', '22', '24', '26', '28', '30', '32', '34', '36', '38', '40', '42', '44', '46', '48', '50', '52', '54', '56', '58', '60', '62', '64'];
+            var ctx = document.getElementById("chartBig1").getContext('2d');
+            var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+            gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
+            gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
+            gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
+
+            var config = {
+              type: 'line',
+              data: {
+                labels: chart_labels,
+                datasets: [{
+                  label: "Net Wealth",
+                  fill: true,
+                  backgroundColor: gradientStroke,
+                  borderColor: '#d346b1',
+                  borderWidth: 2,
+                  borderDash: [],
+                  borderDashOffset: 0.0,
+                  pointBackgroundColor: '#d346b1',
+                  pointBorderColor: 'rgba(255,255,255,0)',
+                  pointHoverBackgroundColor: '#d346b1',
+                  pointBorderWidth: 20,
+                  pointHoverRadius: 4,
+                  pointHoverBorderWidth: 15,
+                  pointRadius: 4,
+                  data: arrSavings,
+                }]
+              },
+              options: gradientChartOptionsConfigurationWithTooltipGreen
+            };
+            var myChartData = new Chart(ctx, config);
+            $("#0").click(function() {
+              var data = myChartData.config.data;
+              data.datasets[0].data = chart_data;
+              data.labels = chart_labels;
+              myChartData.update();
+            });
+          };
+
           function endModal() {
               $('#endModal').modal('show');
               pauseClock();
             };
-
           }
         },
 
@@ -1569,13 +1679,9 @@ export default {
         },
 
       car_loan() {
-        // Get the user's input from the form. Assume it is all valid.
-        // Convert interest from a percentage to a decimal, and convert from
-        // an annual rate to a monthly rate. Convert payment period in years
-        // to the number of monthly payments.
         car_money_down = parseInt(this.car_money_down);
         car_principal = parseInt(this.car_principal);
-        car_interest = parseInt(this.car_interest) / 100 / 12;
+        car_interest = (parseInt(this.car_interest)/100) /12;
         car_years = parseInt(this.car_years);
         car_terms = (car_years * 12);
         car_pay_b4_i = (car_principal/car_terms);
@@ -1630,20 +1736,18 @@ export default {
         save_rate = parseInt(this.save_rate) || 0;
         stocks_rate = parseInt(this.stocks_rate) || 0;
         stock_market_rate = Math.floor(Math.random() * 11) + 1;
-        save_rate = (parseInt(this.save_rate)/100)
-        stocks_rate = (parseInt(this.stocks_rate)/100)
+        save_rate = (parseInt(this.save_rate)/100);
+        stocks_rate = (parseInt(this.stocks_rate)/100);
       },
 
       cryptoAccount() {
-        crypto_initial = parseInt(this.crypto_initial);
-        crypto_monthly = parseInt(this.crypto_monthly);
+        crypto_initial = this.crypto_initial;
+        crypto_monthly = this.crypto_monthly;
         console.log("this is the initial crypto dep", crypto_initial);
         console.log("this is the crypto monthly", crypto_monthly);
+        console.log("++++++++++++ this is the crypto_account", crypto_account);
         check_account -= crypto_initial;
         crypto_account += crypto_initial;
-
-        console.log("++++++++++++ this is the crypto_account", crypto_account)
-
       },
 
       ci_account() {
