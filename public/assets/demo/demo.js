@@ -1001,8 +1001,6 @@ demo = {
 
     var chart_labels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
     var chart_data = [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100];
-    console.log("this is arrWealth", arrWealth)
-
 
     var ctx = document.getElementById("chartBig1").getContext('2d');
 

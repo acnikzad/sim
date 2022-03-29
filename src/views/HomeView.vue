@@ -298,26 +298,33 @@
                       </label>
                       <label class="btn btn-sm btn-primary btn-simple" id="1">
                         <input type="radio" class="d-none d-sm-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Savings</span>
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Savings Act</span>
                         <span class="d-block d-sm-none">
                           <i class="tim-icons icon-gift-2"></i>
                         </span>
                       </label>
                       <label class="btn btn-sm btn-primary btn-simple" id="2">
                         <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Investing</span>
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Stocks Act</span>
                         <span class="d-block d-sm-none">
                           <i class="tim-icons icon-tap-02"></i>
                         </span>
                       </label>
                       <label class="btn btn-sm btn-primary btn-simple" id="3">
+                        <input type="radio" class="d-none d-sm-none" name="options">
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Compound Act</span>
+                        <span class="d-block d-sm-none">
+                          <i class="tim-icons icon-gift-2"></i>
+                        </span>
+                      </label>
+                      <label class="btn btn-sm btn-primary btn-simple" id="4">
                         <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Crypto</span>
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Crypto Act</span>
                         <span class="d-block d-sm-none">
                           <i class="tim-icons icon-tap-02"></i>
                         </span>
                       </label>
-                      <label class="btn btn-sm btn-primary btn-simple" id="3">
+                      <label class="btn btn-sm btn-primary btn-simple" id="5">
                         <input type="radio" class="d-none" name="options">
                         <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Real Estate</span>
                         <span class="d-block d-sm-none">
@@ -806,7 +813,7 @@
                       <label class="col-sm-2 col-form-label">Income Saved:</label>
                       <div class="col-sm-10">
                         <div class="form-group">
-                          <input id="userIncome" class="form-control" type="number" min="1" max="50" placeholder="Percentage Saved" v-model="save_rate" required/>
+                          <input class="form-control" type="number" min="1" max="50" placeholder="Percentage Saved" v-model="save_rate" required/>
                           <!-- <span class="form-text">A block of help text that breaks onto a new line.</span> -->
                         </div>
                       </div>
@@ -815,7 +822,7 @@
                       <label class="col-sm-2 col-form-label">Income Invested:</label>
                       <div class="col-sm-10">
                         <div class="form-group">
-                          <input id="userIncome" class="form-control" type="number" min="1" max="50" placeholder="Percentage Invested in Stocks" v-model="stocks_rate" required/>
+                          <input class="form-control" type="number" min="1" max="50" placeholder="Percentage Invested in Stocks" v-model="stocks_rate" required/>
                         </div>
                       </div>
                     </div>
@@ -823,7 +830,7 @@
                       <label class="col-sm-2 col-form-label">Monthly Bills:</label>
                       <div class="col-sm-10">
                         <div class="form-group">
-                          <input id="userIncome" class="form-control" type="number" max="800" placeholder="Enter Monthly Bills" v-model="monthly_bills" required/>
+                          <input class="form-control" type="number" max="800" placeholder="Enter Monthly Bills" v-model="monthly_bills" required/>
                         </div>
                       </div>
                     </div>
@@ -1034,7 +1041,7 @@
                       <label class="col-sm-2 col-form-label">Down Payment:</label>
                       <div class="col-sm-10">
                         <div class="form-group">
-                          <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" name="home_money_down" placeholder="40000" v-model="home_money_down">
+                          <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" id="home_money_down" placeholder="40000" v-model="home_money_down">
                           <!-- <span class="form-text">A block of help text that breaks onto a new line.</span> -->
                         </div>
                       </div>
@@ -1043,7 +1050,7 @@
                       <label class="col-sm-2 col-form-label">Amount of Money Borrowed:</label>
                       <div class="col-sm-10">
                         <div class="form-group">
-                          <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" name="home_principal" placeholder="200000" v-model="home_principal">
+                          <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" id="home_principal" placeholder="200000" v-model="home_principal">
                         </div>
                       </div>
                     </div>
@@ -1051,7 +1058,7 @@
                       <label class="col-sm-2 col-form-label">Interest Rate:</label>
                       <div class="col-sm-10">
                         <div class="form-group">
-                          <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" name="home_interest" placeholder="4" v-model="home_interest">
+                          <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" id="home_interest" placeholder="4" v-model="home_interest">
                         </div>
                       </div>
                     </div>
@@ -1059,7 +1066,7 @@
                       <label class="col-sm-2 col-form-label">Years of Loan:</label>
                       <div class="col-sm-10">
                         <div class="form-group">
-                          <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" name="home_years" placeholder="30" v-model="home_years">
+                          <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" id="home_years" placeholder="30" v-model="home_years">
                         </div>
                       </div>
                     </div>
@@ -1069,45 +1076,7 @@
             </div>
           </div>
           <div class="modal-footer justify-content-center">
-            <button class="btn btn-primary animation-on-hover" rel="tooltip" data-original-title="To the moon!" data-placement="bottom" data-dismiss="modal" v-on:click="car_loan(), resumeClock(), startTimer()">Submit</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="buyHouse" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Buy Real Estate</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-
-          <form name="loandata">
-            <table>
-              <tr><td colspan="3"><b>Enter Mortgage Information:</b></td></tr>
-              <tr>
-                <td>Money Down:</td>
-                <td><input id="home_money_down" type="number" min="0" oninput="validity.valid||(value='');" v-model="home_money_down"></td>
-              </tr>
-              <tr>
-                <td>Amount of the loan:</td>
-                <td><input id="home_principal" type="number" min="0" oninput="validity.valid||(value='');" v-model="home_principal"></td>
-              </tr>
-              <tr>
-                <td>Annual percentage rate of interest:</td>
-                <td><input id="home_interest" type="number" min="0" oninput="validity.valid||(value='');" v-model="home_interest"></td>
-              </tr>
-              <tr>
-                <td>Repayment period in years:</td>
-                <td><input id="home_years" type="number" min="0" oninput="validity.valid||(value='');" v-model="home_years"></td>
-              </tr>
-            </table>
-          </form>
-          <div class="modal-footer">
-            <button type="button" class="" data-dismiss="modal" v-on:click="createRealEstate(), resumeClock(),startTimer()">Submit</button>
+            <button class="btn btn-primary animation-on-hover" rel="tooltip" data-original-title="To the moon!" data-placement="bottom" data-dismiss="modal" v-on:click="createRealEstate(), resumeClock(), startTimer()">Submit</button>
           </div>
         </div>
       </div>
@@ -1166,8 +1135,8 @@
   var crypto_amount = "";
   var crypto_account = 0;
   var crypto_market_rate = "";
-  var crypto_initial = "";
-  var crypto_monthly = "";
+  var crypto_initial = 0;
+  var crypto_monthly = 0;
 
   var car_value = "";
   var car_money_down = "";
@@ -1184,10 +1153,10 @@
   var home_value = "";
   var home_equity = "";
   var property_tax = "";
-  var home_money_down = "";
-  var home_principal = "";
-  var home_interest = "";
-  var home_years = "";
+  var home_money_down = 0;
+  var home_principal = 0;
+  var home_interest = 0;
+  var home_years = 0;
   var home_terms = "";
   var home_payments = "";
   var home_pay_b4_i = "";
@@ -1211,8 +1180,12 @@
   var income_tax = 0.08;
   var inflation = 0;
   var net_worth = "";
+
   var arrWealth = [];
   var arrSavings = [];
+  var arrInvesting = [];
+  var arrCI = [];
+  var arrCrypto = [];
 
   var count = -1;
   var rate = .4;
@@ -1241,6 +1214,9 @@ export default {
       car_value: 0,
       car_principal: 0,
       arrWealth: [],
+      arrSavings: [],
+      arrCI: [],
+      arrCrypto: [],
         };
       },
 
@@ -1425,10 +1401,18 @@ export default {
                 endModal();
               }
 
-              if (age % 2 === 0) {
-                arrWealth.push(parseInt(net_worth))
+              if (age % 1 === 0) {
+                arrWealth.push(parseInt(net_worth));
+                arrSavings.push(parseInt(save_account));
+                arrInvesting.push(parseInt(stocks_account));
+                arrCI.push(parseInt(ci_princ));
+                arrCrypto.push(parseInt(crypto_account));
+
                 chartWealth();
-                console.log("this is arrsavings",arrSavings)
+                console.log("$$$$$$$$$$$$$$$$this is arrinvesting",arrInvesting)
+                console.log("$$$$$$$$$$$$$$$$this is arrsavings",arrSavings)
+                console.log("$$$$$$$$$$$$$$$$this is arrCI",arrCI)
+                console.log("$$$$$$$$$$$$$$$$this is arrCrypto",arrCrypto)
                 }
 
 
@@ -1478,11 +1462,12 @@ export default {
                 col_bills_rate = col_bills_rate/10
               }
 
-              crypto_rate = Math.floor(Math.random() * 20) + 1;
-              crypto_rate = crypto_rate/10
-              console.log("----------------this is the crypto rate", crypto_rate)
-
               crypto_account += crypto_monthly;
+              crypto_rate = (Math.floor(Math.random() * 150) - 30)/100;
+              // crypto rate randomly chosen between -30% - +120%
+              crypto_account = crypto_account + (crypto_rate*crypto_account)
+              
+              console.log("----------------this is the crypto rate", crypto_rate)
               // crypto_account = crypto_account*crypto_market_rate;
               console.log("----------------this is the crypto account", crypto_account)
 
@@ -1562,50 +1547,86 @@ export default {
                 data.labels = chart_labels;
                 myChartData.update();
               });
+              $("#1").click(function() {
+                var chart_data = arrSavings;
+                var data = myChartData.config.data;
+                data.datasets[0].data = chart_data;
+                data.labels = chart_labels;
+                myChartData.update();
+              });
+              $("#2").click(function() {
+                var chart_data = arrCI;
+                var data = myChartData.config.data;
+                data.datasets[0].data = chart_data;
+                data.labels = chart_labels;
+                myChartData.update();
+              });
+
+              $("#3").click(function() {
+                var chart_data = arrCI;
+                var data = myChartData.config.data;
+                data.datasets[0].data = chart_data;
+                data.labels = chart_labels;
+                myChartData.update();
+              });
+              $("#4").click(function() {
+                var chart_data = arrCrypto;
+                var data = myChartData.config.data;
+                data.datasets[0].data = chart_data;
+                data.labels = chart_labels;
+                myChartData.update();
+              });
+              $("#5").click(function() {
+                var chart_data = arrCrypto;
+                var data = myChartData.config.data;
+                data.datasets[0].data = chart_data;
+                data.labels = chart_labels;
+                myChartData.update();
+              });
             };
 
-          function chartSavings() {
+          // function chartSavings() {
 
-            var chart_labels = ['18', '20', '22', '24', '26', '28', '30', '32', '34', '36', '38', '40', '42', '44', '46', '48', '50', '52', '54', '56', '58', '60', '62', '64'];
-            var ctx = document.getElementById("chartBig1").getContext('2d');
-            var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+          //   var chart_labels = ['18', '20', '22', '24', '26', '28', '30', '32', '34', '36', '38', '40', '42', '44', '46', '48', '50', '52', '54', '56', '58', '60', '62', '64'];
+          //   var ctx = document.getElementById("chartBig1").getContext('2d');
+          //   var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
 
-            gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
-            gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
-            gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
+          //   gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
+          //   gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
+          //   gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
 
-            var config = {
-              type: 'line',
-              data: {
-                labels: chart_labels,
-                datasets: [{
-                  label: "Net Wealth",
-                  fill: true,
-                  backgroundColor: gradientStroke,
-                  borderColor: '#d346b1',
-                  borderWidth: 2,
-                  borderDash: [],
-                  borderDashOffset: 0.0,
-                  pointBackgroundColor: '#d346b1',
-                  pointBorderColor: 'rgba(255,255,255,0)',
-                  pointHoverBackgroundColor: '#d346b1',
-                  pointBorderWidth: 20,
-                  pointHoverRadius: 4,
-                  pointHoverBorderWidth: 15,
-                  pointRadius: 4,
-                  data: arrSavings,
-                }]
-              },
-              options: gradientChartOptionsConfigurationWithTooltipGreen
-            };
-            var myChartData = new Chart(ctx, config);
-            $("#0").click(function() {
-              var data = myChartData.config.data;
-              data.datasets[0].data = chart_data;
-              data.labels = chart_labels;
-              myChartData.update();
-            });
-          };
+          //   var config = {
+          //     type: 'line',
+          //     data: {
+          //       labels: chart_labels,
+          //       datasets: [{
+          //         label: "Net Wealth",
+          //         fill: true,
+          //         backgroundColor: gradientStroke,
+          //         borderColor: '#d346b1',
+          //         borderWidth: 2,
+          //         borderDash: [],
+          //         borderDashOffset: 0.0,
+          //         pointBackgroundColor: '#d346b1',
+          //         pointBorderColor: 'rgba(255,255,255,0)',
+          //         pointHoverBackgroundColor: '#d346b1',
+          //         pointBorderWidth: 20,
+          //         pointHoverRadius: 4,
+          //         pointHoverBorderWidth: 15,
+          //         pointRadius: 4,
+          //         data: arrSavings,
+          //       }]
+          //     },
+          //     options: gradientChartOptionsConfigurationWithTooltipGreen
+          //   };
+          //   var myChartData = new Chart(ctx, config);
+          //   $("#1").click(function() {
+          //     var data = myChartData.config.data;
+          //     data.datasets[0].data = chart_data;
+          //     data.labels = chart_labels;
+          //     myChartData.update();
+          //   });
+          // };
 
           function endModal() {
               $('#endModal').modal('show');
@@ -1876,7 +1897,6 @@ export default {
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
       demo.initDashboardPageCharts();
-
       demo.initVectorMap();
 
     });
@@ -1899,11 +1919,8 @@ export default {
 
     $(document).ready(function() {
 
-      setFormValidation('#RegisterValidation');
-      setFormValidation('#TypeValidation');
-      setFormValidation('#LoginValidation');
       setFormValidation('#RangeValidation');
-      setFormValidation('#RangeValidation');
+
     });
 </script>
 
