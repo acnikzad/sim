@@ -519,34 +519,27 @@
               </div>
             </div>
           </div>
+
+          <div v-for="property in properties">
+            <p>equity: {{property.equity}}</p>
+          </div>
+
+
           <div class="col-lg-12">
             <div class="card">
               <div class="card-header">
-                <div class="tools float-right">
-                  <div class="dropdown">
-                    <button type="button" class="btn btn-link dropdown-toggle btn-icon" data-toggle="dropdown">
-                      <i class="tim-icons icon-settings-gear-63"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                      <a class="dropdown-item" href="#pablo">Action</a>
-                      <a class="dropdown-item" href="#pablo">Another action</a>
-                      <a class="dropdown-item" href="#pablo">Something else</a>
-                      <a class="dropdown-item text-danger" href="#pablo">Remove Data</a>
-                    </div>
-                  </div>
-                </div>
                 <h5 class="card-title">Management Table</h5>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table">
+                  <table class="table" v-for="propertyObj in properties">
                     <thead class="text-primary">
                       <tr>
                         <th class="text-center">
                           #
                         </th>
                         <th>
-                          Name
+                          {{propertyObj.home_}}
                         </th>
                         <th>
                           Job Position
@@ -569,7 +562,7 @@
                           </div>
                         </td>
                         <td>
-                          Tania Mike
+                          Name
                         </td>
                         <td>
                           Develop
@@ -810,27 +803,27 @@
                 <div class="card-body">
                   <form id="RangeValidation" class="form-horizontal">
                     <div class="row">
-                      <label class="col-sm-2 col-form-label">Income Saved:</label>
+                      <label class="col-sm-2 col-form-label">Percentage of Income Saved:</label>
                       <div class="col-sm-10">
                         <div class="form-group">
-                          <input class="form-control" type="number" min="1" max="50" placeholder="Percentage Saved" v-model="save_rate" required/>
+                          <input class="form-control" type="number" min="1" max="50" placeholder="15" v-model="save_rate" required/>
                           <!-- <span class="form-text">A block of help text that breaks onto a new line.</span> -->
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <label class="col-sm-2 col-form-label">Income Invested:</label>
+                      <label class="col-sm-2 col-form-label">Percentage of Income Invested:</label>
                       <div class="col-sm-10">
                         <div class="form-group">
-                          <input class="form-control" type="number" min="1" max="50" placeholder="Percentage Invested in Stocks" v-model="stocks_rate" required/>
+                          <input class="form-control" type="number" min="1" max="50" placeholder="15" v-model="stocks_rate" required/>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <label class="col-sm-2 col-form-label">Monthly Bills:</label>
-                      <div class="col-sm-10">
+                      <div class="col-sm-10">s
                         <div class="form-group">
-                          <input class="form-control" type="number" max="800" placeholder="Enter Monthly Bills" v-model="monthly_bills" required/>
+                          <input class="form-control" type="number" max="800" placeholder="800" v-model="monthly_bills" required/>
                         </div>
                       </div>
                     </div>
@@ -1163,7 +1156,6 @@
   var home_total_payments = "";
   var home_total_interest = "";
   var home_x = "";
-  var properties = {};
   var property = {};
 
   var check_account = 1000;
@@ -1209,6 +1201,8 @@ export default {
       income_tax: .08,
       check_account: 500,
       monthly_bills:"",
+      home_principal: null,
+      properties: [],
       speed:null,
       car_payment: 0,
       car_value: 0,
@@ -1230,6 +1224,20 @@ export default {
 
     methods: {
 
+      // var properties = [
+      //   {
+      //     home_years: 2000,
+      //     home_principal: 450
+      //   },
+      //   {
+      //     home_years: 1000,
+      //     home_principal: 890
+      //   }
+      // ]
+      // properties.forEach((singleproperty) => {
+      //   return singleproperty.home_principal * 5
+      // })
+
       resumeClock() {
         state = 1
         console.log("THIS IS THE STATE",state)
@@ -1242,10 +1250,11 @@ export default {
       },
 
       startTimer() {
+        var that = this
         console.log("THIS IS THE STARTING TIMER",state)
-          clearInterval(this.timer);
+          clearInterval(that.timer);
           if (state == 1) {
-            this.timer = setInterval(() => {
+            that.timer = setInterval(() => {
               counter()
             }, speed)
             function counter() {
@@ -1398,6 +1407,9 @@ export default {
                 income = 73604
               } else if (age == 65) {
                 income = 74420
+                that.pauseClock()
+                // clearInterval(this.timer);
+                // state = 0
                 endModal();
               }
 
@@ -1630,7 +1642,7 @@ export default {
 
           function endModal() {
               $('#endModal').modal('show');
-              pauseClock();
+              // pauseClock();
             };
           }
         },
@@ -1662,41 +1674,46 @@ export default {
       },
 
       createRealEstate() {
-        var home_money_down = document.getElementById('home_money_down').value;
-        var home_principal = document.getElementById('home_principal').value;
-        var home_interest = document.getElementById('home_interest').value;
-        var home_years = document.getElementById('home_years').value;
+        var home_money_down = this.home_money_down;
+        var home_principal = this.home_principal;
+        var home_interest = (this.home_interest/100)/12;
+        var home_years = this.home_years;
+        var home_equity = home_money_down + home_principal;
+        var home_terms = home_years * 12;
 
-        console.log("this is home interest", home_interest)
-        console.log("this is home principal", home_principal)
+              // Now compute the monthly payment figure, using esoteric math.
+        x = Math.pow(1 + home_interest, home_terms);
+        var home_mortgage = (home_principal*x*home_interest)/(x-1);
+        console.log("this is home mortgage", home_mortgage)
+        console.log("this is home mortgage", home_equity)
+        // Check that the result is a finite number. If so, display the results.
+        if (!isNaN(home_mortgage) && 
+            (home_mortgage != Number.POSITIVE_INFINITY) &&
+            (home_mortgage != Number.NEGATIVE_INFINITY)) {
+            console.log("this is car home_principal", home_principal);
+            console.log("this is car home_interest", home_interest);
+            console.log("this is car home_mortgage", home_mortgage);
+            home_mortgage = Math.round(home_mortgage*100)/100;
+          }
 
-        function property(home_money_down, home_principal, home_interest, home_years) {
-          this.home_money_down = home_money_down;
-          this.home_principal = home_principal;
-          this.home_interest = home_interest;
-          this.home_years = home_years;
+        console.log("this is home mortgage", home_mortgage)
+        // console.log("this is home principal", home_principal)
+
+        var propertyObj = {
+          home_money_down: parseInt(home_money_down),
+          home_principal: home_principal,
+          home_interest: parseInt(home_interest),
+          home_years: parseInt(home_years),
+          home_equity: parseInt(home_equity),
+          home_terms: parseInt(home_terms),
+          home_mortgage: parseInt(home_mortgage),
         }
-        var NewProperty = new property(home_money_down, home_principal, home_interest, home_years);
-        console.log("THIS IS THE PROPERTY", NewProperty)
 
-          // home_x = Math.pow(1 + home_interest, home_terms);
-          // home_payments = (home_principal*home_x*home_interest)/(home_x-1);
+        //propertyObj.home_years -= 1
 
-          // if (!isNaN(home_payments) && 
-          //     (home_payments != Number.POSITIVE_INFINITY) &&
-          //     (home_payments != Number.NEGATIVE_INFINITY)) {
-          //     console.log("this is car home_principal", home_principal);
-          //     console.log("this is car home_interest", home_interest);
-          //     console.log("this is car home_payments", home_payments);
-          //     home_value = (home_payments * home_terms);
-          //     home_total_interest = ((home_payments * home_terms) - home_principal);
-          //     home_payments = Math.round(home_payments*100)/100;
-          //     console.log("this is car home_total_interest", home_total_interest);
-          //     home_value = (home_money_down + home_principal);
-          //     console.log("this is car home_value", home_value);
-          // }
-          // check_account = check_account - home_money_down
-          // home_equity = home_money_down
+        this.properties.push(propertyObj);
+        console.log("THIS IS THE PROPERTY", this.properties)
+
         },
 
       car_loan() {

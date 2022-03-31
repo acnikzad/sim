@@ -240,7 +240,7 @@ demo = {
         intersect: 0,
         position: "nearest"
       },
-      responsive: true,
+      responsive: false,
       scales: {
         yAxes: [{
           barPercentage: 1.6,
