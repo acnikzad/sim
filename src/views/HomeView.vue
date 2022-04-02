@@ -520,227 +520,68 @@
             </div>
           </div>
 
-          <div>
-            <p id="object"></p>
-          </div>
+      <!--     home_value: parseInt(home_value),
+          home_money_down: parseInt(home_money_down),
+          home_principal: parseInt(home_principal),
+          home_interest: parseInt(home_interest),
+          home_years: parseInt(home_years),
+          home_equity: parseInt(home_equity),
+          home_terms: parseInt(home_terms),
+          home_mortgage: parseInt(home_mortgage), -->
 
 
           <div class="col-lg-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Management Table</h5>
+                <h5 class="card-title">Real Estate</h5>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table" v-for="propertyObj in properties">
+                  <table class="table">
                     <thead class="text-primary">
                       <tr>
                         <th class="text-center">
-                          #
+                          Property Value
                         </th>
                         <th>
-                          {{propertyObj.home_}}
+                          Mortgage Payment
                         </th>
                         <th>
-                          Job Position
+                          Equity
                         </th>
                         <th>
-                          Milestone
+                          Loan Principal
                         </th>
                         <th class="text-right">
-                          Salary
+                          Interest
                         </th>
                         <th class="text-right">
-                          Actions
+                          Terms Left
                         </th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody v-for="propertyObj in properties">
                       <tr>
-                        <td class="text-center">
-                          <div class="photo">
-                          </div>
+                        <td>
+                          {{ propertyObj.home_value }}
                         </td>
                         <td>
-                          Name
+                          {{ propertyObj.home_mortgage }}
                         </td>
                         <td>
-                          Develop
-                        </td>
-                        <td class="text-center">
-                          <div class="progress-container progress-sm">
-                            <div class="progress">
-                              <span class="progress-value">25%</span>
-                              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="text-right">
-                          € 99,225
-                        </td>
-                        <td class="text-right">
-                          <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm btn-simple" data-original-title="Tooltip on top" title="Refresh">
-                            <i class="tim-icons icon-refresh-01"></i>
-                          </button>
-                          <button type="button" rel="tooltip" class="btn btn-danger btn-link btn-icon btn-sm btn-simple" data-original-title="Tooltip on top" title="Delete">
-                            <i class="tim-icons icon-simple-remove"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-center">
-                          <div class="photo">
-                          </div>
+                          {{ propertyObj.home_equity }}
                         </td>
                         <td>
-                          John Doe
+                          {{ propertyObj.home_equity }}
                         </td>
                         <td>
-                          CEO
-                        </td>
-                        <td class="text-center">
-                          <div class="progress-container progress-sm">
-                            <div class="progress">
-                              <span class="progress-value">77%</span>
-                              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 77%;"></div>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="text-right">
-                          € 89,241
-                        </td>
-                        <td class="text-right">
-                          <button type="button" rel="tooltip" class="btn btn-success btn-link btn-sm btn-icon btn-simple" data-original-title="Tooltip on top" title="Refresh">
-                            <i class="tim-icons icon-refresh-01"></i>
-                          </button>
-                          <button type="button" rel="tooltip" class="btn btn-danger btn-link btn-sm btn-icon btn-simple" data-original-title="Tooltip on top" title="Delete">
-                            <i class="tim-icons icon-simple-remove"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-center">
-                          <div class="photo">
-                          </div>
+                          {{ propertyObj.home_interest }}
                         </td>
                         <td>
-                          Alexa Mike
+                          {{ propertyObj.home_loan_principal }}
                         </td>
                         <td>
-                          Design
-                        </td>
-                        <td class="text-center">
-                          <div class="progress-container progress-sm">
-                            <div class="progress">
-                              <span class="progress-value">41%</span>
-                              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 41%;"></div>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="text-right">
-                          € 92,144
-                        </td>
-                        <td class="text-right">
-                          <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm btn-simple" data-original-title="Tooltip on top" title="Refresh">
-                            <i class="tim-icons icon-refresh-01"></i>
-                          </button>
-                          <button type="button" rel="tooltip" class="btn btn-danger btn-link btn-icon btn-sm btn-simple" data-original-title="Tooltip on top" title="Delete">
-                            <i class="tim-icons icon-simple-remove"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-center">
-                          <div class="photo">
-                          </div>
-                        </td>
-                        <td>
-                          Jana Monday
-                        </td>
-                        <td>
-                          Marketing
-                        </td>
-                        <td class="text-center">
-                          <div class="progress-container progress-sm">
-                            <div class="progress">
-                              <span class="progress-value">50%</span>
-                              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="text-right">
-                          € 49,990
-                        </td>
-                        <td class="text-right">
-                          <button type="button" rel="tooltip" class="btn btn-success btn-link btn-sm btn-icon" data-original-title="Tooltip on top" title="Refresh">
-                            <i class="tim-icons icon-refresh-01"></i>
-                          </button>
-                          <button type="button" rel="tooltip" class="btn btn-danger btn-link btn-sm btn-icon" data-original-title="Tooltip on top" title="Delete">
-                            <i class="tim-icons icon-simple-remove"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-center">
-                          <div class="photo">
-                          </div>
-                        </td>
-                        <td>
-                          Paul Dickens
-                        </td>
-                        <td>
-                          Develop
-                        </td>
-                        <td class="text-center">
-                          <div class="progress-container progress-sm">
-                            <div class="progress">
-                              <span class="progress-value">100%</span>
-                              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-                              </div>s
-                            </div>
-                          </div>
-                        </td>
-                        <td class="text-right">
-                          € 69,201
-                        </td>
-                        <td class="text-right">
-                          <button type="button" rel="tooltip" class="btn btn-success btn-link btn-sm  btn-icon" data-original-title="Tooltip on top" title="Refresh">
-                            <i class="tim-icons icon-refresh-01"></i>
-                          </button>
-                          <button type="button" rel="tooltip" class="btn btn-danger btn-link btn-sm btn-icon" data-original-title="Tooltip on top" title="Delete">
-                            <i class="tim-icons icon-simple-remove"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-center">
-                          <div class="photo">
-                          </div>
-                        </td>
-                        <td>
-                          Manuela Rico
-                        </td>
-                        <td>
-                          Manager
-                        </td>
-                        <td class="text-center">
-                          <div class="progress-container progress-sm">
-                            <div class="progress">
-                              <span class="progress-value">15%</span>
-                              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 15%;"></div>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="text-right">
-                          € 99,201
-                        </td>
-                        <td class="text-right">
-                          <button type="button" rel="tooltip" class="btn btn-success btn-link btn-sm btn-icon" data-original-title="Tooltip on top" title="Refresh">
-                            <i class="tim-icons icon-refresh-01"></i>
-                          </button>
-                          <button type="button" rel="tooltip" class="btn btn-danger btn-link btn-sm btn-icon" data-original-title="Tooltip on top" title="Delete">
-                            <i class="tim-icons icon-simple-remove"></i>
-                          </button>
+                          {{ propertyObj.home_terms }}
                         </td>
                       </tr>
                     </tbody>
@@ -1158,6 +999,7 @@
   var home_total_interest = 0;
   var home_x = 0;
   var property = {};
+  var properties = [];
 
   var check_account = 1000;
   var check_amount = 0;
@@ -1204,6 +1046,7 @@ export default {
       monthly_bills: null,
       home_principal: null,
       propertyObj: [],
+      properties: [],
       speed:null,
       car_payment: 0,
       car_value: 0,
@@ -1508,7 +1351,8 @@ export default {
               console.log("this is check_account", check_account);
               console.log("this is crypto_account", crypto_account);
               console.log("this is ci_princ", ci_princ);
-              net_worth = stocks_account +  check_account + save_account + ci_princ + crypto_account;
+              net_worth = stocks_account +  check_account + save_account + ci_princ
+              // having trouble adding crypto and ci
               console.log("this is net_worth", net_worth);
 
 
@@ -1688,8 +1532,9 @@ export default {
         var home_principal = this.home_principal;
         var home_interest = (this.home_interest/100)/12;
         var home_years = this.home_years;
-        var home_equity = home_money_down + home_principal;
-        var home_terms = home_years * 12;
+        var home_terms = this.home_years * 12;
+        var home_value = this.home_money_down + this.home_principal;
+        var home_equity = this.home_money_down
 
               // Now compute the monthly payment figure, using esoteric math.
         x = Math.pow(1 + home_interest, home_terms);
@@ -1708,10 +1553,11 @@ export default {
 
         console.log("this is home mortgage", home_mortgage)
         // console.log("this is home principal", home_principal)
-
+        home_equity = home_money_down
         var propertyObj = {
+          home_value: parseInt(home_value),
           home_money_down: parseInt(home_money_down),
-          home_principal: home_principal,
+          home_principal: parseInt(home_principal),
           home_interest: parseInt(home_interest),
           home_years: parseInt(home_years),
           home_equity: parseInt(home_equity),
