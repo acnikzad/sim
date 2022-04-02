@@ -520,8 +520,8 @@
             </div>
           </div>
 
-          <div v-for="property in properties">
-            <p>equity: {{property.equity}}</p>
+          <div>
+            <p id="object"></p>
           </div>
 
 
@@ -1109,53 +1109,54 @@
   var income = 0; 
   // monthly_income
   var monthly_income = (income/12);
-  var col_bills_rate = 0;
-  var col_bill = 0;
+  // var col_bills_rate = 0;
+  // var col_bill = 0;
+  // var col_bill_amount = 0;
   var monthly_bills = 0;
   var ca
 
-  var save_rate = "";
+  var save_rate = 0;
   var save_amount = (monthly_income*save_rate);
   var save_account = 0;
   var save_rate = "";
 
-  var stocks_rate = "";
+  var stocks_rate = 0;
   var stocks_amount = (monthly_income*stocks_rate);
   var stocks_account = 0;
-  var stock_market_rate = "";
+  var stock_market_rate = 0;
 
-  var crypto_rate = "";
-  var crypto_amount = "";
+  var crypto_rate = 0;
+  var crypto_amount = 0;
   var crypto_account = 0;
-  var crypto_market_rate = "";
+  var crypto_market_rate = 0;
   var crypto_initial = 0;
   var crypto_monthly = 0;
 
-  var car_value = "";
-  var car_money_down = "";
-  var car_principal = "";
-  var car_interest = "";
-  var car_years = "";
-  var car_terms = "";
-  var car_payments = "";
-  var car_pay_b4_i = "";
-  var car_total_payments = "";
-  var car_total_interest = "";
-  var x = "";
+  var car_value = 0;
+  var car_money_down = 0;
+  var car_principal = 0;
+  var car_interest = 0;
+  var car_years = 0;
+  var car_terms = 0;
+  var car_payments = 0;
+  var car_pay_b4_i = 0;
+  var car_total_payments = 0;
+  var car_total_interest = 0;
+  var x = 0;
 
-  var home_value = "";
-  var home_equity = "";
-  var property_tax = "";
+  var home_value = 0;
+  var home_equity = 0;
+  var property_tax = 0;
   var home_money_down = 0;
   var home_principal = 0;
   var home_interest = 0;
   var home_years = 0;
-  var home_terms = "";
-  var home_payments = "";
-  var home_pay_b4_i = "";
-  var home_total_payments = "";
-  var home_total_interest = "";
-  var home_x = "";
+  var home_terms = 0;
+  var home_payments = 0;
+  var home_pay_b4_i = 0;
+  var home_total_payments = 0;
+  var home_total_interest = 0;
+  var home_x = 0;
   var property = {};
 
   var check_account = 1000;
@@ -1188,7 +1189,7 @@
   var month = "";
   var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   var state = 0;  // 0 = idle, 1 = running, 2 = paused, 3= resumed
-  var speed = 375;
+  var speed = 475;
 
 export default {
 
@@ -1196,13 +1197,13 @@ export default {
   data() {
     return {
       timer: null,
-      income: "",
-      income_tax:null,
+      income: null,
+      income_tax: null,
       income_tax: .08,
       check_account: 500,
-      monthly_bills:"",
+      monthly_bills: null,
       home_principal: null,
-      properties: [],
+      propertyObj: [],
       speed:null,
       car_payment: 0,
       car_value: 0,
@@ -1280,6 +1281,7 @@ export default {
               document.getElementById("mortgage").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_payments);
               document.getElementById("crypto_account").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(crypto_account);
 
+              // document.getElementById("object").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(propertyObj.home_equity);
               document.getElementById("inflation").innerHTML = parseFloat(inflation*100).toFixed(2)+"%";
               console.log(++count);
 
@@ -1308,37 +1310,48 @@ export default {
               age += 1;
 
               if (car_value > 3000) {
-                car_value = (car_value * .91)
+                car_value *= .91
               }
 
               if (age == 18) {
                 income = 9725
               } else if (age == 19) {
                 income = 15062
+                monthly_bills *= 1.55
               } else if (age == 20) {
                 income = 18513
+                monthly_bills *= 1.23
               } else if (age == 21) {
                 income = 20712
+                monthly_bills *= 1.12
               } else if (age == 22) {
                 income = 24447
+                monthly_bills *= 1.18
               } else if (age == 23) {
                 income = 29814
+                monthly_bills *= 1.22
               } else if (age == 24) {
                 income = 33164
+                monthly_bills *= 1.11
               } else if (age == 25) {
                 income = 41461
+                monthly_bills *= 1.25
               } else if (age == 26) {
                 income = 43945
+                monthly_bills *= 1.06
               } else if (age == 27) {
                 income = 48376
+                monthly_bills *= 1.10
               } else if (age == 28) {
                 income = 47399
               } else if (age == 29) {
                 income = 51638
+                monthly_bills *= 1.06
               } else if (age == 30) {
                 income = 52706
               } else if (age == 31) {
                 income = 59068
+                monthly_bills *= 1.12
               } else if (age == 32) {
                 income = 58708
               } else if (age == 33) {
@@ -1347,6 +1360,7 @@ export default {
                 income = 60506
               } else if (age == 35) {
                 income = 66320
+                monthly_bills *= 1.12
               } else if (age == 36) {
                 income = 68082
               } else if (age == 37) {
@@ -1359,6 +1373,7 @@ export default {
                 income = 72731
               } else if (age == 41) {
                 income = 77143
+                monthly_bills *= 1.12
               } else if (age == 42) {
                 income = 71286
               } else if (age == 43) {
@@ -1421,10 +1436,10 @@ export default {
                 arrCrypto.push(parseInt(crypto_account));
 
                 chartWealth();
-                console.log("$$$$$$$$$$$$$$$$this is arrinvesting",arrInvesting)
-                console.log("$$$$$$$$$$$$$$$$this is arrsavings",arrSavings)
-                console.log("$$$$$$$$$$$$$$$$this is arrCI",arrCI)
-                console.log("$$$$$$$$$$$$$$$$this is arrCrypto",arrCrypto)
+                // console.log("$$$$$$$$$$$$$$$$this is arrinvesting",arrInvesting)
+                // console.log("$$$$$$$$$$$$$$$$this is arrsavings",arrSavings)
+                // console.log("$$$$$$$$$$$$$$$$this is arrCI",arrCI)
+                // console.log("$$$$$$$$$$$$$$$$this is arrCrypto",arrCrypto)
                 }
 
 
@@ -1442,64 +1457,59 @@ export default {
 
               stock_market_rate = Math.floor(Math.random() * 12) + 1;
               stock_market_rate = (stock_market_rate/100)
-              console.log("/////////////stock_market_rate is:", stock_market_rate)
 
               // home_appreciation = Math.floor(Math.random() * 7) + 1;
               // console.log("this is the home appreciation rate:", home_appreciation)
 
               inflation = Math.floor(Math.random() * 4) + 1;
               inflation = (inflation/100)
-              console.log("/////////////inflation is:", inflation)
               stocks_account = stocks_account + (stocks_account*stock_market_rate)
             };
 
             function oneMonth() {
               month = (months[count])
-              console.log(income);
               monthly_income = income/12
               console.log("this is monthly income", monthly_income);
-
+              console.log("this is monthly bills", monthly_bills);
               if (payments > 0) {
                 payments = payments - 1
                 console.log(payments)
               }
 
-              if (count > 6) {
-                col_bills_rate = Math.floor(Math.random() * 15) + 1;
-                console.log("this is col rate", col_bills_rate)
-                col_bills_rate = col_bills_rate/10
-                console.log("this is col rate", col_bills_rate)
-              } else {
-                col_bills_rate = Math.floor(Math.random() * 10) + 1;
-                col_bills_rate = col_bills_rate/10
-              }
+              console.log(arrWealth)
 
               crypto_account += crypto_monthly;
-              crypto_rate = (Math.floor(Math.random() * 150) - 30)/100;
-              // crypto rate randomly chosen between -30% - +120%
+              crypto_rate = (Math.floor(Math.random() * 120) - 30)/100;
+              // crypto rate randomly chosen between -30% - +90%
               crypto_account = crypto_account + (crypto_rate*crypto_account)
               
-              console.log("----------------this is the crypto rate", crypto_rate)
+              // console.log("----------------this is the crypto rate", crypto_rate)
               // crypto_account = crypto_account*crypto_market_rate;
-              console.log("----------------this is the crypto account", crypto_account)
+              // console.log("----------------this is the crypto account", crypto_account)
 
 
-              monthly_income = monthly_income - (monthly_income*income_tax);
+              console.log("this is income tax", income_tax)
+              monthly_income *= (1 - income_tax);
               console.log("this is monthly income after tax", monthly_income);
-              monthly_income = monthly_income - monthly_bills - ci_monthly - car_payments - crypto_monthly;
-              col_bill = monthly_income*col_bills_rate;
-              monthly_income = monthly_income - col_bill;
+              // monthly_income = monthly_income - monthly_bills - ci_monthly - car_payments - crypto_monthly;
+
 
               save_amount = monthly_income*save_rate
               stocks_amount = monthly_income*stocks_rate
-              monthly_income = monthly_income - (save_amount + stocks_amount)
-              // console.log("++++++++this is net income after save", monthly_income);
+              monthly_income -= (save_amount + stocks_amount)
+              console.log("++++++++this is net income after save", monthly_income);
 
-              check_account = check_account + monthly_income
-              save_account = save_account + save_amount
-              stocks_account = stocks_account + stocks_amount
-
-              net_worth = stocks_account + check_account + ci_princ + crypto_account
+              check_account += monthly_income
+              save_account += save_amount
+              stocks_account += stocks_amount
+              console.log("this is net_worth", net_worth);
+              console.log("this is stocks_account", stocks_account);
+              console.log("this is save_account", save_account);
+              console.log("this is check_account", check_account);
+              console.log("this is crypto_account", crypto_account);
+              console.log("this is ci_princ", ci_princ);
+              net_worth = stocks_account +  check_account + save_account + ci_princ + crypto_account;
+              console.log("this is net_worth", net_worth);
 
 
               // console.log("this is the princ:", ci_princ)
@@ -1519,7 +1529,7 @@ export default {
 
             function chartWealth() {
 
-              var chart_labels = ['18', '20', '22', '24', '26', '28', '30', '32', '34', '36', '38', '40', '42', '44', '46', '48', '50', '52', '54', '56', '58', '60', '62', '64'];
+              var chart_labels = ['18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65',];
 
               var ctx = document.getElementById("chartBig1").getContext('2d');
 
