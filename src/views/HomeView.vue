@@ -381,39 +381,16 @@
                       <p class="card-category">Date</p>
                       <h3 class="card-title"><span id="month"></span>, <span id="year"></span></h3>
                     </div>
+                    <div class="numbers">
+                      <p class="card-category">Age</p>
+                      <h3 class="card-title"><span id="age"></span></h3>
+                    </div>
                   </div>s
                 </div>
               </div>
               <div class="card-footer">
-                <hr>
                 <div class="stats">
                   <i class="tim-icons icon-refresh-01"></i> Update Now
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="card card-stats">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-5">
-                    <div class="info-icon text-center icon-primary">
-                      <i class="tim-icons icon-shape-star"></i>
-                    </div>
-                  </div>
-                  <div class="col-7">
-                    <div class="numbers">
-                      <p class="card-category">Age</p>
-                      <h3 class="card-title"><span id="age"></span></h3>
-                      <br>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer">
-                <hr>
-                <div class="stats">
-                  <i class="tim-icons icon-sound-wave"></i> Last Research
                 </div>
               </div>
             </div>
@@ -432,6 +409,10 @@
                       <p class="card-category">National Average Income per Age</p>
                       <h3 class="card-title"><span id="income"></span></h3>
                     </div>
+                    <div class="numbers">
+                      <p class="card-category">Monthly Income</p>
+                      <h3 class="card-title"><span id="monthly_income"></span></h3>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -439,6 +420,29 @@
                 <hr>
                 <div class="stats">
                   <i class="tim-icons icon-trophy"></i> Customers feedback
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card card-stats">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-5">
+                    <button class="btn btn-primary" data-toggle="modal" v-on:click="openCI(), pauseClock()">Compound Interest</button>
+                  </div>
+                  <div class="col-7">
+                    <div class="numbers">
+                      <p class="card-category">Account Balance</p>
+                      <h3 class="card-title"><span id="ci_princ"></span></h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <hr>
+                <div class="stats">
+                  <i class="tim-icons icon-sound-wave"></i> Last Research
                 </div>
               </div>
             </div>
@@ -482,6 +486,10 @@
                       <p class="card-category">Savings Account</p>
                       <h3 class="card-title"><span id="savings"></span></h3>
                     </div>
+                    <div class="numbers">
+                      <p class="card-category">Monthly Savings Amount</p>
+                      <h3 class="card-title"><span id="save_amount"></span></h3>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -506,7 +514,90 @@
                     <div class="numbers">
                       <p class="card-category">Stocks Portfolio</p>
                       <h3 class="card-title"><span id="stocks"></span></h3>
-                      <br>
+                    </div>
+                    <div class="numbers">
+                      <p class="card-category">APY</p>
+                      <h3 class="card-title"><span id="stock_market_rate"></span></h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <hr>
+                <div class="stats">
+                  <i class="tim-icons icon-sound-wave"></i> Last Research
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card card-stats">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-5">
+                    <div class="info-icon text-center icon-success">
+                      <i class="tim-icons icon-calendar-60"></i>
+                    </div>
+                  </div>
+                  <div class="col-7">
+                    <div class="numbers">
+                      <p class="card-category">Sim Coin Bag</p>
+                      <h3 class="card-title"><span id="sim_coin_bag"></span></h3>
+                    </div>
+                    <div class="numbers">
+                      <p class="card-category">Sim Coin Price</p>
+                      <h3 class="card-title"><span id="sim_coin"></span></h3>
+                    </div>
+                  </div>s
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="stats">
+                  <i class="tim-icons icon-refresh-01"></i> Update Now
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card card-stats">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-5">
+                    <div class="info-icon text-center icon-success">
+                      <i class="tim-icons icon-single-02"></i>
+                    </div>
+                  </div>
+                  <div class="col-7">
+                    <div class="numbers">
+                      <p class="card-category">National Average Income per Age</p>
+                      <h3 class="card-title"><span id="income"></span></h3>
+                    </div>
+                    <div class="numbers">
+                      <p class="card-category">Monthly Income</p>
+                      <h3 class="card-title"><span id="monthly_income"></span></h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <hr>
+                <div class="stats">
+                  <i class="tim-icons icon-trophy"></i> Customers feedback
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card card-stats">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-5">
+                    <button class="btn btn-primary" data-toggle="modal" v-on:click="openCI(), pauseClock()">Compound Interest</button>
+                  </div>
+                  <div class="col-7">
+                    <div class="numbers">
+                      <p class="card-category">Account Balance</p>
+                      <h3 class="card-title"><span id="ci_princ"></span></h3>
                     </div>
                   </div>
                 </div>
@@ -533,7 +624,12 @@
           <div class="col-lg-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Real Estate</h5>
+                <div class="row">
+                  <div class="col-5">
+                    <button class="btn btn-primary" data-toggle="modal" v-on:click="openRE(), pauseClock()">Buy Real Estate</button>
+                  </div>
+                  <h5 class="card-title">Real Estate</h5>
+                </div>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -572,7 +668,7 @@
                           {{ propertyObj.home_equity }}
                         </td>
                         <td>
-                          {{ propertyObj.home_equity }}
+                          {{ propertyObj.home_loan_principal }}
                         </td>
                         <td>
                           {{ propertyObj.home_interest }}
@@ -593,8 +689,8 @@
         </div>
       </div>
       <button class="btn btn-primary" data-toggle="modal" v-on:click="buyCar(), pauseClock()">Buy Car</button>
-      <button class="btn btn-primary" data-toggle="modal" v-on:click="openCI(), pauseClock()">Compound Interest</button>
-      <button class="btn btn-primary" data-toggle="modal" v-on:click="openRE(), pauseClock()">Buy Real Estate</button>
+      <!-- <button class="btn btn-primary" data-toggle="modal" v-on:click="openCI(), pauseClock()">Compound Interest</button> -->
+      <!-- <button class="btn btn-primary" data-toggle="modal" v-on:click="openRE(), pauseClock()">Buy Real Estate</button> -->
       <button class="btn btn-primary" data-toggle="modal" v-on:click="openCrypto(), pauseClock()">Buy Crypto</button>
       <h1>The Month is <span id="month"></span></h1>
       <h1>The Year is <span id="year"></span></h1>
@@ -973,6 +1069,9 @@
   var crypto_initial = 0;
   var crypto_monthly = 0;
 
+  var sim_coin = 1;
+  var sim_coin_bag = 0;
+
   var car_value = 0;
   var car_money_down = 0;
   var car_principal = 0;
@@ -1055,6 +1154,8 @@ export default {
       arrSavings: [],
       arrCI: [],
       arrCrypto: [],
+      stock_market_rate: null,
+      save_amount: null,
         };
       },
 
@@ -1122,7 +1223,12 @@ export default {
               document.getElementById("home_value").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_value);
               document.getElementById("home_principal").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_principal);
               document.getElementById("mortgage").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_payments);
-              document.getElementById("crypto_account").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(crypto_account);
+              document.getElementById("crypto_account").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(crypto_account); 
+              document.getElementById("monthly_income").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(monthly_income);
+              document.getElementById("stock_market_rate").innerHTML = new Intl.NumberFormat('en-US', { style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(stock_market_rate);
+              document.getElementById("save_amount").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_amount);
+              document.getElementById("sim_coin").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(sim_coin);
+              document.getElementById("sim_coin_bag").innerHTML = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(sim_coin_bag);
 
               // document.getElementById("object").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(propertyObj.home_equity);
               document.getElementById("inflation").innerHTML = parseFloat(inflation*100).toFixed(2)+"%";
@@ -1298,8 +1404,8 @@ export default {
                 income_tax = .113
               }
 
-              stock_market_rate = Math.floor(Math.random() * 12) + 1;
-              stock_market_rate = (stock_market_rate/100)
+              stock_market_rate = Math.floor(Math.random() * 1200) + 1;
+              stock_market_rate = (stock_market_rate/10000)
 
               // home_appreciation = Math.floor(Math.random() * 7) + 1;
               // console.log("this is the home appreciation rate:", home_appreciation)
@@ -1322,8 +1428,10 @@ export default {
               console.log(arrWealth)
 
               crypto_account += crypto_monthly;
-              crypto_rate = (Math.floor(Math.random() * 120) - 30)/100;
-              // crypto rate randomly chosen between -30% - +90%
+              crypto_rate = (Math.floor(Math.random() * 35) - 10)/100;
+              // crypto rate randomly chosen between -10% - +25%
+              console.log("----------------this is the crypto rate", crypto_rate)
+              sim_coin = sim_coin + (sim_coin*crypto_rate)
               crypto_account = crypto_account + (crypto_rate*crypto_account)
               
               // console.log("----------------this is the crypto rate", crypto_rate)
@@ -1345,21 +1453,10 @@ export default {
               check_account += monthly_income
               save_account += save_amount
               stocks_account += stocks_amount
-              console.log("this is net_worth", net_worth);
-              console.log("this is stocks_account", stocks_account);
-              console.log("this is save_account", save_account);
-              console.log("this is check_account", check_account);
-              console.log("this is crypto_account", crypto_account);
-              console.log("this is ci_princ", ci_princ);
               net_worth = stocks_account +  check_account + save_account + ci_princ
               // having trouble adding crypto and ci
               console.log("this is net_worth", net_worth);
 
-
-              // console.log("this is the princ:", ci_princ)
-              // console.log("this is the months:", ci_months)
-              // console.log("this is the i:", i)
-              // console.log("this is the monthly:", ci_monthly)
               if (i <= ci_months) {
                 ci_princ += ci_monthly;
                 ci_princ += (ci_princ * (ci_rate / 12));
@@ -1367,7 +1464,12 @@ export default {
                 // console.log(ci_princ);
                 // console.log(i);
                 // console.log(ci_months);
-              }
+              };
+
+              properties.forEach((singlepropertyObj) => {
+                return propertyObj.home_years -1
+              });
+
               // console.log(ci_princ.toFixed(2)); //69636.12
              };
 
