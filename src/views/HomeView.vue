@@ -471,11 +471,14 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-5">
-                    <div class="info-icon text-center icon-primary">
-                      <i class="tim-icons icon-shape-star"></i>
+                    <button class="btn btn-primary btn-sm" data-toggle="modal" v-on:click="openStocks(), pauseClock()">Buy Stocks</button>
                     </div>
                   </div>
                   <div class="col-7">
+                    <div class="numbers">
+                      <p class="card-category">Shares of Stock Owned</p>
+                      <h3 class="card-title"><span id="stocks_holding"></span></h3>
+                    </div>
                     <div class="numbers">
                       <p class="card-category">Stocks Portfolio</p>
                       <h3 class="card-title"><span id="stocks"></span></h3>
@@ -484,86 +487,90 @@
                       <p class="card-category">APY</p>
                       <h3 class="card-title"><span id="stock_market_rate"></span></h3>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="card card-stats">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-5">
-                    <button class="btn btn-success" data-toggle="modal" v-on:click="openCrypto(), pauseClock()">Buy Crypto</button>
-                  </div>
-                  <div class="col-7">
                     <div class="numbers">
-                      <p class="card-category">Sim Coin Bag</p>
-                      <h3 class="card-title"><span id="sim_coin_bag"></span></h3>
-                    </div>
-                    <div class="numbers">
-                      <p class="card-category">Sim Coin Price</p>
-                      <h3 class="card-title"><span id="sim_coin"></span></h3>
-                    </div>
-                    <div class="numbers">
-                      <p class="card-category">Sim Coin Volatility</p>
-                      <h3 class="card-title"><span id="crypto_rate"></span></h3>
-                    </div>
-                    <div class="numbers">
-                      <p class="card-category">Crypto Value</p>
-                      <h3 class="card-title"><span id="crypto_value"></span></h3>
-                    </div>
-                  </div>s
-                </div>
-              </div>d
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="card card-stats">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-5">
-                    <div class="info-icon text-center icon-success">
-                      <i class="tim-icons icon-single-02"></i>
-                    </div>
-                  </div>
-                  <div class="col-7">
-                    <div class="numbers">
-                      <p class="card-category">National Average Income per Age</p>
-                      <h3 class="card-title"><span id="income"></span></h3>
-                    </div>
-                    <div class="numbers">
-                      <p class="card-category">Monthly Income</p>
-                      <h3 class="card-title"><span id="monthly_income"></span></h3>
+                      <p class="card-category">Sim Stock Price</p>
+                      <h3 class="card-title"><span id="sim_stock"></span></h3>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="card card-stats">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-5">
-                    <button class="btn btn-primary btn-sm" data-toggle="modal" v-on:click="buyCar(), pauseClock()">Take Car Loan</button>
+            <div class="col-lg-4 col-md-6">
+              <div class="card card-stats">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-5">
+                      <button class="btn btn-primary btn-sm" data-toggle="modal" v-on:click="openCrypto(), pauseClock()">Buy Crypto</button>
+                    </div>
+                    <div class="col-7">
+                      <div class="numbers">
+                        <p class="card-category">Sim Coin Bag</p>
+                        <h3 class="card-title"><span id="sim_coin_bag"></span></h3>
+                      </div>
+                      <div class="numbers">
+                        <p class="card-category">Sim Coin Price</p>
+                        <h3 class="card-title"><span id="sim_coin"></span></h3>
+                      </div>
+                      <div class="numbers">
+                        <p class="card-category">Sim Coin Volatility</p>
+                        <h3 class="card-title"><span id="crypto_rate"></span></h3>
+                      </div>
+                      <div class="numbers">
+                        <p class="card-category">Crypto Value</p>
+                        <h3 class="card-title"><span id="crypto_value"></span></h3>
+                      </div>
+                    </div>s
                   </div>
-                  <div class="col-7">
-                    <div class="numbers">
-                      <p class="card-category">Car Value</p>
-                      <h3 class="card-title"><span id="car_value"></span></h3>
+                </div>d
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="card card-stats">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-5">
+                      <div class="info-icon text-center icon-success">
+                        <i class="tim-icons icon-single-02"></i>
+                      </div>
                     </div>
-                    <div class="numbers">
-                      <p class="card-category">Car Payment</p>
-                      <h3 class="card-title"><span id="car_payments"></span></h3>
+                    <div class="col-7">
+                      <div class="numbers">
+                        <p class="card-category">National Average Income per Age</p>
+                        <h3 class="card-title"><span id="income"></span></h3>
+                      </div>
+                      <div class="numbers">
+                        <p class="card-category">Monthly Income</p>
+                        <h3 class="card-title"><span id="monthly_income"></span></h3>
+                      </div>
                     </div>
-                    <div class="numbers">
-                      <p class="card-category">Loan Principal</p>
-                      <h3 class="card-title"><span id="car_principal"></span></h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="card card-stats">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-5">
+                      <button class="btn btn-primary btn-sm" data-toggle="modal" v-on:click="buyCar(), pauseClock()">Take Car Loan</button>
                     </div>
-                    <div class="numbers">
-                      <p class="card-category">Payments Left</p>
-                      <h3 class="card-title"><span id="car_terms"></span></h3>
+                    <div class="col-7">
+                      <div class="numbers">
+                        <p class="card-category">Car Value</p>
+                        <h3 class="card-title"><span id="car_value"></span></h3>
+                      </div>
+                      <div class="numbers">
+                        <p class="card-category">Car Payment</p>
+                        <h3 class="card-title"><span id="car_payments"></span></h3>
+                      </div>
+                      <div class="numbers">
+                        <p class="card-category">Loan Principal</p>
+                        <h3 class="card-title"><span id="car_principal"></span></h3>
+                      </div>
+                      <div class="numbers">
+                        <p class="card-category">Payments Left</p>
+                        <h3 class="card-title"><span id="car_terms"></span></h3>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -586,7 +593,7 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-5">
-                    <button class="btn btn-success" data-toggle="modal" v-on:click="openRE(), pauseClock()">Buy Real Estate</button>
+                    <button class="btn btn-success btn-sm" data-toggle="modal" v-on:click="openRE(), pauseClock()">Buy Real Estate</button>
                   </div>
                   <h5 class="card-title">Real Estate</h5>
                 </div>
@@ -652,32 +659,7 @@
       <!-- <button class="btn btn-primary" data-toggle="modal" v-on:click="openCI(), pauseClock()">Compound Interest</button> -->
       <!-- <button class="btn btn-primary" data-toggle="modal" v-on:click="openRE(), pauseClock()">Buy Real Estate</button> -->
       <button class="btn btn-primary" data-toggle="modal" v-on:click="openCrypto(), pauseClock()">Buy Crypto</button>
-<!--       <h1>The Month is <span id="month"></span></h1>
-      <h1>The Year is <span id="year"></span></h1>
-      <h3>This years inflation rate: <span id="inflation"></span></h3>
-      <br>
-      <h1>You are <span id="age"></span> years old</h1>
-      <h3>Your income is <span id="income"></span> per year</h3>
-      <br>
-      <h3>Checking Account: <span id="checking"></span></h3>
-      <h3>Savings Account: <span id="savings"></span></h3>
-      <h3><i>Monthly Savings Smount: <span id="save_amount"></span></i></h3>
-      <h3>Stocks Account: <span id="stocks"></span></h3>
-      <h3>Compound Interest Account: <span id="ci_princ"></span></h3>
-      <br>
-      <h3>Your cars value is: <span id="car_value"></span></h3>
-      <h3>Remaining Principle is:<span id="car_principal"></span></h3>
-      <h3>Your car payment is:<span id="payments"></span></h3>
-      <h3>Remaining payments:<span id="car_terms"></span></h3>
-      <br>
-      <h3>Your house value is: <span id="home_value"></span></h3>
-      <h3>Remaining Principle is:<span id="home_principal"></span></h3>
-      <h3>Your mortgage payment is:<span id="mortgage"></span></h3>
-      <h3>Remaining payments:<span id="home_terms"></span></h3>
-      <br>
-      <h1>Your Net Wealth is: <span id="net_worth"></span></h1>
-      <h1>Your Crypto Account is: <span id="crypto_account"></span></h1> -->
-    </div>
+    <!-- </div> -->
   <!-- </div> -->
 
 
@@ -709,14 +691,6 @@
                       </div>
                     </div>
                     <div class="row">
-                      <label class="col-sm-2 col-form-label">Percentage of Income Invested:</label>
-                      <div class="col-sm-10">
-                        <div class="form-group">
-                          <input class="form-control" type="number" min="1" max="50" placeholder="15" v-model="stocks_rate" required/>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
                       <label class="col-sm-2 col-form-label">Monthly Bills:</label>
                       <div class="col-sm-10">s
                         <div class="form-group">
@@ -730,7 +704,7 @@
             </div>
           </div>
           <div class="modal-footer justify-content-center">
-            <button class="btn btn-primary animation-on-hover" rel="tooltip" data-original-title="Lets get money!" data-placement="bottom" data-dismiss="modal" v-on:click="returnStart(), resumeClock(), startTimer()">Submit</button>
+            <button class="btn btn-primary animation-on-hover" rel="tooltip" data-original-title="Lets get money!" data-placement="bottom" data-dismiss="modal" v-on:click=" returnStart(), resumeClock(), startTimer()">Submit</button>
           </div>
         </div>
       </div>
@@ -778,6 +752,53 @@
           </div>
           <div class="modal-footer justify-content-center">
             <button class="btn btn-primary animation-on-hover" rel="tooltip" data-original-title="To the moon!" data-placement="bottom" data-dismiss="modal" v-on:click="cryptoAccount(), resumeClock(), startTimer()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- The Stocks Modal -->
+    <div class="modal fade" id="stocksModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <i class="tim-icons icon-simple-remove"></i>
+            </button>
+            <h5 class="modal-title" id="myModalLabel">Buy Stocks</h5>
+          </div>
+          <div class="modal-body">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Enter Information</h4>
+                </div>
+                <div class="card-body">
+                  <form id="RangeValidation" class="form-horizontal">
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Initial Investment:</label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input class="form-control" type="number" min="1" placeholder="1000" v-model="stocks_initial" required/>
+                          <!-- <span class="form-text">A block of help text that breaks onto a new line.</span> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Monthly Stock Purchases:</label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input class="form-control" type="number" min="1" placeholder="250" v-model="stocks_monthly" required/>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button class="btn btn-primary animation-on-hover" rel="tooltip" data-original-title="To the moon!" data-placement="bottom" data-dismiss="modal" v-on:click="stocksAccount(), resumeClock(), startTimer()">Submit</button>
           </div>
         </div>
       </div>
@@ -1021,6 +1042,8 @@
   var stocks_amount = (monthly_income*stocks_rate);
   var stocks_account = 0;
   var stock_market_rate = 0;
+  var stocks_initial = 0;
+  var stocks_monthly = 0;
 
   var crypto_rate = 0;
   var crypto_amount = 0;
@@ -1029,6 +1052,9 @@
   var crypto_initial = 0;
   var crypto_monthly = 0;
   var crypto_value = 0;
+  var sim_stock = 50;
+  var sim_stock_amount = 0;
+  var stocks_holding = 0;
 
   var sim_coin = 1;
   var sim_coin_bag = 0;
@@ -1119,6 +1145,7 @@ export default {
       arrCrypto: [],
       stock_market_rate: null,
       save_amount: null,
+      stocks_monthly: null,
         };
       },
 
@@ -1194,6 +1221,8 @@ export default {
               document.getElementById("crypto_value").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(crypto_value);
               document.getElementById("sim_coin_bag").innerHTML = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(sim_coin_bag);
               document.getElementById("crypto_rate").innerHTML = new Intl.NumberFormat('en-US', { style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(crypto_rate);
+              document.getElementById("sim_stock").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(sim_stock);
+              document.getElementById("stocks_holding").innerHTML = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(stocks_holding);
 
               // document.getElementById("object").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(propertyObj.home_equity);
               // document.getElementById("inflation").innerHTML = parseFloat(inflation*100).toFixed(2)+"%";
@@ -1370,14 +1399,15 @@ export default {
               }
 
               stock_market_rate = Math.floor(Math.random() * 1200) + 1;
-              stock_market_rate = (stock_market_rate/10000)
+              stock_market_rate = (stock_market_rate/10000);
+              sim_stock = sim_stock + (sim_stock*stock_market_rate)
 
               // home_appreciation = Math.floor(Math.random() * 7) + 1;
               // console.log("this is the home appreciation rate:", home_appreciation)
 
               inflation = Math.floor(Math.random() * 4) + 1;
-              inflation = (inflation/100)
-              stocks_account = stocks_account + (stocks_account*stock_market_rate)
+              inflation = (inflation/100);
+              stocks_account = stocks_account + (stocks_account*stock_market_rate);
             };
 
             function oneMonth() {
@@ -1395,8 +1425,8 @@ export default {
               crypto_account += crypto_monthly;
 
               if (sim_coin < 25) {
-                crypto_rate = (Math.floor(Math.random() * 3500) - 1000)/10000;
-              // crypto rate randomly chosen between -10% - +25%
+                crypto_rate = (Math.floor(Math.random() * 3500) - 1500)/10000;
+              // crypto rate randomly chosen between -15% - +20%
               } else if (sim_coin >= 25 && sim_coin < 50){
                 crypto_rate = (Math.floor(Math.random() * 2500) - 1000)/10000;
                 // crypto rate randomly chosen between -10% - +15%
@@ -1406,9 +1436,12 @@ export default {
               } else if (sim_coin >= 75 && sim_coin < 100){
                 crypto_rate = (Math.floor(Math.random() * 1000) - 250)/10000;
                 // crypto rate randomly chosen between -2.5% - +5%
-              } else if (sim_coin >= 100){
+              } else if (sim_coin >= 100 && sim_coin < 150){
                 crypto_rate = (Math.floor(Math.random() * 500) - 200)/10000;
                 // crypto rate randomly chosen between -2% - +3%
+              } else if (sim_coin >= 150){
+                crypto_rate = (Math.floor(Math.random() * 400) - 200)/10000;
+                // crypto rate randomly chosen between -2% - +2%
               }
               console.log("----------------this is the crypto rate", crypto_rate)
               sim_coin = sim_coin + (sim_coin*crypto_rate)
@@ -1416,6 +1449,9 @@ export default {
 
               sim_coin_bag += (crypto_monthly/sim_coin)
               crypto_value = (sim_coin_bag*sim_coin)
+
+              stocks_holding += (stocks_monthly/sim_stock)
+              stocks_account = (stocks_holding*sim_stock)
               
               // console.log("----------------this is the crypto rate", crypto_rate)
               // crypto_account = crypto_account*crypto_market_rate;
@@ -1429,13 +1465,13 @@ export default {
 
 
               save_amount = monthly_income*save_rate
-              stocks_amount = monthly_income*stocks_rate
+              stocks_account += stocks_monthly;
               monthly_income -= (save_amount + stocks_amount)
               console.log("++++++++this is net income after save", monthly_income);
 
               check_account += monthly_income
               save_account += save_amount
-              stocks_account += stocks_amount
+              stocks_account += stocks_monthly;
               net_worth = stocks_account +  check_account + save_account + ci_princ
               // having trouble adding crypto and ci
               console.log("this is net_worth", net_worth);
@@ -1608,6 +1644,10 @@ export default {
         $('#buyHouse').modal({backdrop: 'static', keyboard: false}, 'show');
       },
 
+      openStocks(){
+        $('#stocksModal').modal({backdrop: 'static', keyboard: false}, 'show');
+      },
+
       openCrypto(){
         $('#cryptoModal').modal({backdrop: 'static', keyboard: false}, 'show');
       },
@@ -1701,11 +1741,6 @@ export default {
           return false;
         }
 
-        if (isNaN(stocks_rate)) {
-          alert("Must input numbers");
-          return false;
-        }
-
         if (isNaN(monthly_bills)) {
           alert("Must input numbers");
           return false;
@@ -1713,10 +1748,7 @@ export default {
 
         monthly_bills = parseInt(this.monthly_bills);
         save_rate = parseInt(this.save_rate) || 0;
-        stocks_rate = parseInt(this.stocks_rate) || 0;
-        stock_market_rate = Math.floor(Math.random() * 11) + 1;
         save_rate = (parseInt(this.save_rate)/100);
-        stocks_rate = (parseInt(this.stocks_rate)/100);
       },
 
       cryptoAccount() {
@@ -1733,6 +1765,22 @@ export default {
 
         check_account -= crypto_initial;
         crypto_account += crypto_initial;
+      },
+
+      stocksAccount() {
+        stocks_initial = this.stocks_initial;
+        stocks_monthly = this.stocks_monthly;
+        console.log("this is the initial stocks dep", stocks_initial);
+        console.log("this is the stocks monthly", stocks_monthly);
+        console.log("++++++++++++ this is the stocks_account", stocks_account);
+
+        sim_stock_amount = stocks_initial/sim_stock
+        console.log("this is the amount of coins purchased", sim_stock_amount)
+
+        stocks_account += sim_stock_amount
+
+        check_account -= stocks_initial;
+        stocks_account += stocks_initial;
       },
 
       ci_account() {
