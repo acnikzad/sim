@@ -1385,9 +1385,12 @@ export default {
               } else if (sim_coin >= 50 && sim_coin < 75){
                 crypto_rate = (Math.floor(Math.random() * 2000) - 1000)/10000;
                 // crypto rate randomly chosen between -10% - +10%
-              } else if (sim_coin >= 75){
-                crypto_rate = (Math.floor(Math.random() * 1500) - 500)/10000;
-                // crypto rate randomly chosen between -5% - +5%
+              } else if (sim_coin >= 75 && sim_coin < 100){
+                crypto_rate = (Math.floor(Math.random() * 1000) - 250)/10000;
+                // crypto rate randomly chosen between -2.5% - +5%
+              } else if (sim_coin >= 100){
+                crypto_rate = (Math.floor(Math.random() * 500) - 200)/10000;
+                // crypto rate randomly chosen between -2% - +3%
               }
               console.log("----------------this is the crypto rate", crypto_rate)
               sim_coin = sim_coin + (sim_coin*crypto_rate)
