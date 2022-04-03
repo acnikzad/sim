@@ -359,12 +359,6 @@
                   </div>s
                 </div>
               </div>
-              <div class="card-footer">
-                <hr>
-                <div class="stats">
-                  <i class="tim-icons icon-refresh-01"></i> Update Now
-                </div>
-              </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
@@ -386,11 +380,6 @@
                       <h3 class="card-title"><span id="age"></span></h3>
                     </div>
                   </div>s
-                </div>
-              </div>
-              <div class="card-footer">
-                <div class="stats">
-                  <i class="tim-icons icon-refresh-01"></i> Update Now
                 </div>
               </div>
             </div>
@@ -416,12 +405,6 @@
                   </div>
                 </div>
               </div>
-              <div class="card-footer">
-                <hr>
-                <div class="stats">
-                  <i class="tim-icons icon-trophy"></i> Customers feedback
-                </div>
-              </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
@@ -429,7 +412,7 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-5">
-                    <button class="btn btn-primary" data-toggle="modal" v-on:click="openCI(), pauseClock()">Compound Interest</button>
+                    <button class="btn btn-primary btn-sm" data-toggle="modal" v-on:click="openCI(), pauseClock()">Compound Interest</button>
                   </div>
                   <div class="col-7">
                     <div class="numbers">
@@ -437,12 +420,6 @@
                       <h3 class="card-title"><span id="ci_princ"></span></h3>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="card-footer">
-                <hr>
-                <div class="stats">
-                  <i class="tim-icons icon-sound-wave"></i> Last Research
                 </div>
               </div>
             </div>
@@ -462,12 +439,6 @@
                       <h3 class="card-title"><span id="checking"></span></h3>
                     </div>
                   </div>s
-                </div>
-              </div>
-              <div class="card-footer">
-                <hr>
-                <div class="stats">
-                  <i class="tim-icons icon-refresh-01"></i> Update Now
                 </div>
               </div>
             </div>
@@ -493,12 +464,6 @@
                   </div>
                 </div>
               </div>
-              <div class="card-footer">
-                <hr>
-                <div class="stats">
-                  <i class="tim-icons icon-trophy"></i> Customers feedback
-                </div>
-              </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
@@ -522,12 +487,6 @@
                   </div>
                 </div>
               </div>
-              <div class="card-footer">
-                <hr>
-                <div class="stats">
-                  <i class="tim-icons icon-sound-wave"></i> Last Research
-                </div>
-              </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
@@ -548,14 +507,13 @@
                       <p class="card-category">Sim Coin Price</p>
                       <h3 class="card-title"><span id="sim_coin"></span></h3>
                     </div>
+                    <div class="numbers">
+                      <p class="card-category">Sim Coin Volatility</p>
+                      <h3 class="card-title"><span id="crypto_rate"></span></h3>
+                    </div>
                   </div>s
                 </div>
-              </div>
-              <div class="card-footer">
-                <div class="stats">
-                  <i class="tim-icons icon-refresh-01"></i> Update Now
-                </div>
-              </div>
+              </div>d
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
@@ -579,12 +537,6 @@
                   </div>
                 </div>
               </div>
-              <div class="card-footer">
-                <hr>
-                <div class="stats">
-                  <i class="tim-icons icon-trophy"></i> Customers feedback
-                </div>
-              </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
@@ -592,7 +544,7 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-5">
-                    <button class="btn btn-primary" data-toggle="modal" v-on:click="openCI(), pauseClock()">Compound Interest</button>
+                    <button class="btn btn-primary btn-sm" data-toggle="modal" v-on:click="openCI(), pauseClock()">Buy Real Estate</button>
                   </div>
                   <div class="col-7">
                     <div class="numbers">
@@ -600,12 +552,6 @@
                       <h3 class="card-title"><span id="ci_princ"></span></h3>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="card-footer">
-                <hr>
-                <div class="stats">
-                  <i class="tim-icons icon-sound-wave"></i> Last Research
                 </div>
               </div>
             </div>
@@ -626,7 +572,7 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-5">
-                    <button class="btn btn-primary" data-toggle="modal" v-on:click="openRE(), pauseClock()">Buy Real Estate</button>
+                    <button class="btn btn-success" data-toggle="modal" v-on:click="openRE(), pauseClock()">Buy Real Estate</button>
                   </div>
                   <h5 class="card-title">Real Estate</h5>
                 </div>
@@ -1130,7 +1076,7 @@
   var month = "";
   var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   var state = 0;  // 0 = idle, 1 = running, 2 = paused, 3= resumed
-  var speed = 475;
+  var speed = 175;
 
 export default {
 
@@ -1229,6 +1175,7 @@ export default {
               document.getElementById("save_amount").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_amount);
               document.getElementById("sim_coin").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(sim_coin);
               document.getElementById("sim_coin_bag").innerHTML = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(sim_coin_bag);
+              document.getElementById("crypto_rate").innerHTML = new Intl.NumberFormat('en-US', { style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(crypto_rate);
 
               // document.getElementById("object").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(propertyObj.home_equity);
               document.getElementById("inflation").innerHTML = parseFloat(inflation*100).toFixed(2)+"%";
@@ -1428,8 +1375,20 @@ export default {
               console.log(arrWealth)
 
               crypto_account += crypto_monthly;
-              crypto_rate = (Math.floor(Math.random() * 35) - 10)/100;
+
+              if (sim_coin < 25) {
+                crypto_rate = (Math.floor(Math.random() * 3500) - 1000)/10000;
               // crypto rate randomly chosen between -10% - +25%
+              } else if (sim_coin >= 25 && sim_coin < 50){
+                crypto_rate = (Math.floor(Math.random() * 2500) - 1000)/10000;
+                // crypto rate randomly chosen between -10% - +15%
+              } else if (sim_coin >= 50 && sim_coin < 75){
+                crypto_rate = (Math.floor(Math.random() * 2000) - 1000)/10000;
+                // crypto rate randomly chosen between -10% - +10%
+              } else if (sim_coin >= 75){
+                crypto_rate = (Math.floor(Math.random() * 1500) - 500)/10000;
+                // crypto rate randomly chosen between -5% - +5%
+              }
               console.log("----------------this is the crypto rate", crypto_rate)
               sim_coin = sim_coin + (sim_coin*crypto_rate)
               crypto_account = crypto_account + (crypto_rate*crypto_account)
