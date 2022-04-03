@@ -466,6 +466,7 @@
               </div>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
@@ -473,7 +474,6 @@
                   <div class="col-5">
                     <button class="btn btn-primary btn-sm" data-toggle="modal" v-on:click="openStocks(), pauseClock()">Buy Stocks</button>
                     </div>
-                  </div>
                   <div class="col-7">
                     <div class="numbers">
                       <p class="card-category">Shares of Stock Owned</p>
@@ -495,88 +495,90 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="card card-stats">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-5">
-                      <button class="btn btn-primary btn-sm" data-toggle="modal" v-on:click="openCrypto(), pauseClock()">Buy Crypto</button>
-                    </div>
-                    <div class="col-7">
-                      <div class="numbers">
-                        <p class="card-category">Sim Coin Bag</p>
-                        <h3 class="card-title"><span id="sim_coin_bag"></span></h3>
-                      </div>
-                      <div class="numbers">
-                        <p class="card-category">Sim Coin Price</p>
-                        <h3 class="card-title"><span id="sim_coin"></span></h3>
-                      </div>
-                      <div class="numbers">
-                        <p class="card-category">Sim Coin Volatility</p>
-                        <h3 class="card-title"><span id="crypto_rate"></span></h3>
-                      </div>
-                      <div class="numbers">
-                        <p class="card-category">Crypto Value</p>
-                        <h3 class="card-title"><span id="crypto_value"></span></h3>
-                      </div>
-                    </div>s
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="card card-stats">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-5">
+                    <button class="btn btn-primary btn-sm" data-toggle="modal" v-on:click="openCrypto(), pauseClock()">Buy Crypto</button>
                   </div>
-                </div>d
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="card card-stats">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-5">
-                      <div class="info-icon text-center icon-success">
-                        <i class="tim-icons icon-single-02"></i>
-                      </div>
+                  <div class="col-7">
+                    <div class="numbers">
+                      <p class="card-category">Sim Coin Bag</p>
+                      <h3 class="card-title"><span id="sim_coin_bag"></span></h3>
                     </div>
-                    <div class="col-7">
-                      <div class="numbers">
-                        <p class="card-category">National Average Income per Age</p>
-                        <h3 class="card-title"><span id="income"></span></h3>
-                      </div>
-                      <div class="numbers">
-                        <p class="card-category">Monthly Income</p>
-                        <h3 class="card-title"><span id="monthly_income"></span></h3>
-                      </div>
+                    <div class="numbers">
+                      <p class="card-category">Sim Coin Price</p>
+                      <h3 class="card-title"><span id="sim_coin"></span></h3>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="card card-stats">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-5">
-                      <button class="btn btn-primary btn-sm" data-toggle="modal" v-on:click="buyCar(), pauseClock()">Take Car Loan</button>
+                    <div class="numbers">
+                      <p class="card-category">Sim Coin Volatility</p>
+                      <h3 class="card-title"><span id="crypto_rate"></span></h3>
                     </div>
-                    <div class="col-7">
-                      <div class="numbers">
-                        <p class="card-category">Car Value</p>
-                        <h3 class="card-title"><span id="car_value"></span></h3>
-                      </div>
-                      <div class="numbers">
-                        <p class="card-category">Car Payment</p>
-                        <h3 class="card-title"><span id="car_payments"></span></h3>
-                      </div>
-                      <div class="numbers">
-                        <p class="card-category">Loan Principal</p>
-                        <h3 class="card-title"><span id="car_principal"></span></h3>
-                      </div>
-                      <div class="numbers">
-                        <p class="card-category">Payments Left</p>
-                        <h3 class="card-title"><span id="car_terms"></span></h3>
-                      </div>
+                    <div class="numbers">
+                      <p class="card-category">Crypto Value</p>
+                      <h3 class="card-title"><span id="crypto_value"></span></h3>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card card-stats">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-5">
+                    <div class="info-icon text-center icon-success">
+                      <i class="tim-icons icon-single-02"></i>
+                    </div>
+                  </div>
+                  <div class="col-7">
+                    <div class="numbers">
+                      <p class="card-category">National Average Income per Age</p>
+                      <h3 class="card-title"><span id="income"></span></h3>
+                    </div>
+                    <div class="numbers">
+                      <p class="card-category">Monthly Income</p>
+                      <h3 class="card-title"><span id="monthly_income"></span></h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card card-stats">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-5">
+                    <button class="btn btn-primary btn-sm" data-toggle="modal" v-on:click="buyCar(), pauseClock()">Take Car Loan</button>
+                  </div>
+                  <div class="col-7">
+                    <div class="numbers">
+                      <p class="card-category">Car Value</p>
+                      <h3 class="card-title"><span id="car_value"></span></h3>
+                    </div>
+                    <div class="numbers">
+                      <p class="card-category">Car Payment</p>
+                      <h3 class="card-title"><span id="car_payments"></span></h3>
+                    </div>
+                    <div class="numbers">
+                      <p class="card-category">Loan Principal</p>
+                      <h3 class="card-title"><span id="car_principal"></span></h3>
+                    </div>
+                    <div class="numbers">
+                      <p class="card-category">Payments Left</p>
+                      <h3 class="card-title"><span id="car_terms"></span></h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
       <!--     home_value: parseInt(home_value),
           home_money_down: parseInt(home_money_down),
@@ -655,10 +657,6 @@
           </div>
         </div>
       </div>
-      <button class="btn btn-primary" data-toggle="modal" v-on:click="buyCar(), pauseClock()">Buy Car</button>
-      <!-- <button class="btn btn-primary" data-toggle="modal" v-on:click="openCI(), pauseClock()">Compound Interest</button> -->
-      <!-- <button class="btn btn-primary" data-toggle="modal" v-on:click="openRE(), pauseClock()">Buy Real Estate</button> -->
-      <button class="btn btn-primary" data-toggle="modal" v-on:click="openCrypto(), pauseClock()">Buy Crypto</button>
     <!-- </div> -->
   <!-- </div> -->
 
