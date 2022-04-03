@@ -466,37 +466,29 @@
               </div>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-6">
+           <div class="col-lg-4 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
                 <div class="row">
                   <div class="col-5">
-                    <button class="btn btn-primary btn-sm" data-toggle="modal" v-on:click="openStocks(), pauseClock()">Buy Stocks</button>
+                    <div class="info-icon text-center icon-success">
+                      <i class="tim-icons icon-single-02"></i>
                     </div>
+                  </div>
                   <div class="col-7">
                     <div class="numbers">
-                      <p class="card-category">Shares of Stock Owned</p>
-                      <h3 class="card-title"><span id="stocks_holding"></span></h3>
+                      <p class="card-category">National Average Income per Age</p>
+                      <h3 class="card-title"><span id="income"></span></h3>
                     </div>
                     <div class="numbers">
-                      <p class="card-category">Stocks Portfolio</p>
-                      <h3 class="card-title"><span id="stocks"></span></h3>
-                    </div>
-                    <div class="numbers">
-                      <p class="card-category">APY</p>
-                      <h3 class="card-title"><span id="stock_market_rate"></span></h3>
-                    </div>
-                    <div class="numbers">
-                      <p class="card-category">Sim Stock Price</p>
-                      <h3 class="card-title"><span id="sim_stock"></span></h3>
+                      <p class="card-category">Monthly Income</p>
+                      <h3 class="card-title"><span id="monthly_income"></span></h3>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
           <div class="col-lg-4 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
@@ -526,29 +518,36 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
+           <div class="col-lg-4 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
                 <div class="row">
                   <div class="col-5">
-                    <div class="info-icon text-center icon-success">
-                      <i class="tim-icons icon-single-02"></i>
+                    <button class="btn btn-primary btn-sm" data-toggle="modal" v-on:click="openStocks(), pauseClock()">Buy Stocks</button>
                     </div>
-                  </div>
                   <div class="col-7">
                     <div class="numbers">
-                      <p class="card-category">National Average Income per Age</p>
-                      <h3 class="card-title"><span id="income"></span></h3>
+                      <p class="card-category">Shares of Stock Owned</p>
+                      <h3 class="card-title"><span id="stocks_holding"></span></h3>
                     </div>
                     <div class="numbers">
-                      <p class="card-category">Monthly Income</p>
-                      <h3 class="card-title"><span id="monthly_income"></span></h3>
+                      <p class="card-category">Stocks Portfolio</p>
+                      <h3 class="card-title"><span id="stocks"></span></h3>
+                    </div>
+                    <div class="numbers">
+                      <p class="card-category">APY</p>
+                      <h3 class="card-title"><span id="stock_market_rate"></span></h3>
+                    </div>
+                    <div class="numbers">
+                      <p class="card-category">Sim Stock Price</p>
+                      <h3 class="card-title"><span id="sim_stock"></span></h3>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
