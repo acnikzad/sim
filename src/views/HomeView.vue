@@ -494,9 +494,7 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-5">
-                    <div class="info-icon text-center icon-success">
-                      <i class="tim-icons icon-calendar-60"></i>
-                    </div>
+                    <button class="btn btn-success" data-toggle="modal" v-on:click="openCrypto(), pauseClock()">Buy Crypto</button>
                   </div>
                   <div class="col-7">
                     <div class="numbers">
@@ -510,6 +508,10 @@
                     <div class="numbers">
                       <p class="card-category">Sim Coin Volatility</p>
                       <h3 class="card-title"><span id="crypto_rate"></span></h3>
+                    </div>
+                    <div class="numbers">
+                      <p class="card-category">Crypto Value</p>
+                      <h3 class="card-title"><span id="crypto_value"></span></h3>
                     </div>
                   </div>s
                 </div>
@@ -544,12 +546,24 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-5">
-                    <button class="btn btn-primary btn-sm" data-toggle="modal" v-on:click="openCI(), pauseClock()">Buy Real Estate</button>
+                    <button class="btn btn-primary btn-sm" data-toggle="modal" v-on:click="buyCar(), pauseClock()">Take Car Loan</button>
                   </div>
                   <div class="col-7">
                     <div class="numbers">
-                      <p class="card-category">Account Balance</p>
-                      <h3 class="card-title"><span id="ci_princ"></span></h3>
+                      <p class="card-category">Car Value</p>
+                      <h3 class="card-title"><span id="car_value"></span></h3>
+                    </div>
+                    <div class="numbers">
+                      <p class="card-category">Car Payment</p>
+                      <h3 class="card-title"><span id="car_payments"></span></h3>
+                    </div>
+                    <div class="numbers">
+                      <p class="card-category">Loan Principal</p>
+                      <h3 class="card-title"><span id="car_principal"></span></h3>
+                    </div>
+                    <div class="numbers">
+                      <p class="card-category">Payments Left</p>
+                      <h3 class="card-title"><span id="car_terms"></span></h3>
                     </div>
                   </div>
                 </div>
@@ -638,7 +652,7 @@
       <!-- <button class="btn btn-primary" data-toggle="modal" v-on:click="openCI(), pauseClock()">Compound Interest</button> -->
       <!-- <button class="btn btn-primary" data-toggle="modal" v-on:click="openRE(), pauseClock()">Buy Real Estate</button> -->
       <button class="btn btn-primary" data-toggle="modal" v-on:click="openCrypto(), pauseClock()">Buy Crypto</button>
-      <h1>The Month is <span id="month"></span></h1>
+<!--       <h1>The Month is <span id="month"></span></h1>
       <h1>The Year is <span id="year"></span></h1>
       <h3>This years inflation rate: <span id="inflation"></span></h3>
       <br>
@@ -662,7 +676,7 @@
       <h3>Remaining payments:<span id="home_terms"></span></h3>
       <br>
       <h1>Your Net Wealth is: <span id="net_worth"></span></h1>
-      <h1>Your Crypto Account is: <span id="crypto_account"></span></h1>
+      <h1>Your Crypto Account is: <span id="crypto_account"></span></h1> -->
     </div>
   <!-- </div> -->
 
@@ -1014,9 +1028,11 @@
   var crypto_market_rate = 0;
   var crypto_initial = 0;
   var crypto_monthly = 0;
+  var crypto_value = 0;
 
   var sim_coin = 1;
   var sim_coin_bag = 0;
+  var sim_coin_amount = 0;
 
   var car_value = 0;
   var car_money_down = 0;
@@ -1025,6 +1041,7 @@
   var car_years = 0;
   var car_terms = 0;
   var car_payments = 0;
+
   var car_pay_b4_i = 0;
   var car_total_payments = 0;
   var car_total_interest = 0;
@@ -1093,7 +1110,7 @@ export default {
       propertyObj: [],
       properties: [],
       speed:null,
-      car_payment: 0,
+      payments: 0,
       car_value: 0,
       car_principal: 0,
       arrWealth: [],
@@ -1160,25 +1177,26 @@ export default {
               document.getElementById("stocks").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(stocks_account);
               document.getElementById("car_value").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(car_value);
               document.getElementById("car_principal").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(car_principal);
-              document.getElementById("payments").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(car_payments);
+              document.getElementById("car_payments").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(car_payments);
               document.getElementById("ci_princ").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(ci_princ);
               document.getElementById("net_worth").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(net_worth);
               document.getElementById("retired_net_worth").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(net_worth);
 
-              document.getElementById("home_terms").innerHTML = home_terms;
-              document.getElementById("home_value").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_value);
-              document.getElementById("home_principal").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_principal);
-              document.getElementById("mortgage").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_payments);
-              document.getElementById("crypto_account").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(crypto_account); 
+              // document.getElementById("home_terms").innerHTML = home_terms;
+              // document.getElementById("home_value").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_value);
+              // document.getElementById("home_principal").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_principal);
+              // document.getElementById("mortgage").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(home_payments);
+              // document.getElementById("crypto_account").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(crypto_account); 
               document.getElementById("monthly_income").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(monthly_income);
               document.getElementById("stock_market_rate").innerHTML = new Intl.NumberFormat('en-US', { style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(stock_market_rate);
               document.getElementById("save_amount").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_amount);
               document.getElementById("sim_coin").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(sim_coin);
+              document.getElementById("crypto_value").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(crypto_value);
               document.getElementById("sim_coin_bag").innerHTML = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(sim_coin_bag);
               document.getElementById("crypto_rate").innerHTML = new Intl.NumberFormat('en-US', { style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(crypto_rate);
 
               // document.getElementById("object").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(propertyObj.home_equity);
-              document.getElementById("inflation").innerHTML = parseFloat(inflation*100).toFixed(2)+"%";
+              // document.getElementById("inflation").innerHTML = parseFloat(inflation*100).toFixed(2)+"%";
               console.log(++count);
 
 
@@ -1367,9 +1385,9 @@ export default {
               monthly_income = income/12
               console.log("this is monthly income", monthly_income);
               console.log("this is monthly bills", monthly_bills);
-              if (payments > 0) {
-                payments = payments - 1
-                console.log(payments)
+              if (car_payments > 0) {
+                car_payments = car_payments - 1
+                console.log(car_payments)
               }
 
               console.log(arrWealth)
@@ -1395,6 +1413,9 @@ export default {
               console.log("----------------this is the crypto rate", crypto_rate)
               sim_coin = sim_coin + (sim_coin*crypto_rate)
               crypto_account = crypto_account + (crypto_rate*crypto_account)
+
+              sim_coin_bag += (crypto_monthly/sim_coin)
+              crypto_value = (sim_coin_bag*sim_coin)
               
               // console.log("----------------this is the crypto rate", crypto_rate)
               // crypto_account = crypto_account*crypto_market_rate;
@@ -1704,6 +1725,12 @@ export default {
         console.log("this is the initial crypto dep", crypto_initial);
         console.log("this is the crypto monthly", crypto_monthly);
         console.log("++++++++++++ this is the crypto_account", crypto_account);
+
+        sim_coin_amount = crypto_initial/sim_coin
+        console.log("this is the amount of coins purchased", sim_coin_amount)
+
+        crypto_account += sim_coin_amount
+
         check_account -= crypto_initial;
         crypto_account += crypto_initial;
       },
