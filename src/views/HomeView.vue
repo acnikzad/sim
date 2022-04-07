@@ -1024,9 +1024,10 @@
   var income = 0; 
   // monthly_income
   var monthly_income = (income/12);
-  // var col_bills_rate = 0;
-  // var col_bill = 0;
-  // var col_bill_amount = 0;
+  var col_bills_rate = 0;
+  var col_bill = 0;
+  var col_bill_amount = 0;
+  var col_bills_rate_remainder = 0;
   var monthly_bills = 0;
   var ca
 
@@ -1399,6 +1400,7 @@ export default {
               stock_market_rate = (stock_market_rate/10000);
               sim_stock = sim_stock + (sim_stock*stock_market_rate)
 
+
               // home_appreciation = Math.floor(Math.random() * 7) + 1;
               // console.log("this is the home appreciation rate:", home_appreciation)
 
@@ -1410,8 +1412,8 @@ export default {
             function oneMonth() {
               month = (months[count])
               monthly_income = income/12
-              console.log("this is monthly income", monthly_income);
-              console.log("this is monthly bills", monthly_bills);
+              // console.log("this is monthly income", monthly_income);
+              // console.log("this is monthly bills", monthly_bills);
               if (car_payments > 0) {
                 car_payments = car_payments - 1
                 console.log(car_payments)
@@ -1460,16 +1462,46 @@ export default {
               console.log("this is monthly income after tax", monthly_income);
               // monthly_income = monthly_income - monthly_bills - ci_monthly - car_payments - crypto_monthly;
 
+              if (count > 6 && count < 11) {
+                col_bills_rate = Math.floor(Math.random() * (1100 - 800 + 1)) + 800;
+                col_bills_rate = (col_bills_rate/1000);
+                // COL between 80% - 100% August, September, October
+                console.log("!@#$!@#$!@#$ this is the col_bills_rate", col_bills_rate)
+              } else if (count == 10 || count == 11 ) {
+                col_bills_rate = Math.floor(Math.random() * (1400 - 1200 + 1)) + 1200;
+                col_bills_rate = (col_bills_rate/1000);
+                // COL between 120% - 140% November, December
+                console.log("!@#$!@#$!@#$ this is the col_bills_rate", col_bills_rate)
+              } else {
+                col_bills_rate = Math.floor(Math.random() * (1000 - 900 + 1)) + 900;
+                col_bills_rate = (col_bills_rate/1000);
+                // COL betwen 90% - 100% January, February, March, April, May, June, July
+                console.log("!@#$!@#$!@#$ this is the col_bills_rate", col_bills_rate)
+              }
+              
+              if (col_bills_rate > 1) {
+                col_bills_rate_remainder = col_bills_rate - 1;
+                col_bills_rate = 1;
+                check_account -= (monthly_income*col_bills_rate_remainder);
+                col_bills_rate = 0;
+                monthly_income = 0;
+              } else {
+                monthly_income -= (col_bills_rate*monthly_income)
+              }
+              console.log("++++++++this is net income after COL", monthly_income);
+
 
               save_amount = monthly_income*save_rate
+              console.log("++++++++this is save amount", save_amount);
               stocks_account += stocks_monthly;
               monthly_income -= (save_amount + stocks_amount)
-              console.log("++++++++this is net income after save", monthly_income);
+              console.log("++++++++this is net income after save++++++++++++", monthly_income);
 
               check_account += monthly_income
               save_account += save_amount
               stocks_account += stocks_monthly;
               net_worth = stocks_account +  check_account + save_account + ci_princ
+              console.log("++++++++this is net income after save", monthly_income);
               // having trouble adding crypto and ci
               console.log("this is net_worth", net_worth);
 
