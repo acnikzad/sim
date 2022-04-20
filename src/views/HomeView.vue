@@ -724,9 +724,9 @@
       </div>
     </div>
 
-<!-- open end modal-->
-    <div class="modal fade" id="endModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+<!-- end modal-->
+    <div class="modal fade bd-example-modal-lg" id="endModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">Congrats! You are retired!</h5>
@@ -734,7 +734,26 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <h1>Your Net Wealth is: <span id="retired_net_worth"></span></h1>
+          <div class="col-md-12 mr-auto">
+            <div class="card card-chart card-chart-pie">
+              <div class="card-header">
+                <h5 class="card-category">Your Net Wealth</h5>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="chart-area">
+                      <canvas id="PieChartGradient"></canvas>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <h4 class="card-title"><i class="tim-icons  icon-single-02 text-warning "></i> <span id="retired_net_worth"></span></h4>
+                    <p class="category">Feedback from 20.000 users</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -843,12 +862,13 @@
   var arrInvesting = [];
   var arrCI = [];
   var arrCrypto = [];
+  var arrBalance = [];
 
   var count = -1;
   var rate = .4;
   var product = 0;
   var year = 2006;
-  var age = 17;
+  var age = 63;
   var x = 0;
   var month = "";
   var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -1349,52 +1369,76 @@ export default {
               });
             };
 
-          // function chartSavings() {
 
-          //   var chart_labels = ['18', '20', '22', '24', '26', '28', '30', '32', '34', '36', '38', '40', '42', '44', '46', '48', '50', '52', '54', '56', '58', '60', '62', '64'];
-          //   var ctx = document.getElementById("chartBig1").getContext('2d');
-          //   var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
-
-          //   gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
-          //   gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
-          //   gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
-
-          //   var config = {
-          //     type: 'line',
-          //     data: {
-          //       labels: chart_labels,
-          //       datasets: [{
-          //         label: "Net Wealth",
-          //         fill: true,
-          //         backgroundColor: gradientStroke,
-          //         borderColor: '#d346b1',
-          //         borderWidth: 2,
-          //         borderDash: [],
-          //         borderDashOffset: 0.0,
-          //         pointBackgroundColor: '#d346b1',
-          //         pointBorderColor: 'rgba(255,255,255,0)',
-          //         pointHoverBackgroundColor: '#d346b1',
-          //         pointBorderWidth: 20,
-          //         pointHoverRadius: 4,
-          //         pointHoverBorderWidth: 15,
-          //         pointRadius: 4,
-          //         data: arrSavings,
-          //       }]
-          //     },
-          //     options: gradientChartOptionsConfigurationWithTooltipGreen
-          //   };
-          //   var myChartData = new Chart(ctx, config);
-          //   $("#1").click(function() {
-          //     var data = myChartData.config.data;
-          //     data.datasets[0].data = chart_data;
-          //     data.labels = chart_labels;
-          //     myChartData.update();
-          //   });
-          // };
 
           function endModal() {
+
               $('#endModal').modal('show');
-              // pauseClock();
+
+              arrBalance.push(check_account, save_account, ci_princ, stocks_account, crypto_account)
+
+              var ctx = document.getElementById("PieChartGradient").getContext("2d");
+
+              var myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                  labels: ["Checking Account", "Savings Account", "Compound Interest Account"],
+                  datasets: [{
+                    label: "Emails",
+                    pointRadius: 0,
+                    pointHoverRadius: 0,
+                    backgroundColor: ['#0081a7', '#00afb9', '#fdfcdc', '#fed9b7', '#f07167'],
+                    borderWidth: 0,
+                    data: arrBalance,
+                  }]
+                },
+                options: {
+                  cutoutPercentage: 70,
+                  legend: {
+
+                    display: false
+                  },
+
+                  tooltips: {
+                    backgroundColor: '#f5f5f5',
+                    titleFontColor: '#333',
+                    bodyFontColor: '#666',
+                    bodySpacing: 4,
+                    xPadding: 12,
+                    mode: "nearest",
+                    intersect: 0,
+                    position: "nearest"
+                  },
+
+                  scales: {
+                    yAxes: [{
+                      display: 0,
+                      ticks: {
+                        display: false
+                      },
+                      gridLines: {
+                        drawBorder: false,
+                        zeroLineColor: "transparent",
+                        color: 'rgba(255,255,255,0.05)'
+                      }
+
+                    }],
+
+                    xAxes: [{
+                      display: 0,
+                      barPercentage: 1.6,
+                      gridLines: {
+                        drawBorder: false,
+                        color: 'rgba(255,255,255,0.1)',
+                        zeroLineColor: "transparent"
+                      },
+                      ticks: {
+                        display: false,
+                      }
+                    }]
+                  },
+                }
+              });
             };
           }
         },
