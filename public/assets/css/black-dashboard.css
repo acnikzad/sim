@@ -22615,7 +22615,7 @@ Copyright (c) 2015 Daniel Eden
   .card-stats .info-icon i {
     color: #ffffff;
     font-size: 1.7em;
-    padding: 14px 13px; }
+    padding: 10px 10px; }
   .card-stats .info-icon.icon-danger {
     background: #fd5d93;
     background-image: linear-gradient(to bottom left, #fd5d93, #ec250d, #fd5d93);

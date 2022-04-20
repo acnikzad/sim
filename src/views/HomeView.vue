@@ -1176,8 +1176,8 @@ export default {
               monthly_income = income/12
               // console.log("this is monthly income", monthly_income);
               // console.log("this is monthly bills", monthly_bills);
-              if (car_payments > 0) {
-                car_payments = car_payments - 1
+              if (car_terms > 0) {
+                car_terms -= 1
                 console.log(car_payments)
               }
 
