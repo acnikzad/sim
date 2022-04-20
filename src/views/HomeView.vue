@@ -868,7 +868,7 @@
   var rate = .4;
   var product = 0;
   var year = 2006;
-  var age = 63;
+  var age = 17;
   var x = 0;
   var month = "";
   var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -1264,7 +1264,7 @@ export default {
               save_account += save_amount
               save_total_cont += save_amount
               stocks_account += stocks_monthly;
-              net_worth = stocks_account +  check_account + save_account + ci_princ
+              net_worth = stocks_account +  check_account + save_account + ci_princ + crypto_value
               console.log("++++++++this is net income after save", monthly_income);
               // having trouble adding crypto and ci
               console.log("this is net_worth", net_worth);
