@@ -145,6 +145,10 @@
                       <p class="card-category">Account Balance</p>
                       <h3 class="card-title"><span id="ci_princ"></span></h3>
                     </div>
+                    <div class="numbers">
+                      <p class="card-category">Total Contributions</p>
+                      <h3 class="card-title"><span id="ci_total_cont"></span></h3>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -186,6 +190,10 @@
                     <div class="numbers">
                       <p class="card-category">Monthly Savings Amount</p>
                       <h3 class="card-title"><span id="save_amount"></span></h3>
+                    </div>
+                    <div class="numbers">
+                      <p class="card-category">Total Contributions</p>
+                      <h3 class="card-title"><span id="save_total_cont"></span></h3>
                     </div>
                   </div>
                 </div>
@@ -761,6 +769,7 @@
   var save_amount = (monthly_income*save_rate);
   var save_account = 0;
   var save_rate = "";
+  var save_total_cont = 0;
 
   var stocks_rate = 0;
   var stocks_amount = (monthly_income*stocks_rate);
@@ -822,6 +831,7 @@
   var ci_monthly = "";
   var ci_rate = ""; 
   var ci_years = "";
+  var ci_total_cont = "";
 
 
   var income_tax = 0.08;
@@ -930,6 +940,8 @@ export default {
               document.getElementById("car_principal").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(car_principal);
               document.getElementById("car_payments").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(car_payments);
               document.getElementById("ci_princ").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(ci_princ);
+              document.getElementById("ci_total_cont").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(ci_total_cont);
+              document.getElementById("save_total_cont").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(save_total_cont);
               document.getElementById("net_worth").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(net_worth);
               document.getElementById("retired_net_worth").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(net_worth);
 
@@ -1095,6 +1107,8 @@ export default {
                 endModal();
               }
 
+              save_account += (save_account*.01)
+
               if (age % 1 === 0) {
                 arrWealth.push(parseInt(net_worth));
                 arrSavings.push(parseInt(save_account));
@@ -1179,6 +1193,7 @@ export default {
 
               stocks_holding += (stocks_monthly/sim_stock)
               stocks_account = (stocks_holding*sim_stock)
+
               
               // console.log("----------------this is the crypto rate", crypto_rate)
               // crypto_account = crypto_account*crypto_market_rate;
@@ -1227,6 +1242,7 @@ export default {
 
               check_account += monthly_income
               save_account += save_amount
+              save_total_cont += save_amount
               stocks_account += stocks_monthly;
               net_worth = stocks_account +  check_account + save_account + ci_princ
               console.log("++++++++this is net income after save", monthly_income);
@@ -1234,6 +1250,7 @@ export default {
               console.log("this is net_worth", net_worth);
 
               if (i <= ci_months) {
+                ci_total_cont += ci_monthly
                 ci_princ += ci_monthly;
                 ci_princ += (ci_princ * (ci_rate / 12));
                 i += 1;
@@ -1241,6 +1258,9 @@ export default {
                 // console.log(i);
                 // console.log(ci_months);
               };
+
+
+              // propertyObj.home_value += (propertyObj.home_value * .03)
 
               properties.forEach((singlepropertyObj) => {
                 return propertyObj.home_years -1
@@ -1548,6 +1568,7 @@ export default {
         ci_years = parseInt(this.ci_years); // term years
         ci_monthly = parseInt(this.ci_monthly); // monthly deposit (need plus it every year)
         ci_months = (ci_years * 12); //10 years of monthly contributions
+        ci_total_cont = ci_princ
 
         check_account -= ci_princ
         i = 1
