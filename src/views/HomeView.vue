@@ -125,8 +125,8 @@
                       <h3 class="card-title"><span id="income"></span></h3>
                     </div>
                     <div class="numbers">
-                      <p class="card-category">Monthly Income</p>
-                      <h3 class="card-title"><span id="monthly_income"></span></h3>
+                      <p class="card-category">Income Tax</p>
+                      <h3 class="card-title"><span id="income_tax"></span></h3>
                     </div>
                   </div>
                 </div>
@@ -167,6 +167,10 @@
                     <div class="numbers">
                       <p class="card-category">Checking Account</p>
                       <h3 class="card-title"><span id="checking"></span></h3>
+                    </div>
+                    <div class="numbers">
+                      <p class="card-category">Monthly Income After Expenses</p>
+                      <h3 class="card-title"><span id="monthly_income"></span></h3>
                     </div>
                   </div>s
                 </div>
@@ -979,6 +983,8 @@ export default {
               document.getElementById("crypto_rate").innerHTML = new Intl.NumberFormat('en-US', { style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(crypto_rate);
               document.getElementById("sim_stock").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(sim_stock);
               document.getElementById("stocks_holding").innerHTML = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(stocks_holding);
+              document.getElementById("income_tax").innerHTML = new Intl.NumberFormat('en-US', { style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(income_tax);
+
 
               // document.getElementById("object").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(propertyObj.home_equity);
               // document.getElementById("inflation").innerHTML = parseFloat(inflation*100).toFixed(2)+"%";
@@ -1386,7 +1392,7 @@ export default {
 
               $('#endModal').modal('show');
 
-              arrBalance.push(check_account, save_account, ci_princ, stocks_account, crypto_account)
+              arrBalance.push(parseInt(check_account), parseInt(save_account), parseInt(ci_princ), parseInt(stocks_account), parseInt(crypto_account))
 
               var ctx = document.getElementById("PieChartGradient").getContext("2d");
 
