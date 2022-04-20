@@ -998,7 +998,7 @@ export default {
               };
 
               if (car_terms > 0) {
-                car_terms = (car_terms - 1);
+                car_terms -= 1;
                 car_principal = (car_principal - car_pay_b4_i);
               }
             };
@@ -1176,10 +1176,10 @@ export default {
               monthly_income = income/12
               // console.log("this is monthly income", monthly_income);
               // console.log("this is monthly bills", monthly_bills);
-              if (car_terms > 0) {
-                car_terms -= 1
-                console.log(car_payments)
-              }
+              // if (car_terms > 0) {
+              //   car_terms -= 1
+              //   console.log(car_payments)
+              // }
 
               console.log(arrWealth)
 
