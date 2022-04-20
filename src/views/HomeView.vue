@@ -737,7 +737,7 @@
           <div class="col-md-12 mr-auto">
             <div class="card card-chart card-chart-pie">
               <div class="card-header">
-                <h5 class="card-category">Your Net Wealth</h5>
+                <h5 class="card-category">Your Portfolio</h5>
               </div>
               <div class="card-body">
                 <div class="row">
@@ -748,7 +748,7 @@
                   </div>
                   <div class="col-6">
                     <h4 class="card-title"><i class="tim-icons  icon-single-02 text-warning "></i> <span id="retired_net_worth"></span></h4>
-                    <p class="category">Feedback from 20.000 users</p>
+                    <p class="category">Your Net Worth</p>
                   </div>
                 </div>
               </div>
@@ -1251,6 +1251,17 @@ export default {
               } else {
                 monthly_income -= (col_bills_rate*monthly_income)
               }
+
+              if (monthly_income == 0) {
+                check_account -= save_amount;
+                check_account -= ci_monthly;
+                check_account -= car_payments;
+                check_account -= stocks_monthly;
+                check_account -= crypto_monthly;
+
+              }
+
+
               console.log("++++++++this is net income after COL", monthly_income);
 
 
@@ -1382,7 +1393,7 @@ export default {
               var myChart = new Chart(ctx, {
                 type: 'pie',
                 data: {
-                  labels: ["Checking Account", "Savings Account", "Compound Interest Account"],
+                  labels: ["Checking Account", "Savings Account", "Compound Interest Account", "Stocks Portfolio", "Crypto Portfolio"],
                   datasets: [{
                     label: "Emails",
                     pointRadius: 0,
