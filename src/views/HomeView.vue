@@ -13,7 +13,7 @@
                     <h5 class="card-category">Net Wealth</h5>
                     <h2 class="card-title">Performance</h2>
                   </div>
-                  <div class="col-sm-6">
+                  <!-- <div class="col-sm-6">
                     <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
                       <label class="btn btn-sm btn-primary btn-simple active" id="0">
                         <input type="radio" name="options" checked>
@@ -22,43 +22,8 @@
                           <i class="tim-icons icon-single-02"></i>
                         </span>
                       </label>
-                      <label class="btn btn-sm btn-primary btn-simple" id="1">
-                        <input type="radio" class="d-none d-sm-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Savings Act</span>
-                        <span class="d-block d-sm-none">
-                          <i class="tim-icons icon-gift-2"></i>
-                        </span>
-                      </label>
-                      <label class="btn btn-sm btn-primary btn-simple" id="2">
-                        <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Stocks Act</span>
-                        <span class="d-block d-sm-none">
-                          <i class="tim-icons icon-tap-02"></i>
-                        </span>
-                      </label>
-                      <label class="btn btn-sm btn-primary btn-simple" id="3">
-                        <input type="radio" class="d-none d-sm-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Compound Act</span>
-                        <span class="d-block d-sm-none">
-                          <i class="tim-icons icon-gift-2"></i>
-                        </span>
-                      </label>
-                      <label class="btn btn-sm btn-primary btn-simple" id="4">
-                        <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Crypto Act</span>
-                        <span class="d-block d-sm-none">
-                          <i class="tim-icons icon-tap-02"></i>
-                        </span>
-                      </label>
-                      <label class="btn btn-sm btn-primary btn-simple" id="5">
-                        <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Real Estate</span>
-                        <span class="d-block d-sm-none">
-                          <i class="tim-icons icon-tap-02"></i>
-                        </span>
-                      </label>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
               <div class="card-body">
@@ -843,7 +808,7 @@
   var home_total_interest = 0;
   var home_x = 0;
   var property = {};
-  var properties = [];
+  //var properties = [];
 
   var check_account = 1000;
   var check_amount = 0;
@@ -863,10 +828,13 @@
 
   var arrWealth = [];
   var arrSavings = [];
-  var arrInvesting = [];
+  var arrStocks = [];
   var arrCI = [];
   var arrCrypto = [];
   var arrBalance = [];
+  var arrCar = [];
+  var arrCarLoan = [];
+  var arrRealEstate = [];
 
   var count = -1;
   var rate = .4;
@@ -1138,9 +1106,11 @@ export default {
               if (age % 1 === 0) {
                 arrWealth.push(parseInt(net_worth));
                 arrSavings.push(parseInt(save_account));
-                arrInvesting.push(parseInt(stocks_account));
+                arrStocks.push(parseInt(stocks_account));
                 arrCI.push(parseInt(ci_princ));
                 arrCrypto.push(parseInt(crypto_account));
+                arrCar.push(parseInt(car_value));
+                arrCarLoan.push(parseInt(car_principal));
 
                 chartWealth();
                 // console.log("$$$$$$$$$$$$$$$$this is arrinvesting",arrInvesting)
@@ -1175,6 +1145,13 @@ export default {
               inflation = Math.floor(Math.random() * 4) + 1;
               inflation = (inflation/100);
               stocks_account = stocks_account + (stocks_account*stock_market_rate);
+
+              if( that.properties ) {
+               that.properties.forEach(propertyObj => {
+                  propertyObj.home_value *= 1.08;
+                  propertyObj.home_equity *= 1.08;
+                })
+              } 
             };
 
             function oneMonth() {
@@ -1187,7 +1164,8 @@ export default {
               //   console.log(car_payments)
               // }
 
-              console.log(arrWealth)
+              
+             
 
               crypto_account += crypto_monthly;
 
@@ -1299,9 +1277,18 @@ export default {
 
               // propertyObj.home_value += (propertyObj.home_value * .03)
 
-              properties.forEach((singlepropertyObj) => {
-                return propertyObj.home_years -1
-              });
+              // properties.forEach((singlepropertyObj) => {
+              //   return propertyObj.home_years -1
+              // });
+
+
+              if( that.properties ) {
+               that.properties.forEach(propertyObj => {
+                  propertyObj.princip -= propertyObj.home_mortgage;
+                  propertyObj.home_equity += propertyObj.home_mortgage
+                })
+              } 
+
 
               // console.log(ci_princ.toFixed(2)); //69636.12
              };
@@ -1336,8 +1323,134 @@ export default {
                     pointHoverRadius: 4,
                     pointHoverBorderWidth: 15,
                     pointRadius: 4,
-                    data: arrWealth,
-                  }]
+                    data: arrWealth,                  
+                  },
+                  {
+                    label: "Savings",
+                    fill: true,
+                    backgroundColor: gradientStroke,
+                    borderColor: '#0d6efd',
+                    borderWidth: 2,
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    pointBackgroundColor: '#0d6efd',
+                    pointBorderColor: 'rgba(255,255,255,0)',
+                    pointHoverBackgroundColor: '#0d6efd',
+                    pointBorderWidth: 20,
+                    pointHoverRadius: 4,
+                    pointHoverBorderWidth: 15,
+                    pointRadius: 4,
+                    data: arrSavings,
+                  
+                  },
+                  {
+                    label: "Compound Interest",
+                    fill: true,
+                    backgroundColor: gradientStroke,
+                    borderColor: '#6f42c1',
+                    borderWidth: 2,
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    pointBackgroundColor: '#6f42c1',
+                    pointBorderColor: 'rgba(255,255,255,0)',
+                    pointHoverBackgroundColor: '#6f42c1',
+                    pointBorderWidth: 20,
+                    pointHoverRadius: 4,
+                    pointHoverBorderWidth: 15,
+                    pointRadius: 4,
+                    data: arrCI,
+                  
+                  },
+                  {
+                    label: "Stocks",
+                    fill: true,
+                    backgroundColor: gradientStroke,
+                    borderColor: '#ffc107',
+                    borderWidth: 2,
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    pointBackgroundColor: '#ffc107',
+                    pointBorderColor: 'rgba(255,255,255,0)',
+                    pointHoverBackgroundColor: '#ffc107',
+                    pointBorderWidth: 20,
+                    pointHoverRadius: 4,
+                    pointHoverBorderWidth: 15,
+                    pointRadius: 4,
+                    data: arrStocks,
+                  
+                  },
+                  {
+                    label: "Crypto",
+                    fill: true,
+                    backgroundColor: gradientStroke,
+                    borderColor: '#0dcaf0',
+                    borderWidth: 2,
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    pointBackgroundColor: '#0dcaf0',
+                    pointBorderColor: 'rgba(255,255,255,0)',
+                    pointHoverBackgroundColor: '#0dcaf0',
+                    pointBorderWidth: 20,
+                    pointHoverRadius: 4,
+                    pointHoverBorderWidth: 15,
+                    pointRadius: 4,
+                    data: arrCrypto,
+                  
+                  },
+                  {
+                    label: "Real Estate",
+                    fill: true,
+                    backgroundColor: gradientStroke,
+                    borderColor: '#198754',
+                    borderWidth: 2,
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    pointBackgroundColor: '#198754',
+                    pointBorderColor: 'rgba(255,255,255,0)',
+                    pointHoverBackgroundColor: '#198754',
+                    pointBorderWidth: 20,
+                    pointHoverRadius: 4,
+                    pointHoverBorderWidth: 15,
+                    pointRadius: 4,
+                    data: arrRealEstate,
+                  
+                  },
+                  {
+                    label: "Car Value",
+                    fill: true,
+                    backgroundColor: gradientStroke,
+                    borderColor: '#dc3545',
+                    borderWidth: 2,
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    pointBackgroundColor: '#dc3545',
+                    pointBorderColor: 'rgba(255,255,255,0)',
+                    pointHoverBackgroundColor: '#dc3545',
+                    pointBorderWidth: 20,
+                    pointHoverRadius: 4,
+                    pointHoverBorderWidth: 15,
+                    pointRadius: 4,
+                    data: arrCar,
+                  
+                  },
+                  {
+                    label: "Car Loan",
+                    fill: true,
+                    backgroundColor: gradientStroke,
+                    borderColor: '#fd7e14',
+                    borderWidth: 2,
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    pointBackgroundColor: '#fd7e14',
+                    pointBorderColor: 'rgba(255,255,255,0)',
+                    pointHoverBackgroundColor: '#fd7e14',
+                    pointBorderWidth: 20,
+                    pointHoverRadius: 4,
+                    pointHoverBorderWidth: 15,
+                    pointRadius: 4,
+                    data: arrCarLoan,
+                  },
+                  ]
                 },
                 options: gradientChartOptionsConfigurationWithTooltipPurple
               };
