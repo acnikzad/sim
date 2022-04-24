@@ -33,7 +33,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-12 col-md-6">
+          <div class="col-lg-6 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
                 <div class="row">
@@ -42,17 +42,17 @@
                       <i class="tim-icons icon-calendar-60"></i>
                     </div>
                   </div>
-                  <div class="col-7">
+                  <div class="col-6">
                     <div class="numbers">
                       <p class="card-category">Net Worth</p>
                       <h3 class="card-title" align="center"><span id="net_worth"></span></h3>
                     </div>
-                  </div>s
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-6 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
                 <div class="row">
@@ -61,7 +61,7 @@
                       <i class="tim-icons icon-calendar-60"></i>
                     </div>
                   </div>
-                  <div class="col-7">
+                  <div class="col-6">
                     <div class="numbers">
                       <p class="card-category">Date</p>
                       <h3 class="card-title"><span id="month"></span>, <span id="year"></span></h3>
@@ -70,12 +70,12 @@
                       <p class="card-category">Age</p>
                       <h3 class="card-title"><span id="age"></span></h3>
                     </div>
-                  </div>s
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-3 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
                 <div class="row">
@@ -98,28 +98,30 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
+         <div class="col-lg-3 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
                 <div class="row">
                   <div class="col-5">
-                    <button class="btn btn-primary btn-sm" data-toggle="modal" v-on:click="openCI(), pauseClock()">Compound Interest</button>
+                    <div class="info-icon text-center icon-success">
+                      <i class="tim-icons icon-single-02"></i>
+                    </div>
                   </div>
                   <div class="col-7">
                     <div class="numbers">
-                      <p class="card-category">Account Balance</p>
-                      <h3 class="card-title"><span id="ci_princ"></span></h3>
+                      <p class="card-category">Monthly Expenses</p>
+                      <h3 class="card-title"><span id="monthly_expenses"></span></h3>
                     </div>
                     <div class="numbers">
-                      <p class="card-category">Total Contributions</p>
-                      <h3 class="card-title"><span id="ci_total_cont"></span></h3>
+                      <p class="card-category">Monthly Investments</p>
+                      <h3 class="card-title"><span id="monthly_invest"></span></h3>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-3 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
                 <div class="row">
@@ -142,7 +144,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-3 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
                 <div class="row">
@@ -169,30 +171,28 @@
               </div>
             </div>
           </div>
-           <div class="col-lg-4 col-md-6">
+          <div class="col-lg-3 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
                 <div class="row">
                   <div class="col-5">
-                    <div class="info-icon text-center icon-success">
-                      <i class="tim-icons icon-single-02"></i>
-                    </div>
+                    <button class="btn btn-primary btn-sm" data-toggle="modal" v-on:click="openCI(), pauseClock()">Compound Interest</button>
                   </div>
                   <div class="col-7">
                     <div class="numbers">
-                      <p class="card-category">National Average Income per Age</p>
-                      <h3 class="card-title"><span id="income"></span></h3>
+                      <p class="card-category">Account Balance</p>
+                      <h3 class="card-title"><span id="ci_princ"></span></h3>
                     </div>
                     <div class="numbers">
-                      <p class="card-category">Monthly Income</p>
-                      <h3 class="card-title"><span id="monthly_income"></span></h3>
+                      <p class="card-category">Total Contributions</p>
+                      <h3 class="card-title"><span id="ci_total_cont"></span></h3>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-3 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
                 <div class="row">
@@ -221,7 +221,7 @@
               </div>
             </div>
           </div>
-           <div class="col-lg-4 col-md-6">
+           <div class="col-lg-3 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
                 <div class="row">
@@ -251,7 +251,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-3 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
                 <div class="row">
@@ -751,7 +751,8 @@
   var col_bill_amount = 0;
   var col_bills_rate_remainder = 0;
   var monthly_bills = 0;
-  var ca
+  var monthly_expenses = 0;
+  var monthly_invest = 0;
 
   var save_rate = 0;
   var save_amount = (monthly_income*save_rate);
@@ -952,6 +953,8 @@ export default {
               document.getElementById("sim_stock").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(sim_stock);
               document.getElementById("stocks_holding").innerHTML = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(stocks_holding);
               document.getElementById("income_tax").innerHTML = new Intl.NumberFormat('en-US', { style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(income_tax);
+              document.getElementById("monthly_expenses").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(monthly_expenses);
+              document.getElementById("monthly_invest").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(monthly_invest);
 
 
               // document.getElementById("object").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(propertyObj.home_equity);
@@ -1164,9 +1167,6 @@ export default {
               //   console.log(car_payments)
               // }
 
-              
-             
-
               crypto_account += crypto_monthly;
 
               if (sim_coin < 25) {
@@ -1197,6 +1197,9 @@ export default {
 
               stocks_holding += (stocks_monthly/sim_stock)
               stocks_account = (stocks_holding*sim_stock)
+
+              monthly_expenses = col_bill + monthly_bills
+              monthly_invest = stocks_monthly + crypto_monthly + ci_monthly
 
               
               // console.log("----------------this is the crypto rate", crypto_rate)
@@ -1259,7 +1262,7 @@ export default {
               save_account += save_amount
               save_total_cont += save_amount
               stocks_account += stocks_monthly;
-              net_worth = stocks_account +  check_account + save_account + ci_princ + crypto_value
+              net_worth = stocks_account +  check_account + save_account + ci_princ + crypto_value - car_principal
               console.log("++++++++this is net income after save", monthly_income);
               // having trouble adding crypto and ci
               console.log("this is net_worth", net_worth);
@@ -1517,7 +1520,7 @@ export default {
                     label: "Emails",
                     pointRadius: 0,
                     pointHoverRadius: 0,
-                    backgroundColor: ['#0081a7', '#00afb9', '#fdfcdc', '#fed9b7', '#f07167'],
+                    backgroundColor: ['#d346b1', '#0d6efd', '#6f42c1', '#ffc107', '#0dcaf0'],
                     borderWidth: 0,
                     data: arrBalance,
                   }]
