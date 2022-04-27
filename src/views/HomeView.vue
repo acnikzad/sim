@@ -330,22 +330,19 @@
                     <tbody v-for="propertyObj in properties">
                       <tr>
                         <td>
-                          {{ propertyObj.home_value }}
+                          ${{ (propertyObj.home_value).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') }}
                         </td>
                         <td>
-                          {{ propertyObj.home_mortgage }}
+                          ${{ (propertyObj.home_mortgage).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') }}
                         </td>
                         <td>
-                          {{ propertyObj.home_equity }}
+                          ${{ (propertyObj.home_equity).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') }}
                         </td>
                         <td>
-                          {{ propertyObj.home_loan_principal }}
+                          ${{ (propertyObj.home_principal).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') }}
                         </td>
                         <td>
                           {{ propertyObj.home_interest }}
-                        </td>
-                        <td>
-                          {{ propertyObj.home_loan_principal }}
                         </td>
                         <td>
                           {{ propertyObj.home_terms }}
@@ -957,6 +954,7 @@ export default {
               document.getElementById("monthly_invest").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(monthly_invest);
 
 
+
               // document.getElementById("object").innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(propertyObj.home_equity);
               // document.getElementById("inflation").innerHTML = parseFloat(inflation*100).toFixed(2)+"%";
               console.log(++count);
@@ -1151,8 +1149,8 @@ export default {
 
               if( that.properties ) {
                that.properties.forEach(propertyObj => {
-                  propertyObj.home_value *= 1.08;
-                  propertyObj.home_equity *= 1.08;
+                  propertyObj.home_value *= 1.03;
+                  propertyObj.home_equity *= 1.03;
                 })
               } 
             };
@@ -1218,7 +1216,7 @@ export default {
                 // COL between 80% - 100% August, September, October
                 console.log("!@#$!@#$!@#$ this is the col_bills_rate", col_bills_rate)
               } else if (count == 10 || count == 11 ) {
-                col_bills_rate = Math.floor(Math.random() * (1400 - 1200 + 1)) + 1200;
+                col_bills_rate = Math.floor(Math.random() * (1200 - 800 + 1)) + 800;
                 col_bills_rate = (col_bills_rate/1000);
                 // COL between 120% - 140% November, December
                 console.log("!@#$!@#$!@#$ this is the col_bills_rate", col_bills_rate)
@@ -1286,10 +1284,15 @@ export default {
 
 
               if( that.properties ) {
-               that.properties.forEach(propertyObj => {
-                  propertyObj.princip -= propertyObj.home_mortgage;
-                  propertyObj.home_equity += propertyObj.home_mortgage
+                // if( propertyObj.home_terms > 1){
+                 that.properties.forEach(propertyObj => {
+                  if( propertyObj.home_terms >= 1 ){
+                    propertyObj.home_terms -= 1;
+                    propertyObj.home_principal -= propertyObj.home_mortgage;
+                    propertyObj.home_equity += propertyObj.home_mortgage
+                  }
                 })
+               // }
               } 
 
 
@@ -1614,6 +1617,8 @@ export default {
         var home_terms = this.home_years * 12;
         var home_value = this.home_money_down + this.home_principal;
         var home_equity = this.home_money_down
+
+
 
               // Now compute the monthly payment figure, using esoteric math.
         x = Math.pow(1 + home_interest, home_terms);
