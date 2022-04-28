@@ -297,7 +297,7 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-5">
-                    <button class="btn btn-success btn-sm" data-toggle="modal" v-on:click="openRE(), pauseClock()">Buy Real Estate</button>
+                    <button class="btn btn-primary btn-sm" data-toggle="modal" v-on:click="openRE(), pauseClock()">Buy Real Estate</button>
                   </div>
                   <h5 class="card-title">Real Estate</h5>
                 </div>
