@@ -377,6 +377,13 @@
                   <h4 class="card-title">Enter Information</h4>
                 </div>
                 <div class="card-body">
+                  <div class="card-text">
+                    <p>You have just graduated high school and have $500 in the bank account.
+                      <br>
+                  You must prepare for retirement at age 65.</p>
+                  <p>See how to generate wealth by using different avenues such as saving money, investing in the stock market, crypto, real estate or a compound interest account such as a 401k or Roth IRA.</p>
+                  <p>Your annual income is based on the national average. Bills increase over time with inflation. Income tax increases as salary increases. Good luck! </p>
+                  </div>
                   <form id="RangeValidation" class="form-horizontal">
                     <div class="row">
                       <label class="col-sm-2 col-form-label">Percentage of Income Saved:</label>
@@ -388,7 +395,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      <label class="col-sm-2 col-form-label">Monthly Bills:</label>
+                      <label class="col-sm-2 col-form-label">Monthly Bills at age 18:</label>
                       <div class="col-sm-10">s
                         <div class="form-group">
                           <input class="form-control" type="number" max="800" placeholder="800" v-model="monthly_bills" required/>

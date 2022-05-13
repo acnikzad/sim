@@ -3538,6 +3538,10 @@ input[type="button"].btn-block {
   margin-top: -0.625rem;
   margin-bottom: 0; }
 
+  .card-text {
+    color: #5B5D6C !important;
+  }
+
 .card-text:last-child {
   margin-bottom: 0; }
 
@@ -11749,7 +11753,7 @@ textarea.form-control {
   .modal-content .modal-body {
     line-height: 1.9; }
     .modal-content .modal-body p {
-      color: #222a42; }
+      color: #FFFFFF99; }
   .modal-content .modal-footer {
     border-top: 0;
     /* Safari 6.1+ */
